@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
 
 Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
