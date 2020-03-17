@@ -26,3 +26,7 @@ Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
