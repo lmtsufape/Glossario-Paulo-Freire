@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('letras');
 });
 
+Route::get('/exPlugin', function () {
+    return view('exemploPlugin');
+});
+
 Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
 
 Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
