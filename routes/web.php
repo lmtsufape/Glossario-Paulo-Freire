@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('letras');
-});
-
 Route::get('/exPlugin', function () {
     return view('exemploPlugin');
+});
+
+Route::get('/', function () {
+    return view('letras');
 });
 
 Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
@@ -25,8 +25,6 @@ Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
+Route::get('/teste', 'ListarVerbeteController@teste')->name('teste'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
