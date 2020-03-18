@@ -17,10 +17,6 @@
     <title>Paulo Freire</title>
   </head>
   <body>
-  	<nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-        <img  width="30" height="30" class="d-inline-block align-top" alt="">MENU</a>
-    </nav>
     
     <div class="container">
         <div style="padding-top: 80px;">
