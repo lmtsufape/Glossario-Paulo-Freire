@@ -72,8 +72,8 @@
                 <div class="col-sm-12" id="lista_menu">
                     <ul class="list-group">
                         @foreach ($verbetes as $verbete)
-                        <li class="list-group-item lista_item" ><a href="{{ route('verbete', ['id' => $verbete->id]) }}">
-                            {{$verbete->descricao}}</a></li>
+                        <a href="{{ route('verbete', ['id' => $verbete->id]) }}"><li class="list-group-item lista_item" >
+                            {{$verbete->descricao}}</li></a>
                         @endforeach
                     </ul>
                 </div>
