@@ -20,61 +20,106 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+  
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+      <!-- rodape -->
+      <div class="rodape">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="row alinhamento_container">
+                        <div class="col-md-12" style="margin-top:1rem; padding-bottom: 1rem;">
+                            <img src="icones/institutoPF.png" alt="Logo" width="100" height="58" />
+                        </div>
+                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: red;">INSTITUTO</a></div> 
+                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: blue;">PAULO FREIRE</a></div>
+                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: 1rem;"><a style="color: white; font-size: 15px;">Instituto de Educação e Direitos Humanos Paulo Freire</a></div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row alinhamento_container_texto">
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;">Home</div>
+                        <div class="col-md-12 rodape_texto" >Conheça Paulo Freire</div>
+                        <div class="col-md-12 rodape_texto" >Linha do Tempo</div>
+                        <div class="col-md-12 rodape_texto" >Acervo Digital</div>
+                    </div>
+                        <hr size="300" width="1" align="left" style="background-color: white">
+                </div>
+                <div class="col-md-2">
+                    <div class="row alinhamento_container_texto">
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;">Bibliotecas</div>
+                        <div class="col-md-12 rodape_texto" >Glossário Paulo Freire</div>
+                        <div class="col-md-12 rodape_texto" >Comunidade Freiriana Internacional</div>
+                        <div class="col-md-12 rodape_texto" >Instituto Paulo Freire</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row alinhamento_container_texto">
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="icones/facebook.svg" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Facebook<label></div>
+                        <div class="col-md-12 rodape_texto" ><img src="icones/instagram.svg" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Instagram</label></div>
+                        <div class="col-md-12 rodape_texto" ><img src="icones/email.svg" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">E-mail</label></div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row" style="text-align: center">
+                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: -1rem;">
+                            <img src="icones/UNESCO.png" alt="Logo" width="134" height="134" />
+                        </div>
+                        <div class="col-md-12">
+                            <label style="font-size: 10px; color: white;">Acervo reconhecido pela UNESCO</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row border-top" style="padding-top: 1rem; padding-bottom: 1rem;">
+                <div class="col-md-12">
+                    <div class="row" style="text-align: left">
+                        <!-- primeira coluna -->
+                        <div class="col-md-1" style="color: white;">Parceria</div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="icones/UFRPE.png" alt="Logo" width="44" height="62" />
+                                </div>
+                                <div class="col-md-7">
+                                    <a style="color: white; font-size: 15px">Universidade Federal Rural de Pernambuco</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- segunda coluna -->
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="icones/LMTS.png" alt="Logo" width="109" height="44" />
+                                </div>
+                                <div class="col-md-7">
+                                    <label style="color: white; font-size: 15px;">Laboratório Multidisciplinar de Tecnologias Sociais</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- terceira coluna -->
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <select class="custom-select custom-select-sm">
+                                      <option selected>Selecione o idioma</option>
+                                      <option value="1">Inglês(EUA)</option>
+                                      <option value="2">Francês</option>
+                                      <option value="3">Espanhol</option>
+                                      <option value="4">Português (BRA)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
