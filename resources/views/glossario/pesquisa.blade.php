@@ -10,6 +10,11 @@
 
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Styles -->
+     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <title>Paulo Freire</title>
   </head>
   <body>
