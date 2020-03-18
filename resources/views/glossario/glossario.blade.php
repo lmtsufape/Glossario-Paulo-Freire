@@ -30,7 +30,7 @@
                                         <a href="" style="margin: 5px;">Glossário</a>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="" style="margin: 5px;">Pesquisa</a>
+                                        <a href="{{ route('pesquisa') }}" style="margin: 5px;">Pesquisa</a>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-top: 5px;">
-                                <div style="float: right"><a href="">Listar todas as palavras</a></div>
+                                <div style="float: right"><a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a></div>
                             </div>
                         </div>
                     </div>

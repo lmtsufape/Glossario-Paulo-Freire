@@ -11,8 +11,4 @@ class ListarVerbeteController extends Controller
         return View('glossario.glossario')->with(['verbetes' => $verbetes, 'letra' => $l]);
 
     }
-
-    public function teste() {
-        return view('glossario.glossario');
-    }
 }
