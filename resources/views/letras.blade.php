@@ -31,7 +31,7 @@
                             <div class="col-md-12">
                                 <div class="row container">
                                     <div class="col-xs-2">
-                                        <a href="" style="margin: 5px;">Glossário</a>
+                                        <a href="{{ route('glossario') }}" style="margin: 5px;">Glossário</a>
                                     </div>
                                     <div class="col-xs-2">
                                         <a href="{{ route('pesquisa') }}" style="margin: 5px;">Pesquisa</a>

@@ -71,11 +71,10 @@
                 </div>
                 <div class="col-sm-12" id="lista_menu">
                     <ul class="list-group">
-                        <li class="list-group-item lista_item" >Palavra 1</li>
-                        <li class="list-group-item lista_item" >Palavra 2</li>
-                        <li class="list-group-item lista_item" >Palavra 3</li>
-                        <li class="list-group-item lista_item" >Palavra 4</li>
-                        <li class="list-group-item lista_item" >Palavra 5</li>
+                        @foreach ($verbetes as $verbete)
+                        <li class="list-group-item lista_item" ><a href="{{ route('verbete', ['id' => $verbete->id]) }}">
+                            {{$verbete->descricao}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

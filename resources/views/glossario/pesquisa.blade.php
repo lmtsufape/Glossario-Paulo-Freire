@@ -19,10 +19,6 @@
     <title>Paulo Freire</title>
   </head>
   <body>
-  	<nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-        <img  width="30" height="30" class="d-inline-block align-top" alt="">MENU</a>
-    </nav>
     
     <div class="container">
     	<div style="padding-top: 80px;">
@@ -36,7 +32,7 @@
                                         <a href="" style="margin: 5px;">Glossário</a>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href=" {{ route('pesquisa') }} " style="margin: 5px;">Pesquisa</a>
+                                        <a href="" style="margin: 5px;">Pesquisa</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-top: 5px;">
-                                <div style="float: right"><a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a></div>
+                                <div style="float: right"><a href="">Listar todas as palavras</a></div>
                             </div>
                         </div>
                     </div>
