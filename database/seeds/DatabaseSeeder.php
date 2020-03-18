@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(VerbeteSeeder::class);
-       // $this->call(TrechoSeeder::class);
+        $this->call(VerbeteSeeder::class);
+        $this->call(TrechoSeeder::class);
     }
 }
