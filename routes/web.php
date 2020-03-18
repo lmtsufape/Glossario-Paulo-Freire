@@ -19,12 +19,15 @@ Route::get('/', function () {
     return view('letras');
 });
 
+
 Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
 
 Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
 
 Auth::routes();
 
-Route::get('/teste', 'ListarVerbeteController@teste')->name('teste'); 
+Route::get('/glossario', 'ViewsController@glossario')->name('glossario');
+Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
+Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
