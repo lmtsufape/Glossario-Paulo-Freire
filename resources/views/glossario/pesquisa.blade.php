@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -26,7 +26,7 @@
 
     <div class="container">
     	<div style="padding-top: 80px;">
-    		<div class="imagem_fundo" style="background-image: url(imagens/img_grande_50.png)">
+    		<div class="imagem_fundo" style="background-image: url({{ asset('imagens/img_grande_50.png') }})">
                 <div class="card-body menu_glossario">
                     <div class="menu_glossario_design">
                         <div class="row" style="margin: 1rem">
@@ -48,15 +48,15 @@
                             </div>
                             <div class="col-md-12" style="margin-bottom: 1px;">
                                 <div class="row" style="margin-top: 1rem; margin-bottom: 1rem; justify-content: center; ">
-                                    <button type="button" class="btn" id="menu_glossario_botao" ><img src="icones/search.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Todas</label></button>
+                                    <button type="button" class="btn" id="menu_glossario_botao" ><img src="{{ asset('icones/search.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Todas</label></button>
 
                                     <button type="button" class="btn" id="menu_glossario_botao" >
-                                        <img src="icones/audio.svg" alt="Logo" width="16,74" height="18,34" />
+                                        <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="16,74" height="18,34" />
                                         <label class="campo_compartilhar_texto">Áudio</label>
                                     </button>
 
                                     <button type="button" class="btn" id="menu_glossario_botao" />
-                                    <img src="icones/video.svg" alt="Logo" width="16,74" height="18,34" />
+                                    <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="16,74" height="18,34" />
                                         <label class="campo_compartilhar_texto">Vídeo</label>
                                     </button>
                                 </div>
@@ -82,7 +82,7 @@
                           <li class="list-group-item div_container">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <img src="imagens/imagem_audio.png" alt="paper" style="width: auto; max-width: 100%">
+                                    <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
                                             <output class="campo_contador">
-                                                <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             	<label class="campo_compartilhar_texto">20.123</label>
                                             </output>
                                             <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
@@ -104,7 +104,7 @@
                           <li class="list-group-item div_container">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <img src="imagens/imagem_audio.png" alt="paper" style="width: auto; max-width: 100%">
+                                    <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
                                             <output class="campo_contador">
-                                                <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             	<label class="campo_compartilhar_texto">20.123</label>
                                             </output>
                                             <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
@@ -146,7 +146,7 @@
                           <li class="list-group-item div_container">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <img src="imagens/imagem_video.png" alt="paper" style="width: auto; max-width: 100%">
+                                    <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
                                             <output class="campo_contador">
-                                                <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             	<label class="campo_compartilhar_texto">20.123</label>
                                             </output>
                                             <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
@@ -168,7 +168,7 @@
                           <li class="list-group-item div_container">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <img src="imagens/imagem_video.png" alt="paper" style="width: auto; max-width: 100%">
+                                    <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
                                             <output class="campo_contador">
-                                                <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             	<label class="campo_compartilhar_texto">20.123</label>
                                             </output>
                                             <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>

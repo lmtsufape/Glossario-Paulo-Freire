@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
     
     <title>Paulo Freire</title>
   </head>
@@ -21,7 +21,7 @@
 
     <div class="container">
         <div style="padding-top: 80px;">
-            <div class="imagem_fundo" style="background-image: url(imagens/img_grande_50.png)">
+            <div class="imagem_fundo" style="background-image: url({{asset('imagens/img_grande_50.png')}})">
                 <div class="card-body menu_glossario">
                     <div class="menu_glossario_design">
                         <div class="row" style="margin: 1rem">
@@ -65,15 +65,15 @@
                         <br>
                     <div style="margin-left: 12px; margin-top: -35px; margin-bottom: 2rem;">
                         <a id="subtitulo_lista">Palavras com a letra </a>
-                        <output id="subtitulo_lista" id="letraSelecionada">{{$letra->l}}</output>
+                        <output id="subtitulo_lista" id="letraSelecionada">{{$letraSelecionada}}</output>
                     </div>
                         
                 </div>
                 <div class="col-sm-12" id="lista_menu">
                     <ul class="list-group">
                         @foreach ($verbetes as $verbete)
-                        <a href="{{ route('verbete', ['id' => $verbete->id]) }}"><li class="list-group-item lista_item" >
-                            {{$verbete->descricao}}</li></a>
+                        <li class="list-group-item lista_item" ><a href="{{ route('verbete', ['id' => $verbete->id]) }}">
+                            {{$verbete->descricao}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -91,7 +91,7 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5">
-                                <img src="imagens/imagem_audio.png" alt="paper" style="width: auto; max-width: 100%">
+                                <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="col-sm-12" style="padding: 1rem;">
                                         <output class="campo_contador">
-                                            <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </output>
                                         <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
@@ -113,7 +113,7 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5">
-                                <img src="imagens/imagem_audio.png" alt="paper" style="width: auto; max-width: 100%">
+                                <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -123,7 +123,7 @@
                                     </div>
                                     <div class="col-sm-12" style="padding: 1rem;">
                                         <output class="campo_contador">
-                                            <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </output>
                                         <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
@@ -155,7 +155,7 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5">
-                                <img src="imagens/imagem_video.png" alt="paper" style="width: auto; max-width: 100%">
+                                <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="col-sm-12" style="padding: 1rem;">
                                         <output class="campo_contador">
-                                            <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </output>
                                         <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
@@ -177,7 +177,7 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5">
-                                <img src="imagens/imagem_video.png" alt="paper" style="width: auto; max-width: 100%">
+                                <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="col-sm-12" style="padding: 1rem;">
                                         <output class="campo_contador">
-                                            <img src="icones/eye.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </output>
                                         <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>

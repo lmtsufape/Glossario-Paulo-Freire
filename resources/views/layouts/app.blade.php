@@ -30,7 +30,7 @@
                 <div class="col-md-3">
                     <div class="row alinhamento_container">
                         <div class="col-md-12" style="margin-top:1rem; padding-bottom: 1rem;">
-                            <img src="icones/institutoPF.png" alt="Logo" width="100" height="58" />
+                            <img src=" {{ asset('icones/institutoPF.png') }}" alt="Logo" width="100" height="58" />
                         </div>
                         <div class="col-md-12"><a style="color: white; font-size: 15px; color: red;">INSTITUTO</a></div> 
                         <div class="col-md-12"><a style="color: white; font-size: 15px; color: blue;">PAULO FREIRE</a></div>
@@ -56,15 +56,15 @@
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="icones/facebook.svg" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Facebook<label></div>
-                        <div class="col-md-12 rodape_texto" ><img src="icones/instagram.svg" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Instagram</label></div>
-                        <div class="col-md-12 rodape_texto" ><img src="icones/email.svg" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">E-mail</label></div>
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Facebook<label></div>
+                        <div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Instagram</label></div>
+                        <div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">E-mail</label></div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row" style="text-align: center">
                         <div class="col-md-12" style="margin-top: 1rem; margin-bottom: -1rem;">
-                            <img src="icones/UNESCO.png" alt="Logo" width="134" height="134" />
+                            <img src="{{ asset('icones/UNESCO.png') }}" alt="Logo" width="134" height="134" />
                         </div>
                         <div class="col-md-12">
                             <label style="font-size: 10px; color: white;">Acervo reconhecido pela UNESCO</label>
@@ -80,7 +80,7 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <img src="icones/UFRPE.png" alt="Logo" width="44" height="62" />
+                                    <img src="{{ asset('icones/UFRPE.png') }}" alt="Logo" width="44" height="62" />
                                 </div>
                                 <div class="col-md-7">
                                     <a style="color: white; font-size: 15px">Universidade Federal Rural de Pernambuco</a>
@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="icones/LMTS.png" alt="Logo" width="109" height="44" />
+                                    <img src="{{ asset('icones/LMTS.png') }}" alt="Logo" width="109" height="44" />
                                 </div>
                                 <div class="col-md-7">
                                     <label style="color: white; font-size: 15px;">Laboratório Multidisciplinar de Tecnologias Sociais</label>

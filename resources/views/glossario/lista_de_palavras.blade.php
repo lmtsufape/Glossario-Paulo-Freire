@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
@@ -24,7 +24,7 @@
     
     <div class="container">
         <div style="padding-top: 80px;">
-            <div class="imagem_fundo" style="background-image: url(imagens/img_grande_50.png)">
+            <div class="imagem_fundo" style="background-image: url({{ asset('imagens/img_grande_50.png') }})">
                 <div class="card-body menu_glossario">
                     <div class="menu_glossario_design">
                         <div class="row" style="margin: 1rem">
@@ -72,11 +72,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -89,11 +89,11 @@
                                 <div class="col-md-12">
                                     <div class="btn-group">
                                         <div style="margin-right: 1rem;">
-                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </div>
                                         <div>
-                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </div>
                                     </div>
@@ -106,11 +106,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -123,11 +123,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -140,11 +140,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -166,11 +166,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -183,11 +183,11 @@
                                 <div class="col-md-12">
                                     <div class="btn-group">
                                         <div style="margin-right: 1rem;">
-                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </div>
                                         <div>
-                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </div>
                                     </div>
@@ -200,11 +200,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -217,11 +217,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -234,11 +234,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -260,11 +260,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -277,11 +277,11 @@
                                 <div class="col-md-12">
                                     <div class="btn-group">
                                         <div style="margin-right: 1rem;">
-                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </div>
                                         <div>
-                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </div>
                                     </div>
@@ -294,11 +294,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -311,11 +311,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
@@ -328,11 +328,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group">
                                             <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                             <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                                 <label class="campo_compartilhar_texto">20.123</label>
                                             </div>
                                         </div>
