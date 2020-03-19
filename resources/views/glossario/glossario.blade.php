@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     <title>Paulo Freire</title>
   </head>
   <body>
-    
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+        <img  width="30" height="30" class="d-inline-block align-top" alt="">MENU</a>
+    </nav>
+
     <div class="container">
         <div style="padding-top: 80px;">
             <div class="imagem_fundo" style="background-image: url(imagens/img_grande_50.png)">
@@ -27,7 +28,7 @@
                             <div class="col-md-12">
                                 <div class="row container">
                                     <div class="col-xs-2">
-                                        <a href="" style="margin: 5px;">Glossário</a>
+                                        <a href="{{ route('glossario') }}" style="margin: 5px;">Glossário</a>
                                     </div>
                                     <div class="col-xs-2">
                                         <a href="{{ route('pesquisa') }}" style="margin: 5px;">Pesquisa</a>
@@ -56,8 +57,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row" >
+        <div class="row" >
         <div class="col-md-4 border-right" style="background-color: white; margin-left: 1rem; margin-right: 1rem; margin-bottom: 1rem;">
             <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px;">
@@ -65,7 +65,7 @@
                         <br>
                     <div style="margin-left: 12px; margin-top: -35px; margin-bottom: 2rem;">
                         <a id="subtitulo_lista">Palavras com a letra </a>
-                        <output id="subtitulo_lista" id="letraSelecionada">...</output>
+                        <output id="subtitulo_lista" id="letraSelecionada">{{$letra->l}}</output>
                     </div>
                         
                 </div>
@@ -210,6 +210,8 @@
             </div>
         </div>
     </div>
+    </div>
+    
     </div>
 
 

@@ -31,7 +31,7 @@
                             <div class="col-md-12">
                                 <div class="row container">
                                     <div class="col-xs-2">
-                                        <a href="" style="margin: 5px;">Glossário</a>
+                                        <a href="{{ route('glossario') }}" style="margin: 5px;">Glossário</a>
                                     </div>
                                     <div class="col-xs-2">
                                         <a href="{{ route('pesquisa') }}" style="margin: 5px;">Pesquisa</a>
@@ -48,7 +48,7 @@
                                         @else
                                         <div class="col-xs-1 menu_glossario_letra">{{$letra->l}}</div>
                                         @endif
-                                        </div>
+                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -60,293 +60,293 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1 letra">A</div>
+                <div class="col-md-10" style="margin-left: 1rem; margin-top: 10%; margin-bottom: 1rem;">
+                        <ul class="list-group">
+                        <li class="list-group-item lista_item" >
+                                <div class="row">
+                                    <div class="col-md-12"><label >Palavra 1</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                <div class="col-md-12"><label >Palavra 2</label></div>
+                                <div class="col-md-12">
+                                    <div class="btn-group">
+                                        <div style="margin-right: 1rem;">
+                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <label class="campo_compartilhar_texto">20.123</label>
+                                        </div>
+                                        <div>
+                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <label class="campo_compartilhar_texto">20.123</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 3</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 4</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 5</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1 letra">B</div>
+                <div class="col-md-10" style="margin-left: 1rem; margin-top: 10%; margin-bottom: 1rem;">
+                        <ul class="list-group">
+                        <li class="list-group-item lista_item" >
+                                <div class="row">
+                                    <div class="col-md-12"><label >Palavra 1</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                <div class="col-md-12"><label >Palavra 2</label></div>
+                                <div class="col-md-12">
+                                    <div class="btn-group">
+                                        <div style="margin-right: 1rem;">
+                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <label class="campo_compartilhar_texto">20.123</label>
+                                        </div>
+                                        <div>
+                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <label class="campo_compartilhar_texto">20.123</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 3</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 4</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 5</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1 letra">C</div>
+                <div class="col-md-10" style="margin-left: 1rem; margin-top: 10%; margin-bottom: 1rem;">
+                        <ul class="list-group">
+                        <li class="list-group-item lista_item" >
+                                <div class="row">
+                                    <div class="col-md-12"><label >Palavra 1</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                <div class="col-md-12"><label >Palavra 2</label></div>
+                                <div class="col-md-12">
+                                    <div class="btn-group">
+                                        <div style="margin-right: 1rem;">
+                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <label class="campo_compartilhar_texto">20.123</label>
+                                        </div>
+                                        <div>
+                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                            <label class="campo_compartilhar_texto">20.123</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 3</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 4</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li class="list-group-item lista_item" >
+                            <div class="row">
+                                    <div class="col-md-12"><label >Palavra 5</label></div>
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <div style="margin-right: 1rem;">
+                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                            <div>
+                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
+                                                <label class="campo_compartilhar_texto">20.123</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+            </div>
+    </div>
     </div>
         
-       <div class="row">
-            <div class="col-md-12">
-               <div class="row">
-                   <div class="col-md-1 letra">A</div>
-                   <div class="col-md-10" style="margin-left: 1rem; margin-top: 10%; margin-bottom: 1rem;">
-                        <ul class="list-group">
-                          <li class="list-group-item lista_item" >
-                                <div class="row">
-                                    <div class="col-md-12"><label >Palavra 1</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                            <div class="row">
-                                <div class="col-md-12"><label >Palavra 2</label></div>
-                                <div class="col-md-12">
-                                    <div class="btn-group">
-                                        <div style="margin-right: 1rem;">
-                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">20.123</label>
-                                        </div>
-                                        <div>
-                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">20.123</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 3</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 4</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 5</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                        </ul>
-                   </div>
-               </div>
-            </div>
-            <div class="col-md-12">
-               <div class="row">
-                   <div class="col-md-1 letra">B</div>
-                   <div class="col-md-10" style="margin-left: 1rem; margin-top: 10%; margin-bottom: 1rem;">
-                        <ul class="list-group">
-                          <li class="list-group-item lista_item" >
-                                <div class="row">
-                                    <div class="col-md-12"><label >Palavra 1</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                            <div class="row">
-                                <div class="col-md-12"><label >Palavra 2</label></div>
-                                <div class="col-md-12">
-                                    <div class="btn-group">
-                                        <div style="margin-right: 1rem;">
-                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">20.123</label>
-                                        </div>
-                                        <div>
-                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">20.123</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 3</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 4</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 5</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                        </ul>
-                   </div>
-               </div>
-            </div>
-            <div class="col-md-12">
-               <div class="row">
-                   <div class="col-md-1 letra">C</div>
-                   <div class="col-md-10" style="margin-left: 1rem; margin-top: 10%; margin-bottom: 1rem;">
-                        <ul class="list-group">
-                          <li class="list-group-item lista_item" >
-                                <div class="row">
-                                    <div class="col-md-12"><label >Palavra 1</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                            <div class="row">
-                                <div class="col-md-12"><label >Palavra 2</label></div>
-                                <div class="col-md-12">
-                                    <div class="btn-group">
-                                        <div style="margin-right: 1rem;">
-                                            <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">20.123</label>
-                                        </div>
-                                        <div>
-                                            <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">20.123</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 3</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 4</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                          <li class="list-group-item lista_item" >
-                              <div class="row">
-                                    <div class="col-md-12"><label >Palavra 5</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="icones/video.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="icones/audio.svg" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          </li>
-                        </ul>
-                   </div>
-               </div>
-            </div>
-       </div>
-    </div>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

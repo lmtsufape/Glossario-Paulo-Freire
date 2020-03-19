@@ -21,7 +21,12 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-      
+    
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+        <img  width="30" height="30" class="d-inline-block align-top" alt="">MENU</a>
+    </nav>
+    
     <div class="container">
         <div style="padding-top: 80px;">
             <div class="imagem_fundo" style="background-image: url(imagens/img_grande_50.png)">
@@ -48,7 +53,7 @@
                                         @else
                                         <div class="col-xs-1 menu_glossario_letra">{{$letra->l}}</div>
                                         @endif
-                                        </div>
+                                    </div>
                                     @endforeach
                                 </div>
                             </div>

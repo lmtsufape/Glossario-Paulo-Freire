@@ -17,7 +17,7 @@ Route::get('/exPlugin', function () {
 
 Route::get('/', function () {
     return view('letras');
-});
+})->name('glossario');
 
 
 Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
@@ -26,7 +26,7 @@ Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
 
 Auth::routes();
 
-Route::get('/glossario', 'ViewsController@glossario')->name('glossario');
+Route::get('/letras', 'ViewsController@glossario')->name('letras');
 Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
 Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa'); 
 
