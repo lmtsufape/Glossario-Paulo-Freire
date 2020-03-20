@@ -8,7 +8,9 @@ class ListarTrechoController extends Controller
 {
     public function listar($id) {
         $verbete = \App\Verbete::find($id);
+        $l = str_split($verbete->descricao)[0];
+        $verbetes = \App\Verbete::where('descricao', 'ilike', $l.'%')->get();
         $trechos = \App\Trecho::where('verbete_id', $id)->get();
-        return View('listarTrecho')->with(['trechos' => $trechos, 'verbete' => $verbete]);
+        return View('glossario.glossario')->with(['trechos' => $trechos, 'verbeteSelecionado' => $verbete, 'verbetes' => $verbetes, 'letraSelecionada' => $l]);
     }
 }
