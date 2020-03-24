@@ -17,26 +17,60 @@
                         </div>
                     </div>
                     <div class="col-md-12" style="margin-top: 5px;">
-                        <div class="row" style="margin-top: 3rem; margin-bottom: 1rem; justify-content: center; ">
-                            <input class="col-sm-9 form-control" type="text" value="Educação" aria-label="Search" style="margin-right: 3px; background-color: white;">
-                            <button class="col-sm-2 btn btn-outline-danger">Buscar</button>
+                        <form id="nova" method="POST" action="{{ route('pesquisa.nova') }}" >
+                            @csrf
+
+                            <div class="row" style="margin-top: 3rem; margin-bottom: 1rem; justify-content: center; ">
+                                <input form="nova" class="col-sm-9 form-control" type="text" id="boxBuscar" name="box" value="Educação" aria-label="Search" style="margin-right: 3px; background-color: white;">
+                                <button id="buscar_botao" onclick="botaoClicado(buscar_botao)" class="col-sm-2 btn btn-outline-danger">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                    @if ($errors->all())
+                    <div class="col-md-12" style="margin-top: 5px;">
+                        <div class="row" style="margin-top: 0.05rem; margin-bottom: 0.1rem; justify-content: center;">
+                        @foreach ($errors->all() as $erro)
+                            <div class="alert alert-danger" role="alert">
+                                {{$erro}}
+                            </div>
+                        @endforeach
                         </div>
                     </div>
+                    @endif
                     <div class="col-md-12" style="margin-bottom: 1px;">
                         <div class="row" style="margin-top: 1rem; margin-bottom: 1rem; justify-content: center; ">
-                            <button type="button" class="btn" id="menu_glossario_botao" ><img src="{{ asset('icones/search.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Todas</label></button>
+                            <form id="nova2" method="POST" action="{{ route('pesquisa.nova') }}">
+                            @csrf
 
-                            <button type="button" class="btn" id="menu_glossario_botao" >
-                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                <label class="campo_compartilhar_texto">Áudio</label>
-                            </button>
+                                <button id="todas_botao" class="btn" onclick="botaoClicado(todas_botao)">
+                                    <img src="{{ asset('icones/search.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                    <input id="boxTodas" value="" type="hidden" name="box">
+                                    <label class="campo_compartilhar_texto">Todas</label>
+                                </button>
+                            </form>
 
-                            <button type="button" class="btn" id="menu_glossario_botao" />
-                            <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                <label class="campo_compartilhar_texto">Vídeo</label>
-                            </button>
+                            <form id="audio_botao" method="POST" action="{{ route('pesquisa.audio') }}">
+                            @csrf
+
+                                <button id="audio_botao" class="btn" onclick="botaoClicado(audio_botao)">
+                                    <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                    <input id="boxAudio" value="" type="hidden" name="box">
+                                    <label class="campo_compartilhar_texto">Áudio</label>
+                                </button>
+                            </form>
+
+                            <form id="video" method="POST" action="{{ route('pesquisa.video') }}">
+                            @csrf
+
+                                <button id="video_botao" class="btn" onclick="botaoClicado(video_botao)">
+                                    <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                    <input id="boxVideo" value="" type="hidden" name="box">
+                                    <label class="campo_compartilhar_texto">Vídeo</label>
+                                </button>
+                            </form>
                         </div>
                     </div>
+                    
                     <div class="col-md-12" style="margin-top: 5px;">
                         <div style="float: right"><a href="{{ route('listarPalavras') }}">Listar todas as palavras</a></div>
                     </div>
@@ -45,6 +79,14 @@
         </div>
     </div>
 </div>
+<!-- Achar outro jeito -->
+@if (Route::currentRouteName() === 'pesquisa.nova' || Route::currentRouteName() === 'pesquisa.video' || Route::currentRouteName() === 'pesquisa.audio')
+    @foreach ($trechos as $trecho)
+        <p>
+            {{ $trecho->texto }}
+        </p>
+    @endforeach
+@endif
 <div class="row" >
     <div class="col-md-12 div_resultado">
         <div class="row">
@@ -177,4 +219,15 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function botaoClicado(id) {
+        var formulario = id.id;
+        var inputBox = document.getElementById("boxBuscar");
+
+        document.getElementById("boxTodas").value = inputBox.value;
+        document.getElementById("boxAudio").value = inputBox.value;
+        document.getElementById("boxVideo").value = inputBox.value;
+    } 
+</script>
 @endsection

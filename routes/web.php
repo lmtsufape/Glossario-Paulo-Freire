@@ -28,6 +28,10 @@ Auth::routes();
 
 Route::get('/letras', 'ViewsController@glossario')->name('letras');
 Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
-Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa'); 
+
+Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa');
+Route::post('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova');
+Route::post('/pesquisar/video', 'PesquisaController@novaPesquisaVideo')->name('pesquisa.video');
+Route::post('/pesquisar/audio', 'PesquisaController@novaPesquisaAudio')->name('pesquisa.audio');
 
 Route::get('/home', 'HomeController@index')->name('home');

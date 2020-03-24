@@ -53,11 +53,38 @@
 	font-family:time;
 }
 
+#erro_alert {
+	background-color: white;
+	opacity: 1; 
+	margin: 5px; border-width:2px; height: 40px;
+	border-left-color: rgb(145, 8, 8);
+}
+
 #menu_glossario_botao{
 	background-color: white;
 	opacity: 1; 
 	margin: 5px; border-color:#d5d5d5; border-width:2px; height: 40px;
 }
+
+#todas_botao{
+	background-color: white;
+	opacity: 1; 
+	margin: 5px; border-color:#d5d5d5; border-width:2px; height: 40px;
+}
+
+#audio_botao{
+	background-color: white;
+	opacity: 1; 
+	margin: 5px; border-color:#d5d5d5; border-width:2px; height: 40px;
+}
+
+#video_botao{
+	background-color: white;
+	opacity: 1; 
+	margin: 5px; border-color:#d5d5d5; border-width:2px; height: 40px;
+}
+
+
 
 /*lista de palavras*/
 .lista_item{
@@ -112,7 +139,7 @@ li.selected{
 }
 
 .campo_contador{
-	text-align: center;  border: 2px solid #d5d5d5; width: 150px; height: 39px; border-radius: 5px; padding-top: 5px; margin-bottom: : 1rem;
+	text-align: center;  border: 2px solid #d5d5d5; width: 150px; height: 39px; border-radius: 5px; padding-top: 5px; margin-bottom: 1rem;
 }
 
 .campo_contado_valor{
