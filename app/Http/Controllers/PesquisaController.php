@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PesquisaController extends Controller
 {
     public function novaPesquisa(Request $request) {
-        if ($request->box == "") {
-            return redirect( route('pesquisa') )->withErrors(['buscaEmBranco' => 'Por favor, digite a busca']);
-        } else {
+            $validator = Validator::make($request->all(), [
+                        'box' => 'required',
+                ]);
             $verbetes = \App\Verbete::where('descricao', 'ilike', $request->box.'%')->get();
             $trechos = [];
 
@@ -20,14 +21,13 @@ class PesquisaController extends Controller
                 }
             }
             return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
-        } 
+        
     }
 
     public function novaPesquisaVideo(Request $request) {
-        if ($request->box == "") {
-            return redirect( route('pesquisa') )->withErrors(['buscaEmBranco' => 'Por favor, digite a busca']);
-            //dd("teste");
-        } else {
+            $validator = Validator::make($request->all(), [
+                    'box' => 'required',
+             ]);
             $verbetes = \App\Verbete::where('descricao', 'ilike', $request->box.'%')->get();
             $trechos = [];
 
@@ -39,14 +39,13 @@ class PesquisaController extends Controller
             }
 
             return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
-        }
         
     }
 
     public function novaPesquisaAudio(Request $request) {
-        if ($request->box == "") {
-            return redirect( route('pesquisa') )->withErrors(['buscaEmBranco' => 'Por favor, digite a busca']);
-        } else {
+            $validator = Validator::make($request->all(), [
+                    'box' => 'required',
+            ]);
             $verbetes = \App\Verbete::where('descricao', 'ilike', $request->box.'%')->get();
             $trechos = [];
 
@@ -56,7 +55,6 @@ class PesquisaController extends Controller
                     array_push($trechos, $trechoTemp);
                 }
             }
-            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
-        }        
+            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);       
     }
 }

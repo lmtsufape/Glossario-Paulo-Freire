@@ -21,7 +21,7 @@
                             @csrf
 
                             <div class="row" style="margin-top: 3rem; margin-bottom: 1rem; justify-content: center; ">
-                                <input form="nova" class="col-sm-9 form-control" type="text" id="boxBuscar" name="box" value="Educação" aria-label="Search" style="margin-right: 3px; background-color: white;">
+                                <input form="nova" class="col-sm-9 form-control" type="text" id="boxBuscar" name="box" value="{{$tipo ?? ''}}" aria-label="Search" style="margin-right: 3px; background-color: white;">
                                 <button id="buscar_botao" onclick="botaoClicado(buscar_botao)" class="col-sm-2 btn btn-outline-danger">Buscar</button>
                             </div>
                         </form>
@@ -112,7 +112,10 @@
                     </div>
                 </div>
                 </li>
-                {{-- <div class="div_mais_resultados"> 
+                    @endif
+                @endforeach
+            </ul>
+             <div class="div_mais_resultados"> 
                     <div >
                         <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
                         <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
@@ -120,10 +123,7 @@
                         <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
                         <a href="">Ver todos.</a>
                     </div>
-                </div>--}}
-                    @endif
-                @endforeach
-            </ul>
+                </div>
         </div>
     </div>
     <div class="row">
@@ -158,18 +158,18 @@
                         </div>
                     </div>
                     </li>
-                {{-- <div class="div_mais_resultados">
-                    <div >
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                        <a href="">Ver todos.</a>
-                    </div>
-                </div>--}}
                     @endif
                 @endforeach
             </ul>
+            <div class="div_mais_resultados">
+                <div >
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
+                    <a href="">Ver todos.</a>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -206,18 +206,18 @@
                     </div>
                 </div>
                 </li>
-            {{-- <div class="div_mais_resultados">
-                <div >
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                    <a href="">Ver todos.</a>
-                </div>
-            </div>--}}
                 @endif
             @endforeach
         </ul>
+        <div class="div_mais_resultados">
+            <div >
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
+                <a href="">Ver todos.</a>
+            </div>
+        </div>
     </div>
 </div>
    
@@ -254,18 +254,18 @@
                 </div>
             </div>
             </li>
-            {{-- <div class="div_mais_resultados"> 
-                <div >
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                    <a href="">Ver todos.</a>
-                </div>
-                </div>--}}
                 @endif
             @endforeach
         </ul>
+        <div class="div_mais_resultados"> 
+            <div >
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
+                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
+                <a href="">Ver todos.</a>
+            </div>
+            </div>
     </div>
 </div>
 @endif
