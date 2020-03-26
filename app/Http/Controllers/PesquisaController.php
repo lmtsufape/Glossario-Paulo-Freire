@@ -14,18 +14,19 @@ class PesquisaController extends Controller
             $trechos = [];
 
             foreach ($verbetes as $verbete) {
-                $trechosTemp = \App\Trecho::where('verbete_id', $verbete->id)->get();
+               $trechosTemp = \App\Trecho::where('verbete_id', $verbete->id)->get();
                 foreach ($trechosTemp as $trechoTemp) {
                     array_push($trechos, $trechoTemp);
                 }
             }
-            return redirect( route('pesquisa') )->with(['trechos' => $trechos, 'tipo' => 'Áudios e Vídeos']);
+            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
         } 
     }
 
     public function novaPesquisaVideo(Request $request) {
         if ($request->box == "") {
             return redirect( route('pesquisa') )->withErrors(['buscaEmBranco' => 'Por favor, digite a busca']);
+            //dd("teste");
         } else {
             $verbetes = \App\Verbete::where('descricao', 'ilike', $request->box.'%')->get();
             $trechos = [];
@@ -37,7 +38,7 @@ class PesquisaController extends Controller
                 }
             }
 
-            return redirect( route('pesquisa') )->with(['trechos' => $trechos, 'tipo' => 'Vídeos']);
+            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
         }
         
     }
@@ -55,7 +56,7 @@ class PesquisaController extends Controller
                     array_push($trechos, $trechoTemp);
                 }
             }
-            return redirect( route('pesquisa') )->with(['trechos' => $trechos, 'tipo' => 'Áudios']);
+            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
         }        
     }
 }

@@ -103,8 +103,8 @@
                 scripts: js/scripts
                 css/folha
              -->
-            <div id="videojs">
-            <h1>Video.js Example Embed</h1>
+           {{-- / <div id="videojs"> 
+             <h1>Video.js Example Embed</h1> 
 
                 <video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" height="268">
                 <source src="http-videos.glossario/Test.mp4" type="video/mp4">
@@ -116,7 +116,22 @@
                 <script>
                 var player = videojs('my_video_1');
                 </script>
-            </div>
+            </div>--}}
+
+            {{-- <video  id="example_video_direct_link"  
+            class="video-js vjs-default-skin vjs-big-play-centered"
+            controls 
+            preload="auto" 
+            width="640" 
+            height="264"
+            data-setup='{
+                            "example_option":true
+                        }'>
+            <source src="http://acervo.paulofreire.org:8080/jspui/handle/7891/1893" type='video/mp4' />
+            
+    </video>--}}
+
+    <iframe src="https://www.youtube.com/embed/npnp--SSx_8 "  allow="autoplay"></iframe>
         </div>
     </body>
 </html>
