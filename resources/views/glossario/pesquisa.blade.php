@@ -79,6 +79,8 @@
         </div>
     </div>
 </div>
+<!-- <iframe scr="" frameborder="0" name="pesquisa_iframe"></iframe>
+<a href="{{ Route('glossario') }}" target="pesquisa_iframe" >teste</a> -->
 @if (Route::currentRouteName() === 'pesquisa.nova')
     <div class="row">
         <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
