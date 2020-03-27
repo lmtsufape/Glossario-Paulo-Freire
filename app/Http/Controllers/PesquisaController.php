@@ -20,7 +20,7 @@ class PesquisaController extends Controller
                     array_push($trechos, $trechoTemp);
                 }
             }
-            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
+            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'resultado' => $request->box]);
         
     }
 
@@ -38,7 +38,7 @@ class PesquisaController extends Controller
                 }
             }
 
-            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);
+            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'resultado' => $request->box]);
         
     }
 
@@ -55,6 +55,6 @@ class PesquisaController extends Controller
                     array_push($trechos, $trechoTemp);
                 }
             }
-            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'tipo' => $verbete->descricao]);       
+            return view('glossario.pesquisa')->with(['trechos' => $trechos, 'resultado' => $request->box]);       
     }
 }
