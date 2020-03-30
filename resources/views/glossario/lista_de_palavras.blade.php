@@ -47,7 +47,9 @@
                 <ul class="list-group">
                 @foreach ($verbetes as $verbete)
                     @if (str_split($verbete->descricao)[0] == $letra->l)
+                    
                     <li class="list-group-item lista_item" >
+                        <a href="{{ route('verbete', ['id' => $verbete->id]) }}">
                                 <div class="row">
                                 <div class="col-md-12"><label >{{$verbete->descricao}}</label></div>
                                     <div class="col-md-12">
@@ -63,6 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
+                        </a>
                     </li>
                     @endif
                 @endforeach

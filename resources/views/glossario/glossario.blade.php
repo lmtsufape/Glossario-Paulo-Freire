@@ -66,7 +66,7 @@
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
                 <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Áudios</a></div>
                     <br>
-                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">Resulta do: {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
+                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">Resultado: {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
             </div>
             <div class="col-sm-12">
                 <ul class="list-group">
