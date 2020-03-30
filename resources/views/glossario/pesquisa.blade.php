@@ -21,7 +21,7 @@
                             @csrf
 
                             <div class="row" style="margin-top: 3rem; margin-bottom: 1rem; justify-content: center; ">
-                                <input form="nova" class="col-sm-9 form-control" type="text" id="boxBuscar" name="box" value="{{$resultado ?? ''}}" aria-label="Search" style="margin-right: 3px; background-color: white;">
+                                <input class="col-sm-9 form-control" type="text" id="boxBuscar" name="box" value="{{$resultado ?? ''}}" aria-label="Search" style="margin-right: 3px; background-color: white;">
                                 <button id="buscar_botao" onclick="botaoClicado(buscar_botao)" class="col-sm-2 btn btn-outline-danger">Buscar</button>
                             </div>
                         </form>
@@ -79,10 +79,8 @@
         </div>
     </div>
 </div>
-<!-- <iframe scr="" frameborder="0" name="pesquisa_iframe"></iframe>
-<a href="{{ Route('glossario') }}" target="pesquisa_iframe" >teste</a> -->
 @if (Route::currentRouteName() === 'pesquisa.nova')
-    <div class="row">
+<div class="row">
         <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
             <div style="margin-left: 12px;"><a id="titulo_busca">Áudios</a></div>
                 <br>
@@ -90,7 +88,7 @@
         </div>
         <div class="col-sm-12">
             <ul class="list-group">
-                @foreach ($trechos as $trecho)
+                @foreach ($trechosAudios as $trecho)
                     @if($trecho->tipo_recurso == "áudio")
                     <li class="list-group-item div_container">
                     <div class="row">
@@ -117,7 +115,7 @@
                     @endif
                 @endforeach
             </ul>
-             <div class="div_mais_resultados"> 
+             <!-- <div class="div_mais_resultados"> 
                     <div >
                         <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
                         <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
@@ -125,7 +123,7 @@
                         <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
                         <a href="">Ver todos.</a>
                     </div>
-                </div>
+                </div> -->
         </div>
     </div>
     <div class="row">
@@ -136,7 +134,7 @@
         </div>
         <div class="col-sm-12">
             <ul class="list-group">
-                @foreach ($trechos as $trecho)
+                @foreach ($trechosVideos as $trecho)
                     @if($trecho->tipo_recurso=="vídeo")
                     <li class="list-group-item div_container">
                     <div class="row">
@@ -163,7 +161,7 @@
                     @endif
                 @endforeach
             </ul>
-            <div class="div_mais_resultados">
+            <!-- <div class="div_mais_resultados">
                 <div >
                     <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
                     <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
@@ -171,7 +169,7 @@
                     <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
                     <a href="">Ver todos.</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     
@@ -184,7 +182,7 @@
     </div>
     <div class="col-sm-12">
         <ul class="list-group">
-            @foreach ($trechos as $trecho)
+            @foreach ($trechosVideos as $trecho)
                 @if($trecho->tipo_recurso=="vídeo")
                 <li class="list-group-item div_container">
                 <div class="row">
@@ -211,7 +209,7 @@
                 @endif
             @endforeach
         </ul>
-        <div class="div_mais_resultados">
+        <!-- <div class="div_mais_resultados">
             <div >
                 <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
                 <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
@@ -219,7 +217,7 @@
                 <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
                 <a href="">Ver todos.</a>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
    
@@ -232,7 +230,7 @@
     </div>
     <div class="col-sm-12">
         <ul class="list-group">
-            @foreach ($trechos as $trecho)
+            @foreach ($trechosAudios as $trecho)
                 @if($trecho->tipo_recurso == "áudio")
                 <li class="list-group-item div_container">
                 <div class="row">
@@ -250,7 +248,7 @@
                                 <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                 <label class="campo_compartilhar_texto">20.123</label>
                             </output>
-                            <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
+                            <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
                         </div>
                     </div>
                 </div>
@@ -259,7 +257,7 @@
                 @endif
             @endforeach
         </ul>
-        <div class="div_mais_resultados"> 
+        <!-- <div class="div_mais_resultados"> 
             <div >
                 <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
                 <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
@@ -267,7 +265,7 @@
                 <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
                 <a href="">Ver todos.</a>
             </div>
-            </div>
+        </div> -->
     </div>
 </div>
 @endif
