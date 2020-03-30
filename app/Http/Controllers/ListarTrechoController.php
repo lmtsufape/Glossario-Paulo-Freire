@@ -10,7 +10,8 @@ class ListarTrechoController extends Controller
         $verbete = \App\Verbete::find($id);
         $l = str_split($verbete->descricao)[0];
         $verbetes = \App\Verbete::where('descricao', 'ilike', $l.'%')->get();
-        $trechos = \App\Trecho::where('verbete_id', $id)->get();
-        return View('glossario.glossario')->with(['trechos' => $trechos, 'verbeteSelecionado' => $verbete, 'verbetes' => $verbetes, 'letraSelecionada' => $l]);
+        $trechosVideos = \App\Trecho::where([['verbete_id', '=', $id], ['tipo_recurso', '=', 'vídeo']])->get();
+        $trechosAudios = \App\Trecho::where([['verbete_id', '=', $id], ['tipo_recurso', '=', 'áudio']])->get();
+        return View('glossario.glossario')->with(['trechosVideos' => $trechosVideos, 'trechosAudios' => $trechosAudios, 'verbeteSelecionado' => $verbete, 'verbetes' => $verbetes, 'letraSelecionada' => $l]);
     }
 }

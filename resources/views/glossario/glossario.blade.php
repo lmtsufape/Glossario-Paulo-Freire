@@ -62,6 +62,7 @@
 </div>
 <div class="col-md-7 div_resultado">
 @if (Route::currentRouteName() === 'verbete')
+    @if (count($trechosAudios) != 0)
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
                 <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Áudios</a></div>
@@ -70,7 +71,7 @@
             </div>
             <div class="col-sm-12">
                 <ul class="list-group">
-                    @foreach ($trechos as $trecho)
+                    @foreach ($trechosAudios as $trecho)
                         @if($trecho->tipo_recurso == "áudio")
                         <li class="list-group-item div_container">
                         <div class="row">
@@ -110,6 +111,8 @@
                 </ul>
             </div>
     </div>
+    @endif
+    @if (count($trechosVideos) != 0)
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
                 <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Vídeos</a></div>
@@ -118,7 +121,7 @@
             </div>
             <div class="col-sm-12">
                 <ul class="list-group">
-                    @foreach ($trechos as $trecho)
+                    @foreach ($trechosVideos as $trecho)
                         @if($trecho->tipo_recurso == "vídeo")
                         <li class="list-group-item div_container">
                         <div class="row">
@@ -158,6 +161,7 @@
                 </ul>
             </div>
     </div>
+    @endif
 @endif
 </div>
 @endsection
