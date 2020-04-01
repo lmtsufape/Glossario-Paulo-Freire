@@ -31,6 +31,8 @@ Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/letras', 'ViewsController@glossario')->name('letras');
 Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
 
@@ -40,7 +42,5 @@ Route::any('/pesquisar/video', 'PesquisaController@novaPesquisaVideo')->name('pe
 Route::any('/pesquisar/audio', 'PesquisaController@novaPesquisaAudio')->name('pesquisa.audio');
 
 Route::get('/editar/trecho/{id}', 'EditarTrechoController@index')->name('editar');
-Route::post('/editar/trecho', 'EditarTrechoController@update')->name('editar.update');
+Route::any('/salvar/trecho/{id}', 'EditarTrechoController@update')->name('editar.update');
 Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.cancel');
-
-Route::get('/home', 'HomeController@index')->name('home');
