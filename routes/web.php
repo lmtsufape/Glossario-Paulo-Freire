@@ -39,4 +39,8 @@ Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova
 Route::any('/pesquisar/video', 'PesquisaController@novaPesquisaVideo')->name('pesquisa.video');
 Route::any('/pesquisar/audio', 'PesquisaController@novaPesquisaAudio')->name('pesquisa.audio');
 
+Route::get('/editar/trecho/{id}', 'EditarTrechoController@index')->name('editar');
+Route::post('/editar/trecho', 'EditarTrechoController@update')->name('editar.update');
+Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.cancel');
+
 Route::get('/home', 'HomeController@index')->name('home');
