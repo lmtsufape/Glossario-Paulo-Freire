@@ -19,6 +19,11 @@ Route::get('/', function () {
     return view('letras');
 })->name('glossario');
 
+Route::get('/login', function() {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/logout', 'HomeController@logout')->name('logout');
 
 Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
 
