@@ -76,7 +76,19 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5">
-                                <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                <!-- Fazer testes com audio -->
+                                @if (!($trecho->arquivo == ''))
+                                    <div id="videojs">
+                                        <video-js video-js id="my_audip_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_audio.png') }}" style="height: auto; max-width: 100%">
+                                            <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
+                                        </video-js>
+                                        <script>
+                                            var player = videojs('my_audio_{{ $trecho->id }}');
+                                        </script>
+                                    </div>
+                                @else
+                                    <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                @endif
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -129,7 +141,18 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5">
-                                <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                @if (!($trecho->arquivo == ''))
+                                    <div id="videojs">
+                                        <video-js video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="height: auto; max-width: 100%">
+                                            <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
+                                        </video-js>
+                                        <script>
+                                            var player = videojs('my_video_{{ $trecho->id }}');
+                                        </script>
+                                    </div>
+                                @else
+                                    <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                @endif
                             </div>
                             <div class="col">
                                 <div class="row">

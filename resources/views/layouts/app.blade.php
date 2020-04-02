@@ -5,6 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Videojs -->
+    <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -14,7 +20,10 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-     <style>
+
+    <script src="{{ asset('js/video.js') }}"></script>
+    <script src="{{ asset('js/videojs-http-streaming.js') }}"></script>
+    <style>
             .full-height {
                 background-color: #fff;
                 color: #636b6f;
@@ -208,5 +217,7 @@
             $(this).addClass('selected');
         });
     </script>
+
+    
 </body>
 </html>

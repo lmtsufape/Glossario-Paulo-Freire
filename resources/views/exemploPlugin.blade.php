@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
         <style>
             html, body {
                 background-color: #fff;
@@ -103,22 +104,24 @@
                 scripts: js/scripts
                 css/folha
              -->
-           {{-- / <div id="videojs"> 
-             <h1>Video.js Example Embed</h1> 
+             
 
-                <video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" height="268">
-                <source src="http-videos.glossario/Test.mp4" type="video/mp4">
+            <div id="videojs"> 
+                <h1>Video.js Example Embed</h1> 
+
+                <video-js video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="height: 231px; width: 402px">
+                    <source src="{{ url('storage/multimidia/e53x1gMtSDXX4axvDmC8yyOnwvuGivk1k5J2nGQG.mp4') }}" type="video/mp4">
                 </video-js>
 
                 <script src="js/video.js"></script>
                 <script src="js/videojs-http-streaming.js"></script>
 
                 <script>
-                var player = videojs('my_video_1');
+                    var player = videojs('my_video_1');
                 </script>
-            </div>--}}
+            </div>
 
-            {{-- <video  id="example_video_direct_link"  
+            <!-- {{-- <video  id="example_video_direct_link"  
             class="video-js vjs-default-skin vjs-big-play-centered"
             controls 
             preload="auto" 
@@ -129,9 +132,9 @@
                         }'>
             <source src="http://acervo.paulofreire.org:8080/jspui/handle/7891/1893" type='video/mp4' />
             
-    </video>--}}
+    </video>--}} -->
 
-    <iframe src="https://www.youtube.com/embed/npnp--SSx_8 "  allow="autoplay"></iframe>
+    <!-- <iframe src="https://www.youtube.com/embed/npnp--SSx_8 "  allow="autoplay"></iframe> -->
         </div>
     </body>
 </html>
