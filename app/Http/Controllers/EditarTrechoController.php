@@ -19,7 +19,7 @@ class EditarTrechoController extends Controller
         //substituindo o texto e o titulo do $request no trecho
         $trecho->texto = $request->texto;
         $trecho->titulo_video = $request->titulo_video;
-
+        
         //verifica se foi um video ou audio
         if (is_null($request->file('audio'))) {
             //salva o arquivo na pasta de destino pelo metodo store()
@@ -53,7 +53,7 @@ class EditarTrechoController extends Controller
         //salva a edição
         $trecho->update();
 
-        // return view()->
+        return redirect()->back()->with('mensagem', 'Trecho salvo com sucesso!');
     }
 
     public function cancel() {

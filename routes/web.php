@@ -41,6 +41,6 @@ Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova
 Route::any('/pesquisar/video', 'PesquisaController@novaPesquisaVideo')->name('pesquisa.video');
 Route::any('/pesquisar/audio', 'PesquisaController@novaPesquisaAudio')->name('pesquisa.audio');
 
-Route::get('/editar/trecho/{id}', 'EditarTrechoController@index')->name('editar');
-Route::any('/salvar/trecho/{id}', 'EditarTrechoController@update')->name('editar.update');
-Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.cancel');
+Route::get('/editar/trecho/{id}', 'EditarTrechoController@index')->name('editar')->middleware('auth');;
+Route::any('/salvar/trecho/{id}', 'EditarTrechoController@update')->name('editar.update')->middleware('auth');;
+Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.cancel')->middleware('auth');;

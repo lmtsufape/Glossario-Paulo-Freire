@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <div class="col-md-7 div_resultado"> -->
+@if(session('mensagem'))
+    <div class="alert alert-success">
+        <p>{{session('mensagem')}}</p>
+    </div>
+@endif
 @if ($trecho->tipo_recurso == "áudio")
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
@@ -35,15 +39,32 @@
                                     @else
                                         <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                     @endif
-                                    <input type="file" name="audio" id="audio"></input>
+                                    <br>
+                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg" name="audio" id="audio"></input>
                                 </div>
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-sm-12" style="padding-top: 1rem;">
-                                            <span style="width: 100%; word-wrap: break-word;">Texto:</span>
-                                            <textarea name="texto" rows="8" cols="90" style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</textarea>
-                                            <span style="width: 100%; word-wrap: break-word;">Titulo:</span><br>
-                                            <input name="titulo_video" type="text" size="50px" class="subtitulo_container" value="{{$trecho->titulo_video}}"></input>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Texto:</span>
+                                                <textarea name="texto" rows="8" cols="90" style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</textarea>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Titulo:</span><br>
+                                                <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}"></input>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Tipo de recurso:</span><br>
+                                                <input name="tipo_recurso" type="text" size="50px" value="{{$trecho->tipo_recurso}}"></input>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Tempo:</span><br>
+                                                <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}"></input>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Link do repositório do vídeo:</span><br>
+                                                <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}"></input>
+                                            </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
                                             <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><!-- <img src="#" alt="Logo" width="16,74" height="18,34" /> --><label class="campo_compartilhar_texto">Salvar</label></button>
@@ -90,15 +111,33 @@
                                     @else
                                         <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                     @endif
-                                    <input type="file" name="video" id="video"></input>
+                                    <br>
+                                    <input type="file" accept=".mp4,.mkv,.ogv,.ogg" name="video" id="video"></input><br>
+                                    <!-- ideia para setar o arquivo já existente <input type="hidden" name="arquivo_atual" value="{{ $trecho->arquivo }}"></input> -->
                                 </div>
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-sm-12" style="padding-top: 1rem;">
-                                            <span style="width: 100%; word-wrap: break-word;">Texto:</span>
-                                            <textarea name="texto" rows="8" cols="90" style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</textarea>
-                                            <span style="width: 100%; word-wrap: break-word;">Titulo:</span><br>
-                                            <input name="titulo_video" type="text" size="50px" class="subtitulo_container" value="{{$trecho->titulo_video}}"></input>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Texto:</span>
+                                                <textarea name="texto" rows="8" cols="90" style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</textarea>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Titulo:</span><br>
+                                                <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}"></input>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Tipo de recurso:</span><br>
+                                                <input name="tipo_recurso" type="text" size="50px" value="{{$trecho->tipo_recurso}}"></input>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Tempo:</span><br>
+                                                <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}"></input>
+                                            </p>
+                                            <p>
+                                                <span style="width: 100%; word-wrap: break-word;">Link do repositório do vídeo:</span><br>
+                                                <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}"></input>
+                                            </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
                                             <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><!-- <img src="#" alt="Logo" width="16,74" height="18,34" /> --><label class="campo_compartilhar_texto">Salvar</label></button>
@@ -113,5 +152,4 @@
             </div>
     </div>
 @endif
-<!-- </div> -->
 @endsection
