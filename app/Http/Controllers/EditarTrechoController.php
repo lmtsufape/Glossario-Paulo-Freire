@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EditarTrechoController extends Controller
 {
@@ -39,6 +40,12 @@ class EditarTrechoController extends Controller
             ]);
 
             $arquivo = $request->file('audio')->store('multimidia', 'public'); 
+        }
+
+        //checa se o trecho já tem algum arquivo associado a ele
+        if ($trecho->arquivo != '') {
+            //deleta o arquivo que estava associado ao trecho
+            Storage::delete($trecho->arquivo);
         }
 
         //coloca a referencia do arquivo no trecho

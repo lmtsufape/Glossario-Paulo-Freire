@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Videojs -->
-    <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
+    <link href="{{ asset('css/video-js.min.css') }}" rel="stylesheet"/>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -23,6 +23,7 @@
 
     <script src="{{ asset('js/video.js') }}"></script>
     <script src="{{ asset('js/videojs-http-streaming.js') }}"></script>
+
     <style>
             .full-height {
                 background-color: #fff;

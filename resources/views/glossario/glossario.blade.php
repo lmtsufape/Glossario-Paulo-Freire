@@ -143,7 +143,7 @@
                             <div class="col-sm-5">
                                 @if (!($trecho->arquivo == ''))
                                     <div id="videojs">
-                                        <video-js video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="height: auto; max-width: 100%">
+                                        <video-js video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="height: 150px; max-width: 100%">
                                             <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
                                         </video-js>
                                         <script>
