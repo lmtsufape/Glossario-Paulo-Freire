@@ -26,16 +26,14 @@
                             </div>
                         </form>
                     </div>
-                    @if ($errors->all())
-                    <div class="col-md-12" style="margin-top: 5px;">
-                        <div class="row" style="margin-top: 0.05rem; margin-bottom: 0.1rem; justify-content: center;">
-                        @foreach ($errors->all() as $erro)
-                            <div class="alert alert-danger" role="alert">
-                                {{$erro}}
-                            </div>
-                        @endforeach
+                    @if ($errors->any())
+                        <div class="col-md-12" style="margin-top: 5px;">
+                            <ul class="row" style="margin-top: 0.05rem; margin-bottom: 0.1rem; justify-content: center;">
+                                @foreach ($errors->all() as $error)
+                                    <li class="alert alert-danger" role="alert">{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-                    </div>
                     @endif
                     <div class="col-md-12" style="margin-bottom: 1px;">
                         <div class="row" style="margin-top: 1rem; margin-bottom: 1rem; justify-content: center; ">

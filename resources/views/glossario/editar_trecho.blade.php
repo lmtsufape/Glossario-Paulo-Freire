@@ -7,6 +7,15 @@
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
                 <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Editar trecho</a></div>            </div>
             <div class="col-sm-12">
+            @if ($errors->any())
+                <div class="col-md-12" style="margin-top: 5px;">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="alert alert-danger" role="alert">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <ul class="list-group">
                         <li class="list-group-item div_container">
                         <form action="{{ Route('editar.update', ['id' => $trecho]) }}" method="POST" enctype="multipart/form-data">
@@ -42,8 +51,17 @@
                 <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Editar Trecho</a></div>
             </div>
             <div class="col-sm-12">
+            @if ($errors->any())
+                <div class="col-md-12" style="margin-top: 5px;">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="alert alert-danger" role="alert">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <ul class="list-group">
-                        <li class="list-group-item div_container">
+                    <li class="list-group-item div_container">
                         <form action="{{ Route('editar.update', ['id' => $trecho]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">

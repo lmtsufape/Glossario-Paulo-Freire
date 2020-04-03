@@ -12,9 +12,9 @@ use DB;
 class PesquisaController extends Controller
 {
     public function novaPesquisa(Request $request) {
-        $validator = Validator::make($request->all(), [
+        $validated = $request->validate([
                 'box' => 'required',
-            ]);
+        ]);
         
         $trechosVideos = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
                         ->select('trechos.*')
@@ -31,9 +31,9 @@ class PesquisaController extends Controller
     }
 
     public function novaPesquisaVideo(Request $request) {
-        $validator = Validator::make($request->all(), [
-                'box' => 'required',
-            ]);
+        $validated = $request->validate([
+            'box' => 'required',
+        ]);
 
         $trechosVideos = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
                     ->select('trechos.*')
@@ -45,8 +45,8 @@ class PesquisaController extends Controller
     }
 
     public function novaPesquisaAudio(Request $request) {
-        $validator = Validator::make($request->all(), [
-                'box' => 'required',
+        $validated = $request->validate([
+            'box' => 'required',
         ]);
 
         $trechosAudios = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
