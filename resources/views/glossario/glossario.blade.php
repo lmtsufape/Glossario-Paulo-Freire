@@ -76,8 +76,7 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5">
-                                <!-- Fazer testes com audio -->
-                                @if (!($trecho->arquivo == ''))
+                                <!-- Fazer testes com audio                             
                                     <div id="videojs">
                                         <video-js video-js id="my_audip_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_audio.png') }}" style="height: auto; max-width: 100%">
                                             <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
@@ -85,9 +84,12 @@
                                         <script>
                                             var player = videojs('my_audio_{{ $trecho->id }}');
                                         </script>
-                                    </div>
-                                @else
-                                    <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                    </div> -->
+                                <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                @if (!($trecho->arquivo == ''))
+                                <audio controls style="height: 35px; max-width: 100%">
+                                    <source src="{{ asset('http-videos.glossario/audio.mp3') }}" type="audio/mp3">
+                                </audio>
                                 @endif
                             </div>
                             <div class="col">
@@ -191,6 +193,37 @@
             </div>
     </div>
     @endif
+        
+        <p>
+        <a id="shareFace" onclick="shareFacePopUp()">
+            <img width="25" height="25" src="https://ayltoninacio.com.br/img/s/18w50.jpg" alt="">
+        </a>
+        </p>
+
+        <p>
+        <a id="shareFace" onclick="shareWhatsPopUp()">
+            <img width="25" height="25" src="https://ayltoninacio.com.br/img/s/18w50.jpg" alt="">
+        </a>
+        </p>
+
+        <p>
+        <a id="shareFace" onclick="shareTwitterPopUp()">
+            <img width="25" height="25" src="https://ayltoninacio.com.br/img/s/18w50.jpg" alt="">
+        </a>
+        </p>
+        <script language=javascript type="text/javascript">
+            function shareFacePopUp(){
+              window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href,  "minhaJanelaFB", "height=1000,width=1000");
+            }
+
+            function shareWhatsPopUp(){
+              window.open(" https://api.whatsapp.com/send?text=" + window.location.href,  "minhaJanelaWa", "height=1000,width=1000");
+            }
+
+            function shareTwitterPopUp(){
+              window.open("https://twitter.com/intent/tweet?url=" + window.location.href,  "minhaJanelaTw", "height=1000,width=1000");
+            }
+        </script>
 @endif
 </div>
 @endsection
