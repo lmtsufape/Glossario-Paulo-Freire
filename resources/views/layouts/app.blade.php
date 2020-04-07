@@ -82,18 +82,20 @@
 <body>
     <div class="flex-start position-ref full-height">
         @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/') }}">Home</a>
-                    <a href="#">{{auth()->user()->name}}</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Novo Usuário</a>
-                    @endif
-                    <a href="{{ route('logout') }}">Sair</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                @endauth
+        <div class="btn-group top-right links">
+            @auth
+            <a class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: white; color: rgb(131, 131, 131); border: none; box-shadow: none; link-active: rgb(255, 255, 255)">
+                {{auth()->user()->name}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ url('/') }}" class="dropdown-item" type="button" style="color: rgb(131, 131, 131);">Home</a>
+                <a href="{{ route('register') }}" class="dropdown-item" type="button" style="color: rgb(131, 131, 131);">Novo Usuário</a>
+                <a href="{{ route('logout') }}" class="dropdown-item" type="button" style="color: rgb(131, 131, 131);">Sair</a>
             </div>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+            @endauth
+        </div>
         @endif
         <nav class="navbar navbar-light full-height">
             <a class="navbar-brand" href="#">

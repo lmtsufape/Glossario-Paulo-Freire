@@ -26,18 +26,11 @@
                             @csrf
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <!-- Fazer testes com audio -->
+                                    <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                     @if (!($trecho->arquivo == ''))
-                                        <div id="videojs">
-                                            <video-js video-js id="my_audip_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_audio.png') }}" style="height: 150px; max-width: 100%">
-                                                <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
-                                            </video-js>
-                                            <script>
-                                                var player = videojs('my_audio_{{ $trecho->id }}');
-                                            </script>
-                                        </div>
-                                    @else
-                                        <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                        <audio controls style="height: 35px; width: 425px">
+                                            <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="audio/mp3">
+                                        </audio> 
                                     @endif
                                     <br>
                                     <input type="file" accept=".mp3,.mp4,.m4a,.ogg" name="audio" id="audio"></input>

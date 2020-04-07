@@ -88,7 +88,7 @@
                                 <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                 @if (!($trecho->arquivo == ''))
                                 <audio controls style="height: 35px; max-width: 100%">
-                                    <source src="{{ asset('http-videos.glossario/audio.mp3') }}" type="audio/mp3">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="audio/mp3">
                                 </audio>
                                 @endif
                             </div>
@@ -187,7 +187,7 @@
                                             </div>
                                         </span>
                                         @auth
-                                        <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a>   
+                                            <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a>   
                                         @endauth                                
                                     </div>
                                 </div>
