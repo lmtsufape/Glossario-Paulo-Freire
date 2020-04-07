@@ -103,10 +103,19 @@
                                             <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </output>
-                                        <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
+                                        <span class="dropdown">
+                                            <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                                <label class="campo_compartilhar_texto">Compartilhar</label>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                                <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                                <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                                <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                            </div>
+                                        </span>
                                         @auth
                                             <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
-                                        @endauth
+                                        @endauth                                        
                                     </div>
                                 </div>
                             </div>
@@ -167,10 +176,19 @@
                                             <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                             <label class="campo_compartilhar_texto">20.123</label>
                                         </output>
-                                        <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
+                                        <span class="dropdown">
+                                            <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                                <label class="campo_compartilhar_texto">Compartilhar</label>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                                <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                                <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                                <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                            </div>
+                                        </span>
                                         @auth
                                         <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a>   
-                                        @endauth
+                                        @endauth                                
                                     </div>
                                 </div>
                             </div>
@@ -193,25 +211,9 @@
             </div>
     </div>
     @endif
-        
-        <p>
-        <a id="shareFace" onclick="shareFacePopUp()">
-            <img width="25" height="25" src="https://ayltoninacio.com.br/img/s/18w50.jpg" alt="">
-        </a>
-        </p>
-
-        <p>
-        <a id="shareFace" onclick="shareWhatsPopUp()">
-            <img width="25" height="25" src="https://ayltoninacio.com.br/img/s/18w50.jpg" alt="">
-        </a>
-        </p>
-
-        <p>
-        <a id="shareFace" onclick="shareTwitterPopUp()">
-            <img width="25" height="25" src="https://ayltoninacio.com.br/img/s/18w50.jpg" alt="">
-        </a>
-        </p>
+    <!-- Pesquisar sobre como compartilhar o link da posição do verbete q foi clicado -->
         <script language=javascript type="text/javascript">
+            alert(id);
             function shareFacePopUp(){
               window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href,  "minhaJanelaFB", "height=1000,width=1000");
             }
