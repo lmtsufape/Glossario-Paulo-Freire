@@ -14,36 +14,30 @@ class EditarTrechoController extends Controller
 
     public function update(Request $request, $id) {
         //recuperando o trecho
+        $arquivo = '';
         $trecho = \App\Trecho::find($id);
+
+        $validated = $request->validate([
+            'texto' => 'required',
+            'titulo_video' => 'required',
+            'arquivo' => 'nullable',
+        ]);
         
         //substituindo o texto e o titulo do $request no trecho
         $trecho->texto = $request->texto;
         $trecho->titulo_video = $request->titulo_video;
         
         //verifica se foi um video ou audio
-        if (is_null($request->file('audio'))) {
-            //salva o arquivo na pasta de destino pelo metodo store()
-            $validated = $request->validate([
-                'texto' => 'required',
-                'titulo_video' => 'required',
-                'video' => 'required',
-            ]);
-
-            $arquivo = $request->file('video')->store('multimidia', 'public'); 
+        if (is_null($request->file('arquivo'))) {
+            //Se sim pega a referencia do arquivo do banco
+            $arquivo = $trecho->arquivo;
         } else {
-            //salva o arquivo na pasta de destino pelo metodo store()
-
-            $validated = $request->validate([
-                'texto' => 'required',
-                'titulo_video' => 'required',
-                'audio' => 'required',
-            ]);
-
-            $arquivo = $request->file('audio')->store('multimidia', 'public'); 
+            //Se não pega o arquivo q foi enviado
+            $arquivo = $request->file('arquivo')->store('multimidia', 'public');
         }
 
-        //checa se o trecho já tem algum arquivo associado a ele
-        if ($trecho->arquivo != '') {
+        //Checa se o trecho já tem algum arquivo associado a ele e se foi enviado um novo arquivo
+        if ($trecho->arquivo != '' && !(is_null($request->file('arquivo')))) {
             //deleta o arquivo que estava associado ao trecho
             Storage::delete($trecho->arquivo);
         }

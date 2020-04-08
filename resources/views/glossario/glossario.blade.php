@@ -91,6 +91,9 @@
                                     <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="audio/mp3">
                                 </audio>
                                 @endif
+                                <p style="left: 5px">
+                                    <a class="subtitulo_container" href="{{$trecho->endereco_video}}">Áudio completo</a>
+                                </p>
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -153,8 +156,8 @@
                         <div class="row">
                             <div class="col-sm-5">
                                 @if (!($trecho->arquivo == ''))
-                                    <div id="videojs">
-                                        <video-js video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="height: 150px; max-width: 100%">
+                                    <div id="videojs" style="height: 150px; max-width: 100%">
+                                        <video-js controls video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
                                             <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
                                         </video-js>
                                         <script>
@@ -164,6 +167,9 @@
                                 @else
                                     <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                 @endif
+                                <p style="position: relative; left: 5px">
+                                    <a class="subtitulo_container" href="{{$trecho->endereco_video}}" >Vídeo completo</a>
+                                </p>
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -213,7 +219,6 @@
     @endif
     <!-- Pesquisar sobre como compartilhar o link da posição do verbete q foi clicado -->
         <script language=javascript type="text/javascript">
-            alert(id);
             function shareFacePopUp(){
               window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href,  "minhaJanelaFB", "height=1000,width=1000");
             }

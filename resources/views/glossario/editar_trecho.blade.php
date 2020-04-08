@@ -33,7 +33,7 @@
                                         </audio> 
                                     @endif
                                     <br>
-                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg" name="audio" id="audio"></input>
+                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg" name="arquivo" id="arquivo"></input>
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -93,8 +93,8 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     @if (!($trecho->arquivo == ''))
-                                        <div id="videojs">
-                                            <video-js video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="height: 300px; max-width: 100%">
+                                        <div id="videojs" style="height: 250px; max-width: 100%">
+                                            <video-js controls video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
                                                 <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
                                             </video-js>
                                             <script>
@@ -105,7 +105,7 @@
                                         <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                     @endif
                                     <br>
-                                    <input type="file" accept=".mp4,.mkv,.ogv,.ogg" name="video" id="video"></input><br>
+                                    <input type="file" accept=".mp4,.mkv,.ogv,.ogg" name="arquivo" id="arquivo"></input><br>
                                     <!-- ideia para setar o arquivo já existente <input type="hidden" name="arquivo_atual" value="{{ $trecho->arquivo }}"></input> -->
                                 </div>
                                 <div class="col">
