@@ -77,9 +77,9 @@
                         <div class="row">
                             <div class="col-sm-5" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-left: 0.5rem;">
                                 <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
-                                @if (!($trecho->arquivo == ''))
+                                @if ($trecho->arquivo_sd != '')
                                 <audio controls style="height: 35px; max-width: 100%">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="audio/mp3">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
                                 </audio>
                                 @endif
                                 <p style="left: 5px">
