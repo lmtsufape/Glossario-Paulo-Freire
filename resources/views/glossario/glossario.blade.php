@@ -76,15 +76,6 @@
                         <li class="list-group-item div_container">
                         <div class="row">
                             <div class="col-sm-5" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-left: 0.5rem;">
-                                <!-- Fazer testes com audio                             
-                                    <div id="videojs">
-                                        <video-js video-js id="my_audip_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_audio.png') }}" style="height: auto; max-width: 100%">
-                                            <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
-                                        </video-js>
-                                        <script>
-                                            var player = videojs('my_audio_{{ $trecho->id }}');
-                                        </script>
-                                    </div> -->
                                 <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                 @if (!($trecho->arquivo == ''))
                                 <audio controls style="height: 35px; max-width: 100%">
