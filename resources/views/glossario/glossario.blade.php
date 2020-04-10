@@ -235,20 +235,19 @@
             </div>
     </div>
     @endif
-    <!-- Pesquisar sobre como compartilhar o link da posição do verbete q foi clicado -->
-        <script language=javascript type="text/javascript">
-            function shareFacePopUp(){
-              window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href,  "minhaJanelaFB", "height=1000,width=1000");
-            }
+    <script language=javascript type="text/javascript">
+        function shareFacePopUp(){
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href,  "minhaJanelaFB", "height=1000,width=1000");
+        }
 
-            function shareWhatsPopUp(){
-              window.open(" https://api.whatsapp.com/send?text=" + window.location.href,  "minhaJanelaWa", "height=1000,width=1000");
-            }
+        function shareWhatsPopUp(){
+            window.open(" https://api.whatsapp.com/send?text=" + window.location.href,  "minhaJanelaWa", "height=1000,width=1000");
+        }
 
-            function shareTwitterPopUp(){
-              window.open("https://twitter.com/intent/tweet?url=" + window.location.href,  "minhaJanelaTw", "height=1000,width=1000");
-            }
-        </script>
+        function shareTwitterPopUp(){
+            window.open("https://twitter.com/intent/tweet?url=" + window.location.href,  "minhaJanelaTw", "height=1000,width=1000");
+        }
+    </script>
 @endif
 </div>
 @endsection

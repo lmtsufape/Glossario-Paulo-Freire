@@ -92,6 +92,14 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                            @if ($trecho->arquivo_sd != '')
+                            <audio controls style="height: 35px; width: 425px;">
+                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                            </audio>
+                            @endif
+                            <p style="left: 5px">
+                                <a class="subtitulo_container" href="{{$trecho->endereco_video}}">Áudio completo</a>
+                            </p>
                         </div>
                     <div class="col">
                         <div class="row">
@@ -104,7 +112,19 @@
                                     <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                     <label class="campo_compartilhar_texto">20.123</label>
                                 </output>
-                                <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
+                                <span class="dropdown">
+                                    <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                        <label class="campo_compartilhar_texto">Compartilhar</label>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                        <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                        <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                        <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                    </div>
+                                </span>
+                                @auth
+                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
+                                @endauth 
                             </div>
                         </div>
                     </div>
@@ -137,7 +157,48 @@
                     <li class="list-group-item div_container">
                     <div class="row">
                         <div class="col-sm-5">
+                        @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
+                            <div id="videojs" style="position: relative; height: 250px; max-width: 100%;">
+                                <video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
+                                </video-js>
+                                <script>
+                                    videojs('my_video_{{ $trecho->id }}', {
+                                    controls: true,
+                                    plugins: {
+                                    videoJsResolutionSwitcher: {
+                                        default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                                        dynamicLabel: true,
+                                    }
+                                    }
+                                    }, function(){
+                                        var player = this;
+                                        window.player = player
+                                        player.updateSrc([
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}",
+                                            type: 'video/mp4',
+                                            label: 'SD',
+                                            res: 360
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}",
+                                            type: 'video/mp4',
+                                            label: 'HD',
+                                            res: 720
+                                        },
+                                        ])
+                                        player.on('resolutionchange', function(){
+                                            console.info('Source changed to %s', player.src())
+                                        })
+                                    })
+                                </script>
+                            </div>
+                        @else
                             <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                        @endif
+                            <p style="position: relative; left: 5px; top: 1rem;">
+                                <a class="subtitulo_container" href="{{$trecho->endereco_video}}" >Vídeo completo</a>
+                            </p>
                         </div>
                         <div class="col">
                             <div class="row">
@@ -150,7 +211,19 @@
                                         <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                         <label class="campo_compartilhar_texto">20.123</label>
                                     </output>
-                                    <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="icones/share.svg" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
+                                    <span class="dropdown">
+                                        <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                            <label class="campo_compartilhar_texto">Compartilhar</label>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                            <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                            <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                            <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                        </div>
+                                    </span>
+                                    @auth
+                                        <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
+                                    @endauth 
                                 </div>
                             </div>
                         </div>
@@ -185,7 +258,48 @@
                 <li class="list-group-item div_container">
                 <div class="row">
                     <div class="col-sm-5">
+                    @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
+                        <div id="videojs" style="position: relative; height: 250px; max-width: 100%;">
+                            <video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
+                            </video-js>
+                            <script>
+                                videojs('my_video_{{ $trecho->id }}', {
+                                controls: true,
+                                plugins: {
+                                videoJsResolutionSwitcher: {
+                                    default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                                    dynamicLabel: true,
+                                }
+                                }
+                                }, function(){
+                                    var player = this;
+                                    window.player = player
+                                    player.updateSrc([
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}",
+                                        type: 'video/mp4',
+                                        label: 'SD',
+                                        res: 360
+                                    },
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}",
+                                        type: 'video/mp4',
+                                        label: 'HD',
+                                        res: 720
+                                    },
+                                    ])
+                                    player.on('resolutionchange', function(){
+                                        console.info('Source changed to %s', player.src())
+                                    })
+                                })
+                            </script>
+                        </div>
+                    @else
                         <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                    @endif
+                        <p style="position: relative; left: 5px; top: 1rem;">
+                            <a class="subtitulo_container" href="{{$trecho->endereco_video}}" >Vídeo completo</a>
+                        </p>
                     </div>
                     <div class="col">
                         <div class="row">
@@ -198,7 +312,19 @@
                                     <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                     <label class="campo_compartilhar_texto">20.123</label>
                                 </output>
-                                <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
+                                <span class="dropdown">
+                                    <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                        <label class="campo_compartilhar_texto">Compartilhar</label>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                        <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                        <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                        <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                    </div>
+                                </span>
+                                @auth
+                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -234,6 +360,14 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                        @if ($trecho->arquivo_sd != '')
+                        <audio controls style="height: 35px; width: 425px;">
+                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                        </audio>
+                        @endif
+                        <p style="left: 5px">
+                            <a class="subtitulo_container" href="{{$trecho->endereco_video}}">Áudio completo</a>
+                        </p>
                     </div>
                 <div class="col">
                     <div class="row">
@@ -246,7 +380,19 @@
                                 <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                 <label class="campo_compartilhar_texto">20.123</label>
                             </output>
-                            <button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Compartilhar</label></button>
+                            <span class="dropdown">
+                                <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                    <label class="campo_compartilhar_texto">Compartilhar</label>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                    <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                    <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                    <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                </div>
+                            </span>
+                            @auth
+                                <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
+                            @endauth 
                         </div>
                     </div>
                 </div>
@@ -278,4 +424,18 @@
         document.getElementById("boxVideo").value = inputBox.value;
     } 
 </script>
+<!-- Mudar o botão compartilhar nesta tela -->
+<script type="text/javascript">
+            function shareFacePopUp(){
+              window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href,  "minhaJanelaFB", "height=1000,width=1000");
+            }
+
+            function shareWhatsPopUp(){
+              window.open(" https://api.whatsapp.com/send?text=" + window.location.href,  "minhaJanelaWa", "height=1000,width=1000");
+            }
+
+            function shareTwitterPopUp(){
+              window.open("https://twitter.com/intent/tweet?url=" + window.location.href,  "minhaJanelaTw", "height=1000,width=1000");
+            }
+        </script>
 @endsection

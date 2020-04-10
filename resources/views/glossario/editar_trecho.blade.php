@@ -9,7 +9,7 @@
 @if ($trecho->tipo_recurso == "áudio")
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Editar trecho</a></div>            </div>
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Editar trecho</a></div>
             <div class="col-sm-12">
             @if ($errors->any())
                 <div class="col-md-12" style="margin-top: 5px;">
@@ -26,9 +26,9 @@
                             @csrf
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                    <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%;">
                                     @if ($trecho->arquivo_sd != '')
-                                        <audio controls style="height: 35px; width: 425px">
+                                        <audio controls style="height: 35px; width: 425px;">
                                             <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
                                         </audio> 
                                     @endif
