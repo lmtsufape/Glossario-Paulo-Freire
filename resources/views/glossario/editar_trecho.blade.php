@@ -92,21 +92,53 @@
                             @csrf
                             <div class="row">
                                 <div class="col-sm-5">
-                                    @if (!($trecho->arquivo == ''))
+                                    @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
                                         <div id="videojs" style="height: 250px; max-width: 100%">
-                                            <video-js controls video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
-                                                <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
-                                            </video-js>
-                                            <script>
-                                                var player = videojs('my_video_{{ $trecho->id }}');
-                                            </script>
+                                        <video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
+                                        </video-js>
+                                        <script>
+                                            videojs('my_video_{{ $trecho->id }}', {
+                                            controls: true,
+                                            plugins: {
+                                            videoJsResolutionSwitcher: {
+                                                default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                                                dynamicLabel: true,
+                                            }
+                                            }
+                                            }, function(){
+                                                var player = this;
+                                                window.player = player
+                                                player.updateSrc([
+                                                {
+                                                    src: "{{ asset('storage/' . $trecho->arquivo_sd) }}",
+                                                    type: 'video/mp4',
+                                                    label: 'SD',
+                                                    res: 360
+                                                },
+                                                {
+                                                    src: "{{ asset('storage/' . $trecho->arquivo_hd) }}",
+                                                    type: 'video/mp4',
+                                                    label: 'HD',
+                                                    res: 720
+                                                },
+                                                ])
+                                                player.on('resolutionchange', function(){
+                                                    console.info('Source changed to %s', player.src())
+                                                })
+                                            })
+                                        </script>
                                         </div>
                                     @else
                                         <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
                                     @endif
                                     <br>
-                                    <input type="file" accept=".mp4,.mkv,.ogv,.ogg" name="arquivo" id="arquivo"></input><br>
-                                    <!-- ideia para setar o arquivo já existente <input type="hidden" name="arquivo_atual" value="{{ $trecho->arquivo }}"></input> -->
+                                    <p>
+                                        <input type="file" accept=".mp4,.mkv,.ogv,.ogg" name="arquivo_hd" id="arquivo_hd"> em HD</input>
+                                    </p>
+                                    <p>
+                                    <!-- Implementar o salvamento do segundo video -->
+                                        <input type="file" accept=".mp4,.mkv,.ogv,.ogg" name="arquivo_sd" id="arquivo_sd"> em SD</input>
+                                    </p>
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -133,8 +165,8 @@
                                             </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
-                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><!-- <img src="#" alt="Logo" width="16,74" height="18,34" /> --><label class="campo_compartilhar_texto">Salvar</label></button>
-                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><!--<img src="#" alt="Logo" width="16,74" height="18,34" /> --><label class="campo_compartilhar_texto">Cancelar</label></button></a>                                    
+                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Salvar</label></button>
+                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Cancelar</label></button></a>                                    
                                         </div>
                                     </div>
                                 </div>

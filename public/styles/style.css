@@ -99,7 +99,7 @@ li.selected{
 /* x lista de palavras x */
 
 .div_resultado{
-	margin-left: 1rem; margin-right: 1rem; margin-bottom: 1rem;
+	margin-left: 0.1rem; margin-right: 0.1rem; margin-bottom: 0.1rem;
 }
 
 #titulo_lista{
@@ -120,8 +120,8 @@ li.selected{
 
 .div_container{
 	margin-bottom: 2rem; 
-	border-radius: 5px; 
-	width: 100%; 
+	border-radius: 10px; 
+	width: 100%;
 	-webkit-box-shadow: 0px 0px 13px -1px rgba(0,0,0,0.26);
 	-moz-box-shadow: 0px 0px 13px -1px rgba(0,0,0,0.26);
 	box-shadow: 0px 0px 13px -1px rgba(0,0,0,0.26);

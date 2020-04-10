@@ -10,7 +10,11 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        
+
         <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
+
+        
         <style>
             html, body {
                 background-color: #fff;
@@ -62,6 +66,39 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .vjs-resolution-button .vjs-icon-placeholder:before {
+                content: '\f110';
+                font-family: VideoJS;
+                font-weight: normal;
+                font-style: normal;
+                font-size: 1.8em;
+                line-height: 1.67em;
+            }
+
+            .vjs-resolution-button .vjs-resolution-button-label {
+                font-size: 1em;
+                line-height: 3em;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                box-sizing: inherit;
+                display: none;
+            }
+
+            .vjs-resolution-button .vjs-menu .vjs-menu-content {
+                width: 4em;
+                left: 50%; /* Center the menu, in it's parent */
+                margin-left: -2em; /* half of width, to center */
+            }
+
+            .vjs-resolution-button .vjs-menu li {
+                text-transform: none;
+                font-size: 1em;
+            }
         </style>
         <link href="css/video-js.css" rel="stylesheet">
     </head>
@@ -97,44 +134,44 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
-            <!-- Exemplo como plugin
-                Exportação dos scripts que estão pasta public e da folha de estilos também em public
-                
-                source: diretorio do video
-                scripts: js/scripts
-                css/folha
-             -->
-             
+            <video id="video_1" class="video-js vjs-default-skin">
+            </video>
 
-            <div id="videojs"> 
-                <h1>Video.js Example Embed</h1> 
+            <script src="js/video.js"></script>
+            <script src="js/videojs-http-streaming.js"></script>
+            <script src="{{ asset('js/videojs-resolution-switcher.js') }}"></script>
 
-                <video-js video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="height: 231px; width: 402px">
-                    <source src="{{ url('storage/multimidia/e53x1gMtSDXX4axvDmC8yyOnwvuGivk1k5J2nGQG.mp4') }}" type="video/mp4">
-                </video-js>
-
-                <script src="js/video.js"></script>
-                <script src="js/videojs-http-streaming.js"></script>
-
-                <script>
-                    var player = videojs('my_video_1');
-                </script>
-            </div>
-
-            <!-- {{-- <video  id="example_video_direct_link"  
-            class="video-js vjs-default-skin vjs-big-play-centered"
-            controls 
-            preload="auto" 
-            width="640" 
-            height="264"
-            data-setup='{
-                            "example_option":true
-                        }'>
-            <source src="http://acervo.paulofreire.org:8080/jspui/handle/7891/1893" type='video/mp4' />
-            
-    </video>--}} -->
-
-    <!-- <iframe src="https://www.youtube.com/embed/npnp--SSx_8 "  allow="autoplay"></iframe> -->
+            <script>
+                videojs('video_1', {
+                controls: true,
+                plugins: {
+                videoJsResolutionSwitcher: {
+                    default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                    dynamicLabel: true,
+                }
+                }
+                }, function(){
+                    var player = this;
+                    window.player = player
+                    player.updateSrc([
+                    {
+                        src: 'https://vjs.zencdn.net/v/oceans.mp4?SD',
+                        type: 'video/mp4',
+                        label: 'SD',
+                        res: 360
+                    },
+                    {
+                        src: 'https://vjs.zencdn.net/v/oceans.mp4?HD',
+                        type: 'video/mp4',
+                        label: 'HD',
+                        res: 720
+                    },
+                    ])
+                    player.on('resolutionchange', function(){
+                        console.info('Source changed to %s', player.src())
+                    })
+                })
+            </script>
         </div>
     </body>
 </html>

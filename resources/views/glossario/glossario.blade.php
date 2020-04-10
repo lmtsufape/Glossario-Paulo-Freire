@@ -154,20 +154,47 @@
                         @if($trecho->tipo_recurso == "vídeo")
                         <li class="list-group-item div_container">
                         <div class="row">
-                            <div class="col-sm-5">
-                                @if (!($trecho->arquivo == ''))
-                                    <div id="videojs" style="height: 150px; max-width: 100%">
-                                        <video-js controls video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
-                                            <source src="{{ asset('storage/' . $trecho->arquivo) }}" type="video/mp4">
+                            <div class="col-sm-5.5">
+                                @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
+                                    <div id="videojs" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-left: 0.5rem;" >
+                                        <video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
                                         </video-js>
                                         <script>
-                                            var player = videojs('my_video_{{ $trecho->id }}');
+                                            videojs('my_video_{{ $trecho->id }}', {
+                                            controls: true,
+                                            plugins: {
+                                            videoJsResolutionSwitcher: {
+                                                default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                                                dynamicLabel: true,
+                                            }
+                                            }
+                                            }, function(){
+                                                var player = this;
+                                                window.player = player
+                                                player.updateSrc([
+                                                {
+                                                    src: "{{ asset('storage/' . $trecho->arquivo_sd) }}",
+                                                    type: 'video/mp4',
+                                                    label: 'SD',
+                                                    res: 360
+                                                },
+                                                {
+                                                    src: "{{ asset('storage/' . $trecho->arquivo_hd) }}",
+                                                    type: 'video/mp4',
+                                                    label: 'HD',
+                                                    res: 720
+                                                },
+                                                ])
+                                                player.on('resolutionchange', function(){
+                                                    console.info('Source changed to %s', player.src())
+                                                })
+                                            })
                                         </script>
                                     </div>
                                 @else
-                                    <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                    <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-right: 0.2rem;">
                                 @endif
-                                <p style="position: relative; left: 5px">
+                                <p style="position: relative; left: 10px; top: 1rem;">
                                     <a class="subtitulo_container" href="{{$trecho->endereco_video}}" >Vídeo completo</a>
                                 </p>
                             </div>
