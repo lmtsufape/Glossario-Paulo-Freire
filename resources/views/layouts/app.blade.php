@@ -113,28 +113,42 @@
         </style>
 </head>
 <body>
-    <div class="flex-start position-ref full-height">
-        @if (Route::has('login'))
-        <div class="btn-group top-right links">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size: 18px">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Conheça Paulo Freire</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Linha do Tempo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Acervo Digital</a>
+            </li>
             @auth
-            <a class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: white; color: rgb(131, 131, 131); border: none; box-shadow: none; link-active: rgb(255, 255, 255)">
-                {{auth()->user()->name}}
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ url('/') }}" class="dropdown-item" type="button" style="color: rgb(131, 131, 131);">Home</a>
-                <a href="{{ route('register') }}" class="dropdown-item" type="button" style="color: rgb(131, 131, 131);">Novo Usuário</a>
-                <a href="{{ route('logout') }}" class="dropdown-item" type="button" style="color: rgb(131, 131, 131);">Sair</a>
-            </div>
+            <li class="nav-item dropdown" style="position: absolute; right: 30px;">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{auth()->user()->name}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a href="{{ route('register') }}" class="dropdown-item">Novo Usuário</a>
+                    <a href="{{ route('logout') }}" class="dropdown-item" type="button">Sair</a>
+                </div>
+            </li>
             @else
-                <a href="{{ route('login') }}">Login</a>
+            <li class="nav-item" style="position: absolute; right: 30px;">
+                <a class="nav-link" href="{{ route('login') }}">Login</a>
+            </li>
             @endauth
         </div>
-        @endif
-        <nav class="navbar navbar-light full-height">
-            <a class="navbar-brand" href="#">
-            <img  width="30" height="30" class="d-inline-block align-top" alt="">MENU</a>
-        </nav>
-    </div>
+    </nav>
     
     <script src="{{ asset('js/videojs-resolution-switcher.js') }}"></script>
     
@@ -165,7 +179,6 @@
                         <div class="col-md-12 rodape_texto" >Linha do Tempo</div>
                         <div class="col-md-12 rodape_texto" >Acervo Digital</div>
                     </div>
-                        <hr size="300" width="1" align="left" style="background-color: white">
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">

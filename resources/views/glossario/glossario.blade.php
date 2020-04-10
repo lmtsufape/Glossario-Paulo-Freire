@@ -75,7 +75,7 @@
                         @if($trecho->tipo_recurso == "áudio")
                         <li class="list-group-item div_container">
                         <div class="row">
-                            <div class="col-sm-5">
+                            <div class="col-sm-5" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-left: 0.5rem;">
                                 <!-- Fazer testes com audio                             
                                     <div id="videojs">
                                         <video-js video-js id="my_audip_{{ $trecho->id }}" class="vjs-default-skin" controls preload="auto" poster="{{ asset('imagens/imagem_audio.png') }}" style="height: auto; max-width: 100%">
