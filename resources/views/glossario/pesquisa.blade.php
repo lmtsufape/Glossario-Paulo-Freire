@@ -21,7 +21,7 @@
                             @csrf
 
                             <div class="row" style="margin-top: 3rem; margin-bottom: 1rem; justify-content: center; ">
-                                <input class="col-sm-9 form-control" type="text" id="boxBuscar" name="box" value="{{$resultado ?? ''}}" aria-label="Search" style="margin-right: 3px; background-color: white;">
+                                <input class="col-sm-9 form-control" type="text" id="boxBuscar" name="busca" value="{{$resultado ?? ''}}" aria-label="Search" style="margin-right: 3px; background-color: white;">
                                 <button id="buscar_botao" onclick="botaoClicado(buscar_botao)" class="col-sm-2 btn btn-outline-danger">Buscar</button>
                             </div>
                         </form>

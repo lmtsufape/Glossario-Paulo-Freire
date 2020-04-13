@@ -13,7 +13,7 @@ class PesquisaController extends Controller
 {
     public function novaPesquisa(Request $request) {
         $validated = $request->validate([
-                'box' => 'required',
+                'busca' => 'required',
         ]);
         
         $trechosVideos = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
@@ -32,7 +32,7 @@ class PesquisaController extends Controller
 
     public function novaPesquisaVideo(Request $request) {
         $validated = $request->validate([
-            'box' => 'required',
+            'busca' => 'required',
         ]);
 
         $trechosVideos = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
@@ -46,7 +46,7 @@ class PesquisaController extends Controller
 
     public function novaPesquisaAudio(Request $request) {
         $validated = $request->validate([
-            'box' => 'required',
+            'busca' => 'required',
         ]);
 
         $trechosAudios = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
