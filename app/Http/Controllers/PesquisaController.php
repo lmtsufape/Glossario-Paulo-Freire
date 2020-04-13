@@ -15,18 +15,11 @@ class PesquisaController extends Controller
         $validated = $request->validate([
                 'busca' => 'required',
         ]);
-        
-        $trechosVideos = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
-                        ->select('trechos.*')
-                        ->where([['verbetes.descricao', 'ilike', $request->box.'%'], ['tipo_recurso', '=', 'vídeo']])
-                        ->get();
 
-        $trechosAudios = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
-                        ->select('trechos.*')
-                        ->where([['verbetes.descricao', 'ilike', $request->box.'%'], ['tipo_recurso', '=', 'áudio']])
-                        ->get();
+        $trechosVideos = $this->videos($request);
+        $trechosAudios = $this->audios($request);
 
-        return view('glossario.pesquisa')->with(['resultado' => $request->box, 'trechosVideos' => $trechosVideos, 'trechosAudios' => $trechosAudios]);
+        return view('glossario.pesquisa')->with(['resultado' => $request->busca, 'trechosVideos' => $trechosVideos, 'trechosAudios' => $trechosAudios, 'query' => $request->busca]);
         
     }
 
@@ -35,12 +28,9 @@ class PesquisaController extends Controller
             'busca' => 'required',
         ]);
 
-        $trechosVideos = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
-                    ->select('trechos.*')
-                    ->where([['verbetes.descricao', 'ilike', $request->box.'%'], ['tipo_recurso', '=', 'vídeo']])
-                    ->get();
+        $trechosVideos = $this->videos($request);
 
-        return view('glossario.pesquisa')->with(['trechosVideos' => $trechosVideos, 'resultado' => $request->box]);
+        return view('glossario.pesquisa')->with(['resultado' => $request->busca, 'trechosVideos' => $trechosVideos, 'query' => $request->busca]);
         
     }
 
@@ -48,12 +38,22 @@ class PesquisaController extends Controller
         $validated = $request->validate([
             'busca' => 'required',
         ]);
+        $trechosAudios = $this->audios($request);
 
-        $trechosAudios = DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
-                        ->select('trechos.*')
-                        ->where([['verbetes.descricao', 'ilike', $request->box.'%'], ['tipo_recurso', '=', 'áudio']])
-                        ->get();
+        return view('glossario.pesquisa')->with(['resultado' => $request->busca, 'trechosAudios' => $trechosAudios, 'query' => $request->busca]);       
+    }
 
-        return view('glossario.pesquisa')->with(['trechosAudios' => $trechosAudios, 'resultado' => $request->box]);       
+    public function audios(Request $request) {
+        return DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
+                    ->select('trechos.*')
+                    ->where([['verbetes.descricao', 'ilike', $request->busca.'%'], ['tipo_recurso', '=', 'áudio']])
+                    ->get();
+    }
+
+    public function videos(Request $request) {
+        return DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
+                    ->select('trechos.*')
+                    ->where([['verbetes.descricao', 'ilike', $request->busca.'%'], ['tipo_recurso', '=', 'vídeo']])
+                    ->get();
     }
 }

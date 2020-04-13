@@ -124,13 +124,13 @@
                 <a class="nav-link" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Conheça Paulo Freire</a>
+                <a class="nav-link" href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" >Conheça Paulo Freire</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Linha do Tempo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Acervo Digital</a>
+                <a class="nav-link" href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank">Acervo Digital</a>
             </li>
             @auth
             <li class="nav-item dropdown" style="position: absolute; right: 30px;">
@@ -174,25 +174,25 @@
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;">Home</div>
-                        <div class="col-md-12 rodape_texto" >Conheça Paulo Freire</div>
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="{{ route('glossario') }}" style="color: white;">Home</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" style="color: white;">Conheça Paulo Freire</a></div>
                         <div class="col-md-12 rodape_texto" >Linha do Tempo</div>
-                        <div class="col-md-12 rodape_texto" >Acervo Digital</div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank" style="color: white;">Acervo Digital</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;">Bibliotecas</div>
-                        <div class="col-md-12 rodape_texto" >Glossário Paulo Freire</div>
-                        <div class="col-md-12 rodape_texto" >Comunidade Freiriana Internacional</div>
-                        <div class="col-md-12 rodape_texto" >Instituto Paulo Freire</div>
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://biblioteca.paulofreire.org/" target="_blank" style="color: white;">Bibliotecas</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/glossario-audiovisual" target="_blank" style="color: white;">Glossário Paulo Freire</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/o-acervo-paulo-freire-apresentacao/17-unifreire/52-comunidade-freiriana-encontros-inter-f%C3%B3rum-paulo-freire" target="_blank" style="color: white;">Comunidade Freiriana Internacional</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/" target="_blank" style="color: white;">Instituto Paulo Freire</a></div>   
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Facebook<label></div>
-                        <div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Instagram</label></div>
-                        <div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">E-mail</label></div>
+                        <a href="https://www.facebook.com/InstitutoPauloFreireIPF" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Facebook<label></div></a>
+                        <a href="https://www.instagram.com/institutopaulofreire" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Instagram</label></div></a>
+                        <a href="mailto:ipf@paulofreire.org" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">E-mail</label></div></a>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -212,25 +212,29 @@
                         <!-- primeira coluna -->
                         <div class="col-md-1" style="color: white;">Parceria</div>
                         <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="{{ asset('icones/UFRPE.png') }}" alt="Logo" width="44" height="62" />
+                            <a href="http://www.ufrpe.br/" target="_blank" style="color: white;">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="{{ asset('icones/UFRPE.png') }}" alt="Logo" width="44" height="62" />
+                                    </div>
+                                    <div class="col-md-7">
+                                        <a style="color: white; font-size: 15px">Universidade Federal Rural de Pernambuco</a>
+                                    </div>
                                 </div>
-                                <div class="col-md-7">
-                                    <a style="color: white; font-size: 15px">Universidade Federal Rural de Pernambuco</a>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <!-- segunda coluna -->
                         <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ asset('icones/LMTS.png') }}" alt="Logo" width="109" height="44" />
+                            <a href="http://lmts.uag.ufrpe.br/" target="_blank" style="color: white;">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('icones/LMTS.png') }}" alt="Logo" width="109" height="44" />
+                                    </div>
+                                    <div class="col-md-7">
+                                        <label style="color: white; font-size: 15px;">Laboratório Multidisciplinar de Tecnologias Sociais</label>
+                                    </div>
                                 </div>
-                                <div class="col-md-7">
-                                    <label style="color: white; font-size: 15px;">Laboratório Multidisciplinar de Tecnologias Sociais</label>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <!-- terceira coluna -->
                         <div class="col-md-2">
