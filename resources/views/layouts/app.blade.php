@@ -113,45 +113,47 @@
         </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size: 18px">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" >Conheça Paulo Freire</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('linhaDoTempo') }}">Linha do Tempo</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank">Acervo Digital</a>
-            </li>
-            @auth
-            <li class="nav-item dropdown" style="position: absolute; right: 30px;">
-                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{auth()->user()->name}}
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a href="{{ route('register') }}" class="dropdown-item">Novo Usuário</a>
-                    <a href="{{ route('logout') }}" class="dropdown-item" type="button">Sair</a>
+    <!-- menu -->
+    <nav class="navbar navbar-expand-lg navbar-light classNavBar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('imagens/logo_Colorida_institutoPF.png') }}" height="30">
+                Instituto Paulo Freire
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon" onclick="mostrarOpcoes();"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#">Home</a>
+                <a class="nav-item nav-link" href="#">Conheça Paulo Freire</a>
+                <a class="nav-item nav-link" href="{{ route('linhaDoTempo') }}">Linha Do Tempo</a>
+                <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">Biblioteca</a>
+                <a class="nav-item nav-link" target="_blank" href="http://www.acervo.paulofreire.org/">Acervo</a>
+                <a class="nav-item nav-link" href="{{ route('glossario') }}">Glossário</a>
+                @auth
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{auth()->user()->name}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a href="{{ route('register') }}" class="dropdown-item">Novo Usuário</a>
+                        <a href="{{ route('logout') }}" class="dropdown-item" type="button">Sair</a>
+                    </div>
                 </div>
-            </li>
-            @else
-            <li class="nav-item" style="position: absolute; right: 30px;">
-                <a class="nav-link" href="{{ route('login') }}">Login</a>
-            </li>
-            @endauth
+                @else
+                <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
+                @endauth
+            </div>
+            </div>
+
         </div>
     </nav>
     
+    <!-- script do swich de qualidade de video -->
     <script src="{{ asset('js/videojs-resolution-switcher.js') }}"></script>
     
+    <!-- conteudo da pagina -->
     <main class="py-4">
         <div class="container">
             @yield('content')
@@ -174,16 +176,16 @@
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="{{ route('glossario') }}" style="color: white;">Home</a></div>
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="#" style="color: white;">Home</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" style="color: white;">Conheça Paulo Freire</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="{{ route('linhaDoTempo') }}" target="_blank" style="color: white;">Linha do Tempo</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="{{ route('linhaDoTempo') }}" style="color: white;">Linha do Tempo</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank" style="color: white;">Acervo Digital</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
                         <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://biblioteca.paulofreire.org/" target="_blank" style="color: white;">Bibliotecas</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/glossario-audiovisual" target="_blank" style="color: white;">Glossário Paulo Freire</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="{{ route('glossario') }}" style="color: white;">Glossário Paulo Freire</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/o-acervo-paulo-freire-apresentacao/17-unifreire/52-comunidade-freiriana-encontros-inter-f%C3%B3rum-paulo-freire" target="_blank" style="color: white;">Comunidade Freiriana Internacional</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/" target="_blank" style="color: white;">Instituto Paulo Freire</a></div>   
                     </div>
