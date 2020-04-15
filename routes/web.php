@@ -35,6 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/letras', 'ViewsController@glossario')->name('letras');
 Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
+Route::get('/linha-do-tempo', 'ViewsController@LinhaDoTempo')->name('linhaDoTempo');
 
 Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa');
 Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova');

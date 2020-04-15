@@ -179,4 +179,82 @@ li.selected{
 
 .rodape_texto{
 	margin-bottom: 1rem;
+
+}
+
+/*######################## Linha do Tempo #####################*/
+
+
+.paragrafo {
+    font-size: 19px;
+}
+
+.box {
+    height: 100px;
+}
+
+.box_ano {
+    height: 120px;
+}
+
+.coluna_vermelha {
+    background-color: red;
+}
+
+.titulo_vermelho_negrito {
+    color: red;
+    font-weight: 1000;
+    font-size: 38px;
+}
+
+.titulo_preto_negrito {
+    color: black;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.direito {
+    text-align: right;
+}
+
+.esquerda {
+    text-align: left;
+}
+
+.ano_acizentado_negrito {
+    color: rgba(255, 255, 255, 0.493);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.ano_destacado_negrito {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.texto_italico_central {
+    text-align: center;
+    font-style: italic;
+}
+
+.titulos {
+    position: relative;
+    left: 20%;
+}
+
+.fundo_preto {
+    background-color: black;
+}
+
+.imagem_direita {
+    position: relative;
+    left: 20px;
+    top: 120px;
+}
+
+.imagem_esquerda {
+    position: relative;
+    right: 20px;
+    top: 120px;
 }

@@ -17,4 +17,8 @@ class ViewsController extends Controller
     public function pesquisa() {
         return view('glossario.pesquisa');
     }
+
+    public function LinhaDoTempo() {
+        return view('glossario.linha_do_tempo');
+    }
 }

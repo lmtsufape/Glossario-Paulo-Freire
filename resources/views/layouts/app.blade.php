@@ -127,7 +127,7 @@
                 <a class="nav-link" href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" >Conheça Paulo Freire</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Linha do Tempo</a>
+                <a class="nav-link" href="{{ route('linhaDoTempo') }}">Linha do Tempo</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank">Acervo Digital</a>
@@ -176,7 +176,7 @@
                     <div class="row alinhamento_container_texto">
                         <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="{{ route('glossario') }}" style="color: white;">Home</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" style="color: white;">Conheça Paulo Freire</a></div>
-                        <div class="col-md-12 rodape_texto" >Linha do Tempo</div>
+                        <div class="col-md-12 rodape_texto" ><a href="{{ route('linhaDoTempo') }}" target="_blank" style="color: white;">Linha do Tempo</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank" style="color: white;">Acervo Digital</a></div>
                     </div>
                 </div>
@@ -273,6 +273,5 @@
         });
     </script>
 
-    
 </body>
 </html>
