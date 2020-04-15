@@ -39,8 +39,7 @@ Route::get('/linha-do-tempo', 'ViewsController@LinhaDoTempo')->name('linhaDoTemp
 
 Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa');
 Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova');
-Route::any('/pesquisar/video', 'PesquisaController@novaPesquisaVideo')->name('pesquisa.video');
-Route::any('/pesquisar/audio', 'PesquisaController@novaPesquisaAudio')->name('pesquisa.audio');
+Route::any('/pesquisar/{id}', 'PesquisaController@pesquisaId')->name('pesquisa.id');
 
 Route::get('/editar/trecho/{id}', 'EditarTrechoController@index')->name('editar')->middleware('auth');;
 Route::any('/salvar/trecho/{id}', 'EditarTrechoController@update')->name('editar.update')->middleware('auth');;

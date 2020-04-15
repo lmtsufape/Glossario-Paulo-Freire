@@ -102,9 +102,9 @@
                                                 <label class="campo_compartilhar_texto">Compartilhar</label>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                                <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
-                                                <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
-                                                <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                                <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                                <a class="dropdown-item" onclick="shareWhatsPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                                <a class="dropdown-item" onclick="shareTwitterPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
                                             </div>
                                         </span>
                                         @auth
@@ -205,9 +205,9 @@
                                                 <label class="campo_compartilhar_texto">Compartilhar</label>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                                <a class="dropdown-item" onclick="shareFacePopUp()"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
-                                                <a class="dropdown-item" onclick="shareWhatsPopUp()"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
-                                                <a class="dropdown-item" onclick="shareTwitterPopUp()"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                                <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                                <a class="dropdown-item" onclick="shareWhatsPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                                <a class="dropdown-item" onclick="shareTwitterPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
                                             </div>
                                         </span>
                                         @auth
@@ -235,17 +235,17 @@
             </div>
     </div>
     @endif
-    <script language=javascript type="text/javascript">
-        function shareFacePopUp(){
-            window.open("https://www.facebook.com/sharer/sharer.php?u=" + window.location.href,  "minhaJanelaFB", "height=1000,width=1000");
+    <script type="text/javascript">
+        function shareFacePopUp(url){
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + url,  "minhaJanelaFB", "height=1000,width=1000");
         }
 
-        function shareWhatsPopUp(){
-            window.open(" https://api.whatsapp.com/send?text=" + window.location.href,  "minhaJanelaWa", "height=1000,width=1000");
+        function shareWhatsPopUp(url){
+            window.open(" https://api.whatsapp.com/send?text=" + url,  "minhaJanelaWa", "height=1000,width=1000");
         }
 
-        function shareTwitterPopUp(){
-            window.open("https://twitter.com/intent/tweet?url=" + window.location.href,  "minhaJanelaTw", "height=1000,width=1000");
+        function shareTwitterPopUp(url){
+            window.open("https://twitter.com/intent/tweet?url=" + url,  "minhaJanelaTw", "height=1000,width=1000");
         }
     </script>
 @endif

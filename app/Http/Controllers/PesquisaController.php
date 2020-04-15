@@ -13,47 +13,56 @@ class PesquisaController extends Controller
 {
     public function novaPesquisa(Request $request) {
         $validated = $request->validate([
-                'busca' => 'required',
+            'buscaTodos' => 'nullable',
+            'buscaAudio' => 'nullable',
+            'buscaVideo' => 'nullable',
         ]);
 
-        $trechosVideos = $this->videos($request);
-        $trechosAudios = $this->audios($request);
+        $trechosVideos = [];
+        $trechosAudios = [];
 
-        return view('glossario.pesquisa')->with(['resultado' => $request->busca, 'trechosVideos' => $trechosVideos, 'trechosAudios' => $trechosAudios, 'query' => $request->busca]);
-        
+        if (!(is_null($request->buscaTodos))) {
+            $trechosVideos = $this->videos($request->buscaTodos);
+            $trechosAudios = $this->audios($request->buscaTodos);
+            return view('glossario.pesquisa')->with(['resultado' => $request->buscaTodos, 'trechosVideos' => $trechosVideos, 'trechosAudios' => $trechosAudios]);
+        } else if (!(is_null($request->buscaVideo))) {
+            $trechosVideos = $this->videos($request->buscaVideo);
+            return view('glossario.pesquisa')->with(['resultado' => $request->buscaVideo, 'trechosVideos' => $trechosVideos, 'trechosAudios' => $trechosAudios]);
+        } else if (!(is_null($request->buscaAudio))) {
+            $trechosAudios = $this->audios($request->buscaAudio);
+            return view('glossario.pesquisa')->with(['resultado' => $request->buscaAudio, 'trechosVideos' => $trechosVideos, 'trechosAudios' => $trechosAudios]);
+        }
+        return redirect( route('pesquisa') );
     }
 
-    public function novaPesquisaVideo(Request $request) {
-        $validated = $request->validate([
-            'busca' => 'required',
-        ]);
-
-        $trechosVideos = $this->videos($request);
-
-        return view('glossario.pesquisa')->with(['resultado' => $request->busca, 'trechosVideos' => $trechosVideos, 'query' => $request->busca]);
-        
-    }
-
-    public function novaPesquisaAudio(Request $request) {
-        $validated = $request->validate([
-            'busca' => 'required',
-        ]);
-        $trechosAudios = $this->audios($request);
-
-        return view('glossario.pesquisa')->with(['resultado' => $request->busca, 'trechosAudios' => $trechosAudios, 'query' => $request->busca]);       
-    }
-
-    public function audios(Request $request) {
+    public function audios($busca) {
         return DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
                     ->select('trechos.*')
-                    ->where([['verbetes.descricao', 'ilike', $request->busca.'%'], ['tipo_recurso', '=', 'áudio']])
+                    ->where([['verbetes.descricao', 'ilike', $busca.'%'], ['tipo_recurso', '=', 'áudio']])
                     ->get();
     }
 
-    public function videos(Request $request) {
+    public function videos($busca) {
         return DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
                     ->select('trechos.*')
-                    ->where([['verbetes.descricao', 'ilike', $request->busca.'%'], ['tipo_recurso', '=', 'vídeo']])
+                    ->where([['verbetes.descricao', 'ilike', $busca.'%'], ['tipo_recurso', '=', 'vídeo']])
                     ->get();
+    }
+
+    public function pesquisaId($id) {
+        $trecho = \App\Trecho::find($id);
+        
+        $trechos = collect(
+            [
+                0 => $trecho,
+            ],
+        );
+
+        if ($trecho->tipo_recurso == 'áudio') {
+            return view('glossario.pesquisa')->with(['resultado' => '', 'trechosVideos' => $trechos, 'trechosAudios' => $trechos]);
+        } else {
+            return view('glossario.pesquisa')->with(['resultado' => '', 'trechosVideos' => $trechos, 'trechosAudios' => $trechos]);
+        }
+        return redirect( route('pesquisa') );
     }
 }
