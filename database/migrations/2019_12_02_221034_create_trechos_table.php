@@ -23,6 +23,7 @@ class CreateTrechosTable extends Migration
             $table->text("texto");
             $table->string("arquivo_hd");
             $table->string("arquivo_sd");
+            $table->integer("quant_views");
             $table->timestamps();
         });
     }

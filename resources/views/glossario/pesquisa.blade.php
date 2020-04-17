@@ -78,9 +78,23 @@
                     <div class="col-sm-5">
                         <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                         @if ($trecho->arquivo_sd != '')
-                        <audio controls style="height: 35px; width: 425px;">
+                        <audio id="my_audio_{{$trecho->id}}" class="col-sm-12" controls style="height: 35px;">
                             <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
                         </audio>
+                        <input id="confirmacao" type="hidden" value="0"></input>
+                        <script>
+                            var audio = document.getElementById("my_audio_{{$trecho->id}}");
+                            audio.onplay = function() {
+                                var confirmacao = document.getElementById('confirmacao').value;
+                                if (confirmacao = "0") {
+                                    document.getElementById('confirmacao').value = "1";
+                                    var xmlhttp = new XMLHttpRequest();
+                                    var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
+                                    xmlhttp.open("GET", url, true);
+                                    xmlhttp.send();
+                                }
+                            };
+                        </script>
                         @endif
                         <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative;left: 10px">Áudio completo</a>
                     </div>
@@ -93,7 +107,7 @@
                         <div class="col-sm-12" style="padding: 1rem;">
                             <output class="campo_contador">
                                 <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
-                                <label class="campo_compartilhar_texto">20.123</label>
+                                <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
                             </output>
                             <span class="dropdown">
                                 <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
@@ -142,8 +156,9 @@
                     <div class="col-sm-5">
                     @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
                         <div id="videojs" style="position: relative; height: 250px; max-width: 100%;">
-                            <video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
-                            </video-js>
+                            <video id="my_video_{{ $trecho->id }}" class="video-js vjs-default-skin" onclick="contarView()" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
+                            </video>
+                            <input id="confirmacao" type="hidden" value="0"></input>
                             <script>
                                 videojs('my_video_{{ $trecho->id }}', {
                                 controls: true,
@@ -174,6 +189,18 @@
                                         console.info('Source changed to %s', player.src())
                                     })
                                 })
+
+                                function contarView() {
+                                    var video = videojs('my_video_{{ $trecho->id }}');
+                                    var confirmacao = document.getElementById('confirmacao').value;
+                                    if (video.currentTime() == 0 && confirmacao == "0") {
+                                        document.getElementById('confirmacao').value = "1";
+                                        var xmlhttp = new XMLHttpRequest();
+                                        var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
+                                        xmlhttp.open("GET", url, true);
+                                        xmlhttp.send();
+                                    }
+                                }
                             </script>
                         </div>
                     @else
@@ -190,7 +217,7 @@
                             <div class="col-sm-12" style="padding: 1rem;">
                                 <output class="campo_contador">
                                     <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
-                                    <label class="campo_compartilhar_texto">20.123</label>
+                                    <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
                                 </output>
                                 <span class="dropdown">
                                     <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />

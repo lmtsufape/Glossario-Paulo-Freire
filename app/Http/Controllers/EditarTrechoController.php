@@ -29,9 +29,28 @@ class EditarTrechoController extends Controller
         $trecho->texto = $request->texto;
         $trecho->titulo_video = $request->titulo_video;
         
+        //salvar o nome do arquivo para resetar as views
+        $nome_antigo_hd = $trecho->arquivo_hd;
+        $nome_antigo_sd = $trecho->arquivo_sd;
+
         //colocando os nomes dos arquivos como referencia
         $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd'), $trecho->arquivo_hd);
         $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd'), $trecho->arquivo_sd);
+
+        //checagem se mudou de arquivo para resetar as views
+        //se o hd for '' e o sd algum arquivo então é um audio
+        if ($trecho->arquivo_hd == '' && $trecho->arquivo_sd != '') {
+            //se o nome antigo for diferente do atual então reseta as views
+            if ($nome_antigo_sd != $trecho->arquivo_sd) {
+                $trecho->quant_views = 0;
+            }
+        } else {
+            //se não então é um video
+            //as views dos videos só seram resetadas se os dois aquivos mudarem
+            if ($nome_antigo_sd != $trecho->arquivo_sd && $nome_antigo_hd != $trecho->arquivo_hd) {
+                $trecho->quant_views = 0;
+            }
+        }
 
         //salva a edição
         $trecho->update();

@@ -134,7 +134,7 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
-            <video id="video_1" class="video-js vjs-default-skin">
+            <video id="video_1" class="video-js vjs-default-skin" onclick="contarView()">
             </video>
 
             <script src="js/video.js"></script>
@@ -143,14 +143,15 @@
 
             <script>
                 videojs('video_1', {
-                controls: true,
-                plugins: {
-                videoJsResolutionSwitcher: {
-                    default: 'low', // Default resolution [{Number}, 'low', 'high'],
-                    dynamicLabel: true,
-                }
-                }
+                    controls: true,
+                    plugins: {
+                        videoJsResolutionSwitcher: {
+                            default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                            dynamicLabel: true,
+                        }
+                    }
                 }, function(){
+                    
                     var player = this;
                     window.player = player
                     player.updateSrc([
@@ -168,9 +169,18 @@
                     },
                     ])
                     player.on('resolutionchange', function(){
-                        console.info('Source changed to %s', player.src())
+                        
+                        console.info('Source changed to %s', player.src());
+                        
                     })
                 })
+                
+                function contarView() {
+                    var video = videojs('video_1')
+                    if (video.currentTime() == 0) {
+                        window.location.href = "{{ url( route('contarView', ['id' => 1]) ) }}";
+                    }
+                }
             </script>
         </div>
     </body>

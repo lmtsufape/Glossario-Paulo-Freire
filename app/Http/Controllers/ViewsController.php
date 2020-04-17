@@ -21,4 +21,10 @@ class ViewsController extends Controller
     public function LinhaDoTempo() {
         return view('glossario.linha_do_tempo');
     }
+
+    public function contarView($id) {
+        $trecho = \App\Trecho::find($id);
+        $trecho->quant_views = $trecho->quant_views + 1;
+        $trecho->update();
+    }
 }
