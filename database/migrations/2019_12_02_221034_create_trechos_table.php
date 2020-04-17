@@ -21,7 +21,9 @@ class CreateTrechosTable extends Migration
             $table->string("tempo");
             $table->string("endereco_video");
             $table->text("texto");
-            $table->string("arquivo");
+            $table->string("arquivo_hd");
+            $table->string("arquivo_sd");
+            $table->integer("quant_views");
             $table->timestamps();
         });
     }

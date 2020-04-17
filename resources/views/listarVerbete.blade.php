@@ -9,14 +9,19 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>  
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     </head>
     <body>
     <h1>{{$letra}}</h1>
     <ul>
-  @foreach ($verbetes as $verbete)
-<li><a href="{{ route('verbete', ['id' => $verbete->id]) }}">
-{{$verbete->descricao}}</a></li>
-  @endforeach
+      @foreach ($verbetes as $verbete)
+    <li><a href="{{ route('verbete', ['id' => $verbete->id]) }}">
+    {{$verbete->descricao}}</a></li>
+      @endforeach
        </ul> 
     </body>
 </html>

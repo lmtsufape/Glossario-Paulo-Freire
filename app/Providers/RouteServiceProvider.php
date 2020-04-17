@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    // 
+    //   O caminho para a rota "inicial" do seu aplicativo.
+    // 
+    //   @var string
+    //  
+    public const HOME = '/';
     /**
      * This namespace is applied to your controller routes.
      *
