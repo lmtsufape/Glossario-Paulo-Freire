@@ -8,7 +8,10 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
 Utilizar o VideoJS : https://videojs.com/getting-started/
