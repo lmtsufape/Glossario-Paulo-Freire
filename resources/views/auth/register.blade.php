@@ -63,10 +63,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: #0000ff;">
-                                    <label style="color: #ffffff;">
-                                        {{ __('Registrar') }}
-                                    </label>
+                                <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: #0000ff; color: white;">
+                                    {{ __('Registrar') }}
                                 </button>
                             </div>
                         </div>

@@ -30,10 +30,13 @@
                                     @if ($trecho->arquivo_sd != '')
                                         <audio controls style="height: 35px; width: 425px;">
                                             <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
+                                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
+                                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
                                         </audio> 
                                     @endif
                                     <br>
-                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg" name="arquivo_sd" id="arquivo"></input>
+                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd" id="arquivo"></input>
                                 </div>
                                 <div class="col">
                                     <div class="row">

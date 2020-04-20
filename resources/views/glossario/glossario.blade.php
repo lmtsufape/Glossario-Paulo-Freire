@@ -80,6 +80,9 @@
                                 @if ($trecho->arquivo_sd != '')
                                 <audio id="my_audio_{{$trecho->id}}" controls style="height: 35px; max-width: 100%;">
                                     <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
                                 </audio>
                                 <input id="confirmacao" type="hidden" value="0"></input>
                                 <script>
