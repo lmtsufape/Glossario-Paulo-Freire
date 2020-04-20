@@ -55,7 +55,7 @@ class PesquisaController extends Controller
         $trechos = collect(
             [
                 0 => $trecho,
-            ],
+            ]
         );
 
         if ($trecho->tipo_recurso == 'áudio') {
