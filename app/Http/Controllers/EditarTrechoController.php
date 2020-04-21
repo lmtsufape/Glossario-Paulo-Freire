@@ -34,9 +34,19 @@ class EditarTrechoController extends Controller
         $nome_antigo_sd = $trecho->arquivo_sd;
 
         //colocando os nomes dos arquivos como referencia
-        $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd'), $trecho->arquivo_hd);
-        $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd'), $trecho->arquivo_sd);
 
+        if (is_null($request->file('arquivo_hd'))) {
+            $trecho->arquivo_hd = $trecho->arquivo_hd;
+        } else {
+            $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd'), $trecho->arquivo_hd);
+        }
+
+        if (is_null($request->file('arquivo_sd'))) {
+            $trecho->arquivo_hd = $trecho->arquivo_hd;
+        } else {
+            $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd'), $trecho->arquivo_sd);
+        }
+        
         //checagem se mudou de arquivo para resetar as views
         //se o hd for '' e o sd algum arquivo então é um audio
         if ($trecho->arquivo_hd == '' && $trecho->arquivo_sd != '') {
@@ -59,14 +69,7 @@ class EditarTrechoController extends Controller
     }
 
     public function nomeDoArquivo($file, $arquivo) {
-        //verifica se o arquivo foi enviado
-        if (is_null($file)) {
-            //Se sim pega a referencia do arquivo do banco
-            $nome = $arquivo;
-        } else {
-            //Se não pega o arquivo que foi enviado
-            $nome = $file->store('multimidia', 'public');
-        }
+        $nome = $file->store('multimidia', 'public');
 
         //Checa se o trecho já tem algum arquivo associado a ele e se foi enviado um novo arquivo
         if ($arquivo != '' && !(is_null($file))) {

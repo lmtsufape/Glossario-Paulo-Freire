@@ -104,7 +104,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col-sm-12" style="padding-top: 1rem;">
-                            <output style="width: 100%; word-wrap: break-word;">"{{$trecho->texto}}"</output>
+                            <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
                             <span class="subtitulo_container">{{$trecho->titulo_video}}</span>
                         </div>
                         <div class="col-sm-12" style="padding: 1rem;">
@@ -176,14 +176,50 @@
                                     window.player = player
                                     player.updateSrc([
                                     {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}",
+                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
                                         type: 'video/mp4',
                                         label: 'SD',
                                         res: 360
                                     },
                                     {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}",
+                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                        type: 'video/webm',
+                                        label: 'SD',
+                                        res: 360
+                                    },
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                        type: 'video/mkv',
+                                        label: 'SD',
+                                        res: 360
+                                    },
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                        type: 'video/ogv',
+                                        label: 'SD',
+                                        res: 360
+                                    },
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
                                         type: 'video/mp4',
+                                        label: 'HD',
+                                        res: 720
+                                    },
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                        type: 'video/webm',
+                                        label: 'HD',
+                                        res: 720
+                                    },
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                        type: 'video/mkv',
+                                        label: 'HD',
+                                        res: 720
+                                    },
+                                    {
+                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                        type: 'video/ogv',
                                         label: 'HD',
                                         res: 720
                                     },
@@ -214,7 +250,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-sm-12" style="padding-top: 1rem;">
-                                <output style="width: 100%; word-wrap: break-word;">"{{$trecho->texto}}"</output>
+                                <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
                                 <span  class="subtitulo_container" >{{$trecho->titulo_video}}</span>
                             </div>
                             <div class="col-sm-12" style="padding: 1rem;">

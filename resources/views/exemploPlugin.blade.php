@@ -134,7 +134,7 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
-            <video id="video_1" class="video-js vjs-default-skin" onclick="contarView()">
+            <video id="video_1" class="video-js vjs-default-skin">
             </video>
 
             <script src="js/video.js"></script>
@@ -156,13 +156,13 @@
                     window.player = player
                     player.updateSrc([
                     {
-                        src: 'https://vjs.zencdn.net/v/oceans.mp4?SD',
+                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.mp4') }}",
                         type: 'video/mp4',
                         label: 'SD',
                         res: 360
                     },
                     {
-                        src: 'https://vjs.zencdn.net/v/oceans.mp4?HD',
+                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.mp4') }}",
                         type: 'video/mp4',
                         label: 'HD',
                         res: 720
