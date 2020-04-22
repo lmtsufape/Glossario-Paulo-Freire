@@ -134,15 +134,17 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
-            <video id="video_1" class="video-js vjs-default-skin">
+            
+             <!-- script do video.js -->
+            <script src="{{ asset('video.js/dist/video.js') }}"></script>
+            
+            <!-- script do swich de qualidade de video -->
+            <script src="{{ asset('videojs-resolution-switcher/lib/videojs-resolution-switcher.js') }}"></script>
+
+            <video id="my_video_1" class="video-js vjs-default-skin" poster="{{ asset('imagens/imagem_video.png') }}">
             </video>
-
-            <script src="js/video.js"></script>
-            <script src="js/videojs-http-streaming.js"></script>
-            <script src="{{ asset('js/videojs-resolution-switcher.js') }}"></script>
-
             <script>
-                videojs('video_1', {
+                videojs('my_video_1', {
                     controls: true,
                     plugins: {
                         videoJsResolutionSwitcher: {
@@ -156,13 +158,13 @@
                     window.player = player
                     player.updateSrc([
                     {
-                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.mp4') }}",
+                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.webm') }}",
                         type: 'video/mp4',
                         label: 'SD',
                         res: 360
                     },
                     {
-                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.mp4') }}",
+                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.webm') }}",
                         type: 'video/mp4',
                         label: 'HD',
                         res: 720
@@ -174,13 +176,6 @@
                         
                     })
                 })
-                
-                function contarView() {
-                    var video = videojs('video_1')
-                    if (video.currentTime() == 0) {
-                        window.location.href = "{{ url( route('contarView', ['id' => 1]) ) }}";
-                    }
-                }
             </script>
         </div>
     </body>

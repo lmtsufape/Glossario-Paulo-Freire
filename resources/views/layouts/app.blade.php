@@ -5,9 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Videojs -->
-    <link href="{{ asset('css/video-js.min.css') }}" rel="stylesheet"/>
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -19,11 +16,11 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
-     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('js/video.js') }}"></script>
-    <script src="{{ asset('js/videojs-http-streaming.js') }}"></script>
-
+    <!-- Fonts do video.js e videojs-resolution-swicher -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('video.js/dist/video-js.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('videojs-resolution-switcher/lib/videojs-resolution-switcher.css') }}">
     <style>
             .full-height {
                 background-color: #fff;
@@ -97,7 +94,6 @@
                 height: 100%;
                 text-align: center;
                 box-sizing: inherit;
-                display: none;
             }
 
             .vjs-resolution-button .vjs-menu .vjs-menu-content {
@@ -149,9 +145,12 @@
 
         </div>
     </nav>
+
+    <!-- script do video.js -->
+    <script src="{{ asset('video.js/dist/video.js') }}"></script>
     
     <!-- script do swich de qualidade de video -->
-    <script src="{{ asset('js/videojs-resolution-switcher.js') }}"></script>
+    <script src="{{ asset('videojs-resolution-switcher/lib/videojs-resolution-switcher.js') }}"></script>
     
     <!-- conteudo da pagina -->
     <main class="py-4">
@@ -257,14 +256,13 @@
             </div>              
         </div>
     </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    
-   
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -275,6 +273,16 @@
             $(this).addClass('selected');
         });
     </script>
+    <script>
+        //Funcao para abrir/fechar aba do menu
+		function mostrarOpcoes(){
+			if(document.getElementById("navbarNavAltMarkup").style.display == 'none'){
+				document.getElementById("navbarNavAltMarkup").style.display = 'block';
+			}else{
+				document.getElementById("navbarNavAltMarkup").style.display = 'none';
+			}
 
+		}
+    </script>
 </body>
 </html>
