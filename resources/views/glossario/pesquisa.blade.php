@@ -54,7 +54,12 @@
                     </div>
                     
                     <div class="col-md-12" style="margin-top: 5px;">
-                        <div style="float: right"><a href="{{ route('listarPalavras') }}">Listar todas as palavras</a></div>
+                        <div style="float: right">
+                                @auth<a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
+                                @endauth
+                                <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </form>

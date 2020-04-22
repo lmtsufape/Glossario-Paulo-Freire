@@ -20,6 +20,7 @@
                     </ul>
                 </div>
             @endif
+            </div>
                 <ul class="list-group">
                         <li class="list-group-item div_container">
                         <form action="{{ Route('editar.update', ['id' => $trecho]) }}" method="POST" enctype="multipart/form-data">
@@ -63,8 +64,8 @@
                                             </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
-                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><!-- <img src="#" alt="Logo" width="16,74" height="18,34" /> --><label class="campo_compartilhar_texto">Salvar</label></button>
-                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><!--<img src="#" alt="Logo" width="16,74" height="18,34" /> --><label class="campo_compartilhar_texto">Cancelar</label></button></a>                                    
+                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Salvar</label></button>
+                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Cancelar</label></button></a>                                   
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +176,6 @@
                                         <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd" id="arquivo_hd"> em HD</input>
                                     </p>
                                     <p>
-                                    <!-- Implementar o salvamento do segundo video -->
                                         <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd" id="arquivo_sd"> em SD</input>
                                     </p>
                                 </div>

@@ -42,6 +42,9 @@ Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova
 Route::any('/pesquisar/{id}', 'PesquisaController@pesquisaId')->name('pesquisa.id');
 Route::get('/contarView/{id}', 'ViewsController@contarView')->name('contarView');
 
-Route::get('/editar/trecho/{id}', 'EditarTrechoController@index')->name('editar')->middleware('auth');;
-Route::any('/salvar/trecho/{id}', 'EditarTrechoController@update')->name('editar.update')->middleware('auth');;
-Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.cancel')->middleware('auth');;
+Route::get('/editar/trecho/{id}', 'EditarTrechoController@index')->name('editar')->middleware('auth');
+Route::any('/salvar/trecho/{id}', 'EditarTrechoController@update')->name('editar.update')->middleware('auth');
+Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.cancel')->middleware('auth');
+
+Route::get('/adicionar/verbete', 'VerbeteController@exibir')->name('verbete.add')->middleware('auth');
+Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('adicionar.add.save')->middleware('auth');
