@@ -47,4 +47,5 @@ Route::any('/salvar/trecho/{id}', 'EditarTrechoController@update')->name('editar
 Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.cancel')->middleware('auth');
 
 Route::get('/adicionar/verbete', 'VerbeteController@exibir')->name('verbete.add')->middleware('auth');
-Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('adicionar.add.save')->middleware('auth');
+Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('verbete.add.save')->middleware('auth');
+Route::get('/excluir/verbete/{id}', 'VerbeteController@deletar')->name('verbete.del')->middleware('auth');

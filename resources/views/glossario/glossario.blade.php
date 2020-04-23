@@ -57,8 +57,20 @@
         <div class="col-sm-12" id="lista_menu">
             <ul class="list-group">
                 @foreach ($verbetes as $verbete)
-                <li class="list-group-item lista_item" ><a href="{{ route('verbete', ['id' => $verbete->id]) }}">
-                    {{$verbete->descricao}}</a></li>
+                <li class="list-group-item lista_item" >
+                    <a href="{{ route('verbete', ['id' => $verbete->id]) }}">{{$verbete->descricao}}</a>
+                    @auth
+                        <span class="dropdown">
+                            <button button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right; border: none; background-color: white;"><img src="{{ asset('icones/menu_dot.svg') }}" alt="Logo" width="auto" height="20" />
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
+                                <a class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>Adicionar trecho</span></a>
+                                <a class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>Editar veberte</span></a>
+                                <a href="{{ route('verbete.del', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>Excluir</span></a>
+                            </div>
+                        </span>
+                    @endauth
+                </li>
                 @endforeach
             </ul>
         </div>

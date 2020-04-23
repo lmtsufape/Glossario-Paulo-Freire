@@ -55,10 +55,10 @@
                     
                     <div class="col-md-12" style="margin-top: 5px;">
                         <div style="float: right">
-                                @auth<a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
-                                @endauth
-                                <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
-                                </div>
+                            @auth<a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
+                            @endauth
+                            <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -68,195 +68,50 @@
     </div>
 </div>
 @if (Route::currentRouteName() === 'pesquisa.nova' || Route::currentRouteName() === 'pesquisa.id')
-<div class="row">
-    <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-        <div style="margin-left: 12px;"><a id="titulo_busca">Áudios</a></div>
-            <br>
-        <div style="margin-left: 12px; margin-top: -35px;"><a id="subtitulo_busca">Resultado: {{$resultado}}</a><output id="letraSelecionada"></output></div>
-    </div>
-    <div class="col-sm-12">
-        <ul class="list-group">
-            @foreach ($trechosAudios as $trecho)
-                @if($trecho->tipo_recurso == "áudio")
-                <li class="list-group-item div_container">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
-                        @if ($trecho->arquivo_sd != '')
-                        <audio id="my_audio_{{$trecho->id}}" class="col-sm-12" controls style="height: 35px;">
-                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
-                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
-                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
-                            <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
-                        </audio>
-                        <input id="confirmacao" type="hidden" value="0"></input>
-                        <script>
-                            var audio = document.getElementById("my_audio_{{$trecho->id}}");
-                            audio.onplay = function() {
-                                var confirmacao = document.getElementById('confirmacao').value;
-                                if (confirmacao = "0") {
-                                    document.getElementById('confirmacao').value = "1";
-                                    var xmlhttp = new XMLHttpRequest();
-                                    var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
-                                    xmlhttp.open("GET", url, true);
-                                    xmlhttp.send();
-                                }
-                            };
-                        </script>
-                        @endif
-                        <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative;left: 10px">Áudio completo</a>
-                    </div>
-                <div class="col">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
+            <div style="margin-left: 12px;"><a id="titulo_busca">Áudios</a></div>
+                <br>
+            <div style="margin-left: 12px; margin-top: -35px;"><a id="subtitulo_busca">Resultado: {{$resultado}}</a><output id="letraSelecionada"></output></div>
+        </div>
+        <div class="col-sm-12">
+            <ul class="list-group">
+                @foreach ($trechosAudios as $trecho)
+                    @if($trecho->tipo_recurso == "áudio")
+                    <li class="list-group-item div_container">
                     <div class="row">
-                        <div class="col-sm-12" style="padding-top: 1rem;">
-                            <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
-                            <span class="subtitulo_container">{{$trecho->titulo_video}}</span>
-                        </div>
-                        <div class="col-sm-12" style="padding: 1rem;">
-                            <output class="campo_contador">
-                                <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
-                                <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
-                            </output>
-                            <span class="dropdown">
-                                <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                    <label class="campo_compartilhar_texto">Compartilhar</label>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                    <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
-                                    <a class="dropdown-item" onclick="shareWhatsPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
-                                    <a class="dropdown-item" onclick="shareTwitterPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
-                                </div>
-                            </span>
-                            @auth
-                                <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
-                            @endauth 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </li>
-                @endif
-            @endforeach
-        </ul>
-            <!-- <div class="div_mais_resultados"> 
-                <div >
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                    <a href="">Ver todos.</a>
-                </div>
-            </div> -->
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-        <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Vídeos</a></div>
-            <br>
-        <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">Resultado: {{$resultado}} </a><output id="letraSelecionada"></output></div>
-    </div>
-    <div class="col-sm-12">
-        <ul class="list-group">
-            @foreach ($trechosVideos as $trecho)
-                @if($trecho->tipo_recurso=="vídeo")
-                <li class="list-group-item div_container">
-                <div class="row">
-                    <div class="col-sm-5">
-                    @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
-                        <div id="videojs" style="position: relative; height: 250px; max-width: 100%;">
-                            <video id="my_video_{{ $trecho->id }}" class="video-js vjs-default-skin" onclick="contarView()" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
-                            </video>
+                        <div class="col-sm-5">
+                            <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                            @if ($trecho->arquivo_sd != '')
+                            <audio id="my_audio_{{$trecho->id}}" class="col-sm-12" controls style="height: 35px;">
+                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
+                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
+                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
+                            </audio>
                             <input id="confirmacao" type="hidden" value="0"></input>
                             <script>
-                                videojs('my_video_{{ $trecho->id }}', {
-                                controls: true,
-                                plugins: {
-                                videoJsResolutionSwitcher: {
-                                    default: 'low', // Default resolution [{Number}, 'low', 'high'],
-                                    dynamicLabel: true,
-                                }
-                                }
-                                }, function(){
-                                    var player = this;
-                                    window.player = player
-                                    player.updateSrc([
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                        type: 'video/mp4',
-                                        label: 'SD',
-                                        res: 360
-                                    },
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                        type: 'video/webm',
-                                        label: 'SD',
-                                        res: 360
-                                    },
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                        type: 'video/mkv',
-                                        label: 'SD',
-                                        res: 360
-                                    },
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                        type: 'video/ogv',
-                                        label: 'SD',
-                                        res: 360
-                                    },
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                        type: 'video/mp4',
-                                        label: 'HD',
-                                        res: 720
-                                    },
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                        type: 'video/webm',
-                                        label: 'HD',
-                                        res: 720
-                                    },
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                        type: 'video/mkv',
-                                        label: 'HD',
-                                        res: 720
-                                    },
-                                    {
-                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                        type: 'video/ogv',
-                                        label: 'HD',
-                                        res: 720
-                                    },
-                                    ])
-                                    player.on('resolutionchange', function(){
-                                        console.info('Source changed to %s', player.src())
-                                    })
-                                })
-
-                                function contarView() {
-                                    var video = videojs('my_video_{{ $trecho->id }}');
+                                var audio = document.getElementById("my_audio_{{$trecho->id}}");
+                                audio.onplay = function() {
                                     var confirmacao = document.getElementById('confirmacao').value;
-                                    if (video.currentTime() == 0 && confirmacao == "0") {
+                                    if (confirmacao = "0") {
                                         document.getElementById('confirmacao').value = "1";
                                         var xmlhttp = new XMLHttpRequest();
                                         var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
                                         xmlhttp.open("GET", url, true);
                                         xmlhttp.send();
                                     }
-                                }
+                                };
                             </script>
+                            @endif
+                            <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative;left: 10px">Áudio completo</a>
                         </div>
-                    @else
-                        <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
-                    @endif
-                        <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative; left: 10px;">Vídeo completo</a>
-                    </div>
                     <div class="col">
                         <div class="row">
                             <div class="col-sm-12" style="padding-top: 1rem;">
                                 <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
-                                <span  class="subtitulo_container" >{{$trecho->titulo_video}}</span>
+                                <span class="subtitulo_container">{{$trecho->titulo_video}}</span>
                             </div>
                             <div class="col-sm-12" style="padding: 1rem;">
                                 <output class="campo_contador">
@@ -281,18 +136,165 @@
                     </div>
                 </div>
                 </li>
-                @endif
-            @endforeach
-        </ul>
-        <!-- <div class="div_mais_resultados">
-            <div >
-                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                <a href="">Ver todos.</a>
-            </div>
-        </div> -->
+                    @endif
+                @endforeach
+            </ul>
+                <!-- <div class="div_mais_resultados"> 
+                    <div >
+                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
+                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
+                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
+                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
+                        <a href="">Ver todos.</a>
+                    </div>
+                </div> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
+            <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Vídeos</a></div>
+                <br>
+            <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">Resultado: {{$resultado}} </a><output id="letraSelecionada"></output></div>
+        </div>
+        <div class="col-sm-12">
+            <ul class="list-group">
+                @foreach ($trechosVideos as $trecho)
+                    @if($trecho->tipo_recurso=="vídeo")
+                    <li class="list-group-item div_container">
+                    <div class="row">
+                        <div class="col-sm-5">
+                        @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
+                            <div id="videojs" style="position: relative; height: 250px; max-width: 100%;">
+                                <video id="my_video_{{ $trecho->id }}" class="video-js vjs-default-skin" onclick="contarView()" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
+                                </video>
+                                <input id="confirmacao" type="hidden" value="0"></input>
+                                <script>
+                                    videojs('my_video_{{ $trecho->id }}', {
+                                    controls: true,
+                                    plugins: {
+                                    videoJsResolutionSwitcher: {
+                                        default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                                        dynamicLabel: true,
+                                    }
+                                    }
+                                    }, function(){
+                                        var player = this;
+                                        window.player = player
+                                        player.updateSrc([
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                            type: 'video/mp4',
+                                            label: 'SD',
+                                            res: 360
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                            type: 'video/webm',
+                                            label: 'SD',
+                                            res: 360
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                            type: 'video/mkv',
+                                            label: 'SD',
+                                            res: 360
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                            type: 'video/ogv',
+                                            label: 'SD',
+                                            res: 360
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                            type: 'video/mp4',
+                                            label: 'HD',
+                                            res: 720
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                            type: 'video/webm',
+                                            label: 'HD',
+                                            res: 720
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                            type: 'video/mkv',
+                                            label: 'HD',
+                                            res: 720
+                                        },
+                                        {
+                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                            type: 'video/ogv',
+                                            label: 'HD',
+                                            res: 720
+                                        },
+                                        ])
+                                        player.on('resolutionchange', function(){
+                                            console.info('Source changed to %s', player.src())
+                                        })
+                                    })
+
+                                    function contarView() {
+                                        var video = videojs('my_video_{{ $trecho->id }}');
+                                        var confirmacao = document.getElementById('confirmacao').value;
+                                        if (video.currentTime() == 0 && confirmacao == "0") {
+                                            document.getElementById('confirmacao').value = "1";
+                                            var xmlhttp = new XMLHttpRequest();
+                                            var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
+                                            xmlhttp.open("GET", url, true);
+                                            xmlhttp.send();
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        @else
+                            <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                        @endif
+                            <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative; left: 10px;">Vídeo completo</a>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-sm-12" style="padding-top: 1rem;">
+                                    <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
+                                    <span  class="subtitulo_container" >{{$trecho->titulo_video}}</span>
+                                </div>
+                                <div class="col-sm-12" style="padding: 1rem;">
+                                    <output class="campo_contador">
+                                        <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
+                                        <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
+                                    </output>
+                                    <span class="dropdown">
+                                        <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                            <label class="campo_compartilhar_texto">Compartilhar</label>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                            <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
+                                            <a class="dropdown-item" onclick="shareWhatsPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
+                                            <a class="dropdown-item" onclick="shareTwitterPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
+                                        </div>
+                                    </span>
+                                    @auth
+                                        <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
+                                    @endauth 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </li>
+                    @endif
+                @endforeach
+            </ul>
+            <!-- <div class="div_mais_resultados">
+                <div >
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
+                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
+                    <a href="">Ver todos.</a>
+                </div>
+            </div> -->
+        </div>
     </div>
 </div>
 @endif

@@ -5,7 +5,7 @@
     <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
         <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Adicionar um verbete</a></div>
     </div>
-    <form action="{{ route('adicionar.add.save') }}" method="POST">
+    <form action="{{ route('verbete.add.save') }}" method="POST">
         <div class="col-sm-12">
         @if ($errors->any())
             <div class="col-md-12" style="margin-top: 5px;">

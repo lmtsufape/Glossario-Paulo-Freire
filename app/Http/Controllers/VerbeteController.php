@@ -22,5 +22,11 @@ class VerbeteController extends Controller
 
         return redirect( route('glossario') )->with('mensagem', 'Verbete salvo com sucesso!');
     }
-    
+
+    public function deletar($id) {
+        $verbete = \App\Verbete::find($id);
+        $verbete->delete();
+
+        return redirect( route('glossario') )->with('mensagem', 'Verbete excluido com sucesso!');
+    }
 }
