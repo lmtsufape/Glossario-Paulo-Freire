@@ -67,11 +67,12 @@
                         </div>
                     @endif
                     <div class="col-md-12" style="margin-top: 5px;">
-                    <div style="float: right">
-                            @auth<a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
+                        <div style="float: right">
+                            @auth
+                                <a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
                             @endauth
-                            <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
-                            </div>
+                                <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -120,7 +121,7 @@
                             <button button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right; border: none; background-color: white;"><img src="{{ asset('icones/menu_dot.svg') }}" alt="Logo" width="auto" height="20" />
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
-                                <a class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>Adicionar trecho</span></a>
+                                <a href="{{ route('trecho.add', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>Adicionar trecho</span></a>
                                 <a href="javascript:editarVerbete('{{$verbete->id}}')" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>Editar veberte</span></a>
                                 <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#xcluirVerbeteModal"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>Excluir</span></a>
                             </div>

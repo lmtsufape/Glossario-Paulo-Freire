@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 
-class EditarTrechoController extends Controller
+class TrechoController extends Controller
 {
     public function index($id) {
         $trecho = \App\Trecho::where('id', '=', $id)->first();
@@ -21,6 +21,9 @@ class EditarTrechoController extends Controller
         $validated = $request->validate([
             'texto' => 'required',
             'titulo_video' => 'required',
+            'tipo_recurso' => 'required',
+            'tempo' => 'required',
+            'endereco_video' => 'required',
             'arquivo_hd' => 'nullable',
             'arquivo_sd' => 'nullable',
         ]);
@@ -81,7 +84,46 @@ class EditarTrechoController extends Controller
         return $nome;
     }
 
-    public function cancel() {
-        return redirect()->back();
+    public function adicionar($id) {
+        return view('glossario.adicionar_trecho')->with(['id' => $id]);
+    }
+
+    public function salvar(Request $request, $id) {
+        $validated = $request->validate([
+            'texto' => 'required',
+            'titulo_video' => 'required',
+            'tipo_recurso' => 'required',
+            'tempo' => 'required',
+            'endereco_video' => 'required',
+            'arquivo_hd' => 'nullable',
+            'arquivo_sd' => 'nullable',
+        ]);
+
+        $trecho = new \App\Trecho();
+
+        $trecho->verbete_id = $id;
+        $trecho->texto = $request->texto;
+        $trecho->titulo_video = $request->titulo_video;
+        $trecho->tipo_recurso = $request->tipo_recurso;
+        $trecho->tempo = $request->tempo;
+        $trecho->endereco_video = $request->endereco_video;
+        $trecho->quant_views = 0;
+        
+        //colocando os nomes dos arquivos como referencia
+        if (is_null($request->file('arquivo_hd'))) {
+            $trecho->arquivo_hd = '';
+        } else {
+            $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd'), '');
+        }
+
+        if (is_null($request->file('arquivo_sd'))) {
+            $trecho->arquivo_hd = '';
+        } else {
+            $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd'), '');
+        }
+
+        $trecho->save();
+
+        return redirect( route('verbete', ['id' => $id]) )->with('mensagem', 'Trecho salvo com sucesso!');
     }
 }
