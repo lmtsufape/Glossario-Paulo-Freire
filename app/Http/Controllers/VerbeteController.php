@@ -29,4 +29,17 @@ class VerbeteController extends Controller
 
         return redirect( route('glossario') )->with('mensagem', 'Verbete excluido com sucesso!');
     }
+
+    public function editar(Request $request, $id) {
+        $validated = $request->validate([
+            'descricao' => 'required',
+        ]);
+
+        $verbete = \App\Verbete::find($id);
+
+        $verbete->descricao = $request->descricao;
+        $verbete->update();
+
+        return redirect()->back()->with('mensagem', 'Verbete editado com sucesso!');;
+    }
 }

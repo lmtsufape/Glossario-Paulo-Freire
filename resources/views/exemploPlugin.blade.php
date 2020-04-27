@@ -158,13 +158,13 @@
                     window.player = player
                     player.updateSrc([
                     {
-                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.webm') }}",
+                        src: "{{ asset('video/teste.mp4') }}",
                         type: 'video/mp4',
                         label: 'SD',
                         res: 360
                     },
                     {
-                        src: "{{ asset('http-videos.glossario/FPF_OPF_15_0005_Trecho_1.webm') }}",
+                        src: "{{ asset('video/teste.mp4') }}",
                         type: 'video/mp4',
                         label: 'HD',
                         res: 720

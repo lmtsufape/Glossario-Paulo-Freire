@@ -48,4 +48,5 @@ Route::get('/editar/cancel', 'EditarTrechoController@cancel')->name('editar.canc
 
 Route::get('/adicionar/verbete', 'VerbeteController@exibir')->name('verbete.add')->middleware('auth');
 Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('verbete.add.save')->middleware('auth');
+Route::post('/editar/verbete/{id}', 'VerbeteController@editar')->name('verbete.edit')->middleware('auth');
 Route::get('/excluir/verbete/{id}', 'VerbeteController@deletar')->name('verbete.del')->middleware('auth');

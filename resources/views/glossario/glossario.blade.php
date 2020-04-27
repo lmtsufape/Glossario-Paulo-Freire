@@ -1,6 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    // funções para editar o verbete
+    function editarVerbete(id) {
+        document.getElementById('verbete_' + id).contentEditable = true;
+        document.getElementById('button_salvar_' + id).style.display = 'inline';
+        document.getElementById('button_cancelar_' + id).style.display = 'inline';
+    }
+
+    function cancelarEditarVerbete(id) {
+        document.getElementById('verbete_' + id).contentEditable = false;
+        document.getElementById('button_salvar_' + id).style.display = 'none';
+        document.getElementById('button_cancelar_' + id).style.display = 'none';
+    }
+
+    function salvarVerbete(id) {
+        var descricao = document.getElementById('verbete_' + id).text;
+        var inputVerbete = document.getElementById('input_editar_verbete_' + id);
+
+        inputVerbete.value = descricao;
+
+        document.getElementById('verbete_' + id).contentEditable = false;
+        document.getElementById('button_salvar_' + id).style.display = 'none';
+        document.getElementById('button_cancelar_' + id).style.display = 'none';
+
+        var formulario = document.getElementById('form_editar_verbete_' + id);
+        formulario.submit();
+    }
+</script>
+
 <div style="padding-top: 80px;">
     <div class="imagem_fundo" style="background-image: url({{asset('imagens/img_grande_50.png')}})">
         <div class="card-body menu_glossario">
@@ -30,13 +59,20 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-md-12" style="margin-top: 5px;">
-                        <div style="float: right">
-                                @auth<a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
-                                @endauth
-                                <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
-                                </div>
+                    @if(session('mensagem'))
+                        <div class="col-md-12" style="margin-top: 5px;">
+                            <div class="alert alert-success">
+                                <p>{{session('mensagem')}}</p>
+                            </div>
                         </div>
+                    @endif
+                    <div class="col-md-12" style="margin-top: 5px;">
+                    <div style="float: right">
+                            @auth<a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
+                            @endauth
+                            <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,18 +93,48 @@
         <div class="col-sm-12" id="lista_menu">
             <ul class="list-group">
                 @foreach ($verbetes as $verbete)
+                <!-- Modal -->
+                <div class="modal fade" id="xcluirVerbeteModal" tabindex="-1" role="dialog" aria-labelledby="excluirVerbeteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="excluirVerbeteModalLabel">Confirmar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Tem certeza que deseja excluir esse verbete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                            <a href="{{ route('verbete.del', ['id' => $verbete->id]) }}"><button type="button" class="btn btn-primary">Sim</button></a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                 <li class="list-group-item lista_item" >
-                    <a href="{{ route('verbete', ['id' => $verbete->id]) }}">{{$verbete->descricao}}</a>
+                        <a id="verbete_{{$verbete->id}}" href="{{ route('verbete', ['id' => $verbete->id]) }}">{{$verbete->descricao}}</a>
                     @auth
                         <span class="dropdown">
                             <button button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right; border: none; background-color: white;"><img src="{{ asset('icones/menu_dot.svg') }}" alt="Logo" width="auto" height="20" />
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
                                 <a class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>Adicionar trecho</span></a>
-                                <a class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>Editar veberte</span></a>
-                                <a href="{{ route('verbete.del', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>Excluir</span></a>
+                                <a href="javascript:editarVerbete('{{$verbete->id}}')" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>Editar veberte</span></a>
+                                <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#xcluirVerbeteModal"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>Excluir</span></a>
                             </div>
                         </span>
+                        <div>
+                            <p>
+                                <form id="form_editar_verbete_{{$verbete->id}}" method="POST" action="{{ route('verbete.edit', ['id' => $verbete->id]) }}">
+                                    @csrf
+                                    <input id="input_editar_verbete_{{$verbete->id}}" name="descricao" type="hidden"></input>
+                                    <a id="button_salvar_{{$verbete->id}}" class="btn" style="display: none; border-color:#d5d5d5; border-width:2px; height: 10px; background-color: white; color: #d5d5d5;" href="javascript:salvarVerbete('{{$verbete->id}}')"> Salvar</a>
+                                    <a id="button_cancelar_{{$verbete->id}}" class="btn" href="javascript:cancelarEditarVerbete('{{$verbete->id}}')" style="display: none; border-color:#d5d5d5; border-width:2px; height: 25px; background-color: white; color: #d5d5d5;">Cancelar</a>
+                                </form>
+                            </p>
+                        </div>
                     @endauth
                 </li>
                 @endforeach
