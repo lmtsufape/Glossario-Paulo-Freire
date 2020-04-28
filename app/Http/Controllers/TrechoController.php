@@ -110,14 +110,14 @@ class TrechoController extends Controller
         $trecho->quant_views = 0;
         
         //colocando os nomes dos arquivos como referencia
-        if (is_null($request->file('arquivo_hd'))) {
+        if (is_null($request->file('arquivo_hd')) || $request->file('arquivo_hd') == '') {
             $trecho->arquivo_hd = '';
         } else {
             $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd'), '');
         }
 
-        if (is_null($request->file('arquivo_sd'))) {
-            $trecho->arquivo_hd = '';
+        if (is_null($request->file('arquivo_sd')) || $request->file('arquivo_sd') == '') {
+            $trecho->arquivo_sd = '';
         } else {
             $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd'), '');
         }
@@ -125,5 +125,21 @@ class TrechoController extends Controller
         $trecho->save();
 
         return redirect( route('verbete', ['id' => $id]) )->with('mensagem', 'Trecho salvo com sucesso!');
+    }
+
+    public function deletar($id) {
+        $trecho = \App\Trecho::find($id);
+
+        if ($trecho->arquivo_hd != '') {
+            Storage::delete($trecho->arquivo_hd);
+        }
+
+        if ($trecho->arquivo_sd != '') {
+            Storage::delete($trecho->arquivo_sd);
+        }
+
+        $trecho->delete();
+
+        return redirect()->back()->with('mensagem', 'Trecho excluido com sucesso!');
     }
 }

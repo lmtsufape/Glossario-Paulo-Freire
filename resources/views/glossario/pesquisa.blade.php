@@ -79,6 +79,26 @@
             <ul class="list-group">
                 @foreach ($trechosAudios as $trecho)
                     @if($trecho->tipo_recurso == "áudio")
+                    <!-- Modal -->
+                    <div class="modal fade" id="xcluirTrechoAudioModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoModalAudioLabel{{$trecho->id}}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="excluirVerbeteModalAudioLabel{{$trecho->id}}">Confirmar</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza que deseja excluir esse trecho?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">Sim</button></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                     <li class="list-group-item div_container">
                     <div class="row">
                         <div class="col-sm-5">
@@ -129,7 +149,8 @@
                                     </div>
                                 </span>
                                 @auth
-                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
+                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a>
+                                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">Excluir</label></a>
                                 @endauth 
                             </div>
                         </div>
@@ -160,6 +181,26 @@
             <ul class="list-group">
                 @foreach ($trechosVideos as $trecho)
                     @if($trecho->tipo_recurso=="vídeo")
+                     <!-- Modal -->
+                     <div class="modal fade" id="xcluirTrechoVideoModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoVideoModalLabel{{$trecho->id}}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="excluirVerbeteVideoModalLabel{{$trecho->id}}">Confirmar</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza que deseja excluir esse trecho?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">Sim</button></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                     <li class="list-group-item div_container">
                     <div class="row">
                         <div class="col-sm-5">
@@ -275,7 +316,8 @@
                                         </div>
                                     </span>
                                     @auth
-                                        <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a> 
+                                        <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a>
+                                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">Excluir</label></a>    
                                     @endauth 
                                 </div>
                             </div>

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/exPlugin', function () {
-    return view('exemploPlugin');
-});
+// Route::get('/exPlugin', function () {
+//     return view('exemploPlugin');
+// });
 
 Route::get('/', function () {
     return view('letras');
@@ -46,6 +46,7 @@ Route::get('/editar/trecho/{id}', 'TrechoController@index')->name('editar')->mid
 Route::any('/salvar/trecho/{id}', 'TrechoController@update')->name('editar.update')->middleware('auth');
 Route::get('/adicionar/trecho/{id}', 'TrechoController@adicionar')->name('trecho.add')->middleware('auth');
 Route::post('/adicionar/trecho/salvar/{id}', 'TrechoController@salvar')->name('trecho.add.save')->middleware('auth');
+Route::get('/excluir/trecho/{id}', 'TrechoController@deletar')->name('trecho.del')->middleware('auth');
 
 Route::get('/adicionar/verbete', 'VerbeteController@exibir')->name('verbete.add')->middleware('auth');
 Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('verbete.add.save')->middleware('auth');
