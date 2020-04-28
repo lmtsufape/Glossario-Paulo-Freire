@@ -51,26 +51,28 @@
                 <ul class="list-group">
                 @foreach ($verbetes as $verbete)
                     @if (str_split($verbete->descricao)[0] == $letra->l)
-                    
-                    <li class="list-group-item lista_item" >
-                        <a href="{{ route('verbete', ['id' => $verbete->id]) }}">
+                    <a href="{{ route('verbete', ['id' => $verbete->id]) }}">
+                        <li class="list-group-item lista_item" >
                                 <div class="row">
-                                <div class="col-md-12"><label >{{$verbete->descricao}}</label></div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group">
-                                            <div style="margin-right: 1rem;">
-                                                <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
-                                                <label class="campo_compartilhar_texto">20.123</label>
+                                    <div class="col-md-12"><label >{{$verbete->descricao}}</label></div>
+                                        <div class="col-md-12">
+                                            <div class="btn-group">
+                                                <div style="margin-right: 1rem;">
+                                                    <img src="{{ asset('icones/trechos.svg') }}" alt="Logo" width="25" height="25"/><label class="campo_compartilhar_texto">{{$verbete->count}}</label>
+                                                </div>
+                                                <!-- <div style="margin-right: 1rem;">
+                                                    <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="22,12" height="14,41" />
+                                                    <label class="campo_compartilhar_texto">20.123</label>
+                                                </div>
+                                                <div>
+                                                    <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="22,12" height="14,41" />
+                                                    <label class="campo_compartilhar_texto">20.123</label>
+                                                </div> -->
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
-                        </a>
-                    </li>
+                        </li>
+                    </a>
                     @endif
                 @endforeach
         </div>

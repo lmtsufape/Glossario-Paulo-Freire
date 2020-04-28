@@ -64,8 +64,8 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-12" style="padding: 1rem;">
-                                        <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Salvar</label></button>
-                                        <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Cancelar</label></button></a>                                   
+                                        <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">Salvar</button>
+                                        <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">Cancelar</button></a>                                   
                                     </div>
                                 </div>
                             </div>
