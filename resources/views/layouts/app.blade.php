@@ -191,9 +191,9 @@
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <a href="https://www.facebook.com/InstitutoPauloFreireIPF" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Facebook<label></div></a>
-                        <a href="https://www.instagram.com/institutopaulofreire" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">Instagram</label></div></a>
-                        <a href="mailto:ipf@paulofreire.org" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" /><label style="margin-left: 1rem;">E-mail</label></div></a>
+                        <a href="https://www.facebook.com/InstitutoPauloFreireIPF" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Facebook</div></a>
+                        <a href="https://www.instagram.com/institutopaulofreire" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Instagram</div></a>
+                        <a href="mailto:ipf@paulofreire.org" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>E-mail</div></a>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -213,13 +213,13 @@
                         <!-- primeira coluna -->
                         <div class="col-md-1" style="color: white;">Parceria</div>
                         <div class="col-md-4">
-                            <a href="http://www.ufrpe.br/" target="_blank" style="color: white;">
+                            <a href="http://ww3.uag.ufrpe.br/" target="_blank" style="color: white;">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="{{ asset('icones/UFRPE.png') }}" alt="Logo" width="44" height="62" />
+                                        <img src="{{ asset('icones/logo_ufape.svg') }}" alt="Logo" width="auto" height="75" />
                                     </div>
                                     <div class="col-md-7">
-                                        <a style="color: white; font-size: 15px">Universidade Federal Rural de Pernambuco</a>
+                                        <a href="http://ww3.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px">Universidade Federal do Agreste de Pernambuco</a>
                                     </div>
                                 </div>
                             </a>
@@ -228,11 +228,11 @@
                         <div class="col-md-4">
                             <a href="http://lmts.uag.ufrpe.br/" target="_blank" style="color: white;">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <img src="{{ asset('icones/LMTS.png') }}" alt="Logo" width="109" height="44" />
                                     </div>
                                     <div class="col-md-7">
-                                        <label style="color: white; font-size: 15px;">Laboratório Multidisciplinar de Tecnologias Sociais</label>
+                                        <a href="http://lmts.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px;">Laboratório Multidisciplinar de Tecnologias Sociais</a>
                                     </div>
                                 </div>
                             </a>
