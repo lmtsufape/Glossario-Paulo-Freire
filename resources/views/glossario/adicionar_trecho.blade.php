@@ -59,7 +59,7 @@
                                             <input name="tempo" type="text" size="50px" value="" required></input>
                                         </p>
                                         <p>
-                                            <span style="width: 100%; word-wrap: break-word;">Link do repositório do vídeo:</span><br>
+                                            <span style="width: 100%; word-wrap: break-word;">Link do áudio/vídeo completo:</span><br>
                                             <input name="endereco_video" type="text" size="50px" value="" required></input>
                                         </p>
                                     </div>
