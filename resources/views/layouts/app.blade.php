@@ -158,7 +158,6 @@
             @yield('content')
         </div>
     </main>
-    
     <!-- rodape -->
     <div class="rodape">
         <div class="container">
