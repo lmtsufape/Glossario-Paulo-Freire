@@ -14,41 +14,48 @@
 // Route::get('/exPlugin', function () {
 //     return view('exemploPlugin');
 // });
-
 Route::get('/', function () {
     return view('letras');
 })->name('glossario');
 
-Route::get('/login', function() {
-    return view('auth.login');
-})->name('login');
+Route::prefix(parseLocale())->group(function () {
+    Route::get('/', function () {
+        return view('letras');
+    })->name('glossario');
 
-Route::get('/logout', 'HomeController@logout')->name('logout');
+    Route::get('/login', function() {
+        return view('auth.login');
+    })->name('login');
 
-Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
+    Route::get('/logout', 'HomeController@logout')->name('logout');
 
-Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
+    Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
 
-Auth::routes();
+    Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Auth::routes();
 
-Route::get('/letras', 'ViewsController@glossario')->name('letras');
-Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
-Route::get('/linha-do-tempo', 'ViewsController@LinhaDoTempo')->name('linhaDoTempo');
+    Route::any('/mudar-linguagem', 'ViewsController@mudarLinguagem')->name('mudar');
 
-Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa');
-Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova');
-Route::any('/pesquisar/{id}', 'PesquisaController@pesquisaId')->name('pesquisa.id');
-Route::get('/contarView/{id}', 'ViewsController@contarView')->name('contarView');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/editar/trecho/{id}', 'TrechoController@index')->name('editar')->middleware('auth');
-Route::any('/salvar/trecho/{id}', 'TrechoController@update')->name('editar.update')->middleware('auth');
-Route::get('/adicionar/trecho/{id}', 'TrechoController@adicionar')->name('trecho.add')->middleware('auth');
-Route::post('/adicionar/trecho/salvar/{id}', 'TrechoController@salvar')->name('trecho.add.save')->middleware('auth');
-Route::get('/excluir/trecho/{id}', 'TrechoController@deletar')->name('trecho.del')->middleware('auth');
+    Route::get('/letras', 'ViewsController@glossario')->name('letras');
+    Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
+    Route::get('/linha-do-tempo', 'ViewsController@LinhaDoTempo')->name('linhaDoTempo');
 
-Route::get('/adicionar/verbete', 'VerbeteController@exibir')->name('verbete.add')->middleware('auth');
-Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('verbete.add.save')->middleware('auth');
-Route::post('/editar/verbete/{id}', 'VerbeteController@editar')->name('verbete.edit')->middleware('auth');
-Route::get('/excluir/verbete/{id}', 'VerbeteController@deletar')->name('verbete.del')->middleware('auth');
+    Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa');
+    Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova');
+    Route::any('/pesquisar/{id}', 'PesquisaController@pesquisaId')->name('pesquisa.id');
+    Route::get('/contarView/{id}', 'ViewsController@contarView')->name('contarView');
+
+    Route::get('/editar/trecho/{id}', 'TrechoController@index')->name('editar')->middleware('auth');
+    Route::any('/salvar/trecho/{id}', 'TrechoController@update')->name('editar.update')->middleware('auth');
+    Route::get('/adicionar/trecho/{id}', 'TrechoController@adicionar')->name('trecho.add')->middleware('auth');
+    Route::post('/adicionar/trecho/salvar/{id}', 'TrechoController@salvar')->name('trecho.add.save')->middleware('auth');
+    Route::get('/excluir/trecho/{id}', 'TrechoController@deletar')->name('trecho.del')->middleware('auth');
+
+    Route::get('/adicionar/verbete', 'VerbeteController@exibir')->name('verbete.add')->middleware('auth');
+    Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('verbete.add.save')->middleware('auth');
+    Route::post('/editar/verbete/{id}', 'VerbeteController@editar')->name('verbete.edit')->middleware('auth');
+    Route::get('/excluir/verbete/{id}', 'VerbeteController@deletar')->name('verbete.del')->middleware('auth');
+});

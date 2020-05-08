@@ -21,7 +21,6 @@ class TrechoController extends Controller
         $validated = $request->validate([
             'texto' => 'required',
             'titulo_video' => 'required',
-            'tipo_recurso' => 'required',
             'tempo' => 'required',
             'endereco_video' => 'required',
             'arquivo_hd' => 'nullable',
@@ -31,6 +30,7 @@ class TrechoController extends Controller
         //substituindo o texto e o titulo do $request no trecho
         $trecho->texto = $request->texto;
         $trecho->titulo_video = $request->titulo_video;
+        $trecho->tempo = $request->tempo;
         
         //salvar o nome do arquivo para resetar as views
         $nome_antigo_hd = $trecho->arquivo_hd;

@@ -114,31 +114,31 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('imagens/logo_Colorida_institutoPF.png') }}" height="30">
-                Instituto Paulo Freire
+                @lang('mensagens.Instituto Paulo Freire')
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon" onclick="mostrarOpcoes();"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">Conheça Paulo Freire</a>
-                <a class="nav-item nav-link" href="{{ route('linhaDoTempo') }}">Linha Do Tempo</a>
-                <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">Biblioteca</a>
-                <a class="nav-item nav-link" target="_blank" href="http://www.acervo.paulofreire.org/">Acervo</a>
-                <a class="nav-item nav-link" href="{{ route('glossario') }}">Glossário</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.Home')</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.O glossário')</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.Conheça Paulo Freire')</a>
+                <a class="nav-item nav-link" href="{{ route('linhaDoTempo') }}">@lang('mensagens.Linha do Tempo')</a>
+                <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">@lang('mensagens.Biblioteca')</a>
+                <a class="nav-item nav-link" target="_blank" href="http://www.acervo.paulofreire.org/">@lang('mensagens.Acervo')</a>
                 @auth
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{auth()->user()->name}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a href="{{ route('register') }}" class="dropdown-item">Novo Usuário</a>
-                        <a href="{{ route('logout') }}" class="dropdown-item" type="button">Sair</a>
+                        <a href="{{ route('register') }}" class="dropdown-item">@lang('mensagens.Novo usuário')</a>
+                        <a href="{{ route('logout') }}" class="dropdown-item" type="button">@lang('mensagens.Sair')</a>
                     </div>
                 </div>
                 @else
-                <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ route('login') }}">@lang('mensagens.Login')</a>
                 @endauth
             </div>
             </div>
@@ -167,25 +167,25 @@
                         <div class="col-md-12" style="margin-top:1rem; padding-bottom: 1rem;">
                             <img src=" {{ asset('icones/institutoPF.png') }}" alt="Logo" width="100" height="58" />
                         </div>
-                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: red;">INSTITUTO</a></div> 
-                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: blue;">PAULO FREIRE</a></div>
-                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: 1rem;"><a style="color: white; font-size: 15px;">Instituto de Educação e Direitos Humanos Paulo Freire</a></div>
+                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: red;">@lang('mensagens.INSTITUTO')</a></div> 
+                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: blue;">@lang('mensagens.PAULO FREIRE')</a></div>
+                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: 1rem;"><a style="color: white; font-size: 15px;">@lang('mensagens.Instituto de Educação e Direitos Humanos Paulo Freire')</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="#" style="color: white;">Home</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" style="color: white;">Conheça Paulo Freire</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="{{ route('linhaDoTempo') }}" style="color: white;">Linha do Tempo</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank" style="color: white;">Acervo Digital</a></div>
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="#" style="color: white;">@lang('mensagens.Home')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" style="color: white;">@lang('mensagens.Conheça Paulo Freire')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="{{ route('linhaDoTempo') }}" style="color: white;">@lang('mensagens.Linha do Tempo')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank" style="color: white;">@lang('mensagens.Acervo Digital')</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://biblioteca.paulofreire.org/" target="_blank" style="color: white;">Bibliotecas</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="{{ route('glossario') }}" style="color: white;">Glossário Paulo Freire</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/o-acervo-paulo-freire-apresentacao/17-unifreire/52-comunidade-freiriana-encontros-inter-f%C3%B3rum-paulo-freire" target="_blank" style="color: white;">Comunidade Freiriana Internacional</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/" target="_blank" style="color: white;">Instituto Paulo Freire</a></div>   
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://biblioteca.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Biblioteca')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="{{ route('glossario') }}" style="color: white;">@lang('mensagens.Glossário Paulo Freire')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/o-acervo-paulo-freire-apresentacao/17-unifreire/52-comunidade-freiriana-encontros-inter-f%C3%B3rum-paulo-freire" target="_blank" style="color: white;">@lang('mensagens.Comunidade Freiriana Internacional')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Instituto Paulo Freire')</a></div>   
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -201,7 +201,7 @@
                             <img src="{{ asset('icones/UNESCO.png') }}" alt="Logo" width="134" height="134" />
                         </div>
                         <div class="col-md-12">
-                            <label style="font-size: 10px; color: white;">Acervo reconhecido pela UNESCO</label>
+                            <label style="font-size: 10px; color: white;">@lang('mensagens.Acervo reconhecido pela UNESCO')</label>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                 <div class="col-md-12">
                     <div class="row" style="text-align: left">
                         <!-- primeira coluna -->
-                        <div class="col-md-1" style="color: white;">Parceria</div>
+                        <div class="col-md-1" style="color: white;">@lang('mensagens.Parceria')</div>
                         <div class="col-md-4">
                             <a href="http://ww3.uag.ufrpe.br/" target="_blank" style="color: white;">
                                 <div class="row">
@@ -218,7 +218,7 @@
                                         <img src="{{ asset('icones/logo_ufape.svg') }}" alt="Logo" width="auto" height="75" />
                                     </div>
                                     <div class="col-md-7">
-                                        <a href="http://ww3.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px">Universidade Federal do Agreste de Pernambuco</a>
+                                        <a href="http://ww3.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px">@lang('mensagens.Universidade Federal do Agreste de Pernambuco')</a>
                                     </div>
                                 </div>
                             </a>
@@ -231,7 +231,7 @@
                                         <img src="{{ asset('icones/LMTS.png') }}" alt="Logo" width="109" height="44" />
                                     </div>
                                     <div class="col-md-7">
-                                        <a href="http://lmts.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px;">Laboratório Multidisciplinar de Tecnologias Sociais</a>
+                                        <a href="http://lmts.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px;">@lang('mensagens.Laboratório Multidisciplinar de Tecnologias Sociais')</a>
                                     </div>
                                 </div>
                             </a>
@@ -240,12 +240,12 @@
                         <div class="col-md-2">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <select class="custom-select custom-select-sm">
-                                      <option selected>Selecione o idioma</option>
-                                      <option value="1">Inglês(EUA)</option>
-                                      <option value="2">Francês</option>
-                                      <option value="3">Espanhol</option>
-                                      <option value="4">Português (BRA)</option>
+                                    <select id="selecionarIdioma" class="custom-select custom-select-sm" onchange="mudarIdioma()">
+                                        <option value="pt-BR" selected>@lang('mensagens.Selecione o idioma')</option>
+                                        <option value="en">@lang('mensagens.Inglês(EUA)')</option>
+                                        <option value="fr">@lang('mensagens.Francês')</option>
+                                        <option value="es">@lang('mensagens.Espanhol')</option>
+                                        <option value="pt-BR">@lang('mensagens.Português (BRA)')</option>
                                     </select>
                                 </div>
                             </div>
@@ -281,7 +281,23 @@
 				document.getElementById("navbarNavAltMarkup").style.display = 'none';
 			}
 
-		}
+        }
+        
+        function mudarIdioma() {
+            var localizacao = document.getElementById('selecionarIdioma');
+            
+            if (localizacao.value == "pt-BR") {
+                window.location.href = "{{ url('') }}";
+            } else if (localizacao.value == "en") {
+                window.location.href = "{{ url('') }}/en";
+            } else if (localizacao.value == "es") {
+                window.location.href = "{{ url('') }}/es";
+            } else if (localizacao.value == "fr") {
+                window.location.href = "{{ url('') }}/fr";
+            } else {
+                window.location.href = "{{ url('') }}";
+            }
+        }
     </script>
 </body>
 </html>

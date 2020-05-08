@@ -9,7 +9,7 @@
 @if ($trecho->tipo_recurso == "áudio")
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Editar trecho</a></div>
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Editar trecho')</a></div>
             <div class="col-sm-12">
             @if ($errors->any())
                 <div class="col-md-12" style="margin-top: 5px;">
@@ -37,35 +37,32 @@
                                         </audio> 
                                     @endif
                                     <br>
+                                    @lang('mensagens.Arquivo de áudio'): </br>
                                     <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd" id="arquivo"></input>
                                 </div>
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-sm-12" style="padding-top: 1rem;">
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Texto:</span>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Texto'):</span>
                                                 <textarea name="texto" rows="8" cols="90" style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</textarea>
                                             </p>
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Titulo:</span><br>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Titulo'):</span><br>
                                                 <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}"></input>
                                             </p>
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Tipo de recurso:</span><br>
-                                                <input name="tipo_recurso" type="text" size="50px" value="{{$trecho->tipo_recurso}}"></input>
-                                            </p>
-                                            <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Tempo:</span><br>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Tempo'):</span><br>
                                                 <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}"></input>
                                             </p>
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Link do áudio completo:</span><br>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Link do áudio completo'):</span><br>
                                                 <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}"></input>
                                             </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
-                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Salvar</label></button>
-                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Cancelar</label></button></a>                                   
+                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">@lang('mensagens.Salvar')</label></button>
+                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">@lang('mensagens.Cancelar')</label></button></a>                                   
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +75,7 @@
 @else
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Editar Trecho</a></div>
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Editar trecho')</a></div>
             </div>
             <div class="col-sm-12">
             @if ($errors->any())
@@ -173,39 +170,37 @@
                                     @endif
                                     <br>
                                     <p>
-                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd" id="arquivo_hd"> em HD</input>
+                                        @lang('mensagens.HD')</br>
+                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd" id="arquivo_hd"></input>
                                     </p>
                                     <p>
-                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd" id="arquivo_sd"> em SD</input>
+                                        @lang('mensagens.SD')</br>
+                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd" id="arquivo_sd"></input>
                                     </p>
                                 </div>
                                 <div class="col">
                                     <div class="row">
                                         <div class="col-sm-12" style="padding-top: 1rem;">
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Texto:</span>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Texto'):</span>
                                                 <textarea name="texto" rows="8" cols="90" style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</textarea>
                                             </p>
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Titulo:</span><br>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Titulo'):</span><br>
                                                 <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}"></input>
                                             </p>
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Tipo de recurso:</span><br>
-                                                <input name="tipo_recurso" type="text" size="50px" value="{{$trecho->tipo_recurso}}"></input>
-                                            </p>
-                                            <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Tempo:</span><br>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Tempo'):</span><br>
                                                 <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}"></input>
                                             </p>
                                             <p>
-                                                <span style="width: 100%; word-wrap: break-word;">Link do vídeo completo:</span><br>
+                                                <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Link do vídeo completo'):</span><br>
                                                 <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}"></input>
                                             </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
-                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Salvar</label></button>
-                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">Cancelar</label></button></a>                                    
+                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">@lang('mensagens.Salvar')</label></button>
+                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">@lang('mensagens.Cancelar')</label></button></a>                                    
                                         </div>
                                     </div>
                                 </div>

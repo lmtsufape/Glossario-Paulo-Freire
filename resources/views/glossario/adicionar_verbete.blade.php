@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-        <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Adicionar um verbete</a></div>
+        <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Adicionar um verbete')</a></div>
     </div>
     <form action="{{ route('verbete.add.save') }}" method="POST">
         <div class="col-sm-12">
@@ -23,12 +23,12 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-12" style="padding-top: 1rem;">
-                            <span style="width: 100%; word-wrap: break-word;">Nome:</span>
+                            <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Nome'):</span>
                             <input type="text" name="nome" style="width: 100%; word-wrap: break-word;"></input>
                         </div>
                         <div class="col-sm-12" style="padding: 1rem;">
-                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">Salvar</button>
-                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">Cancelar</button></a>                                 
+                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">@lang('mensagens.Salvar')</button>
+                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">@lang('mensagens.Cancelar')</button></a>                                 
                         </div>
                     </div>
                 </li>

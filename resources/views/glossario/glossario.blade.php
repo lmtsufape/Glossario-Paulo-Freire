@@ -38,10 +38,10 @@
                     <div class="col-md-12">
                         <div class="row container">
                             <div class="col-xs-2">
-                                <a href="{{ route('glossario') }}" style="margin: 5px;">Glossário</a>
+                                <a href="{{ route('glossario') }}" style="margin: 5px;">@lang('mensagens.Índices')</a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="{{ route('pesquisa') }}" style="margin: 5px;">Pesquisa</a>
+                                <a href="{{ route('pesquisa') }}" style="margin: 5px;">@lang('mensagens.Busca')</a>
                             </div>
                         </div>
                     </div>
@@ -69,9 +69,9 @@
                     <div class="col-md-12" style="margin-top: 5px;">
                         <div style="float: right">
                             @auth
-                                <a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
+                                <a href="{{ route('verbete.add') }}">@lang('mensagens.Adicionar Verbete')</a> &nbsp; 
                             @endauth
-                                <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
+                                <a href=" {{ route('listarPalavras') }} ">@lang('mensagens.Listar todas as palavras')</a>
                         </div>
                     </div>
                 </div>
@@ -84,10 +84,10 @@
 <div class="col-md-4 border-right" style="background-color: white; margin-left: 1rem; margin-right: 1rem; margin-bottom: 1rem;">
     <div class="row">
         <div class="col-sm-12" style="margin-bottom: 10px;">
-            <div style="margin-left: 12px;"><a id="titulo_lista">Lista</a></div>
+            <div style="margin-left: 12px;"><a id="titulo_lista">@lang('mensagens.Lista')</a></div>
                 <br>
             <div style="margin-left: 12px; margin-top: -35px; margin-bottom: 2rem;">
-                <a id="subtitulo_lista">Palavras com a letra </a>
+                <a id="subtitulo_lista">@lang('mensagens.Palavras com a letra') </a>
                 <output id="subtitulo_lista" id="letraSelecionada">{{$letraSelecionada}}</output>
             </div>               
         </div>
@@ -99,17 +99,17 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="excluirVerbeteModalLabel">Confirmar</h5>
+                            <h5 class="modal-title" id="excluirVerbeteModalLabel">@lang('mensagens.Confirmar')</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            Tem certeza que deseja excluir esse verbete?
+                            @lang('mensagens.Confirmacao')
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                            <a href="{{ route('verbete.del', ['id' => $verbete->id]) }}"><button type="button" class="btn btn-primary">Sim</button></a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
+                            <a href="{{ route('verbete.del', ['id' => $verbete->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
                         </div>
                         </div>
                     </div>
@@ -121,9 +121,9 @@
                             <button button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right; border: none; background-color: white;"><img src="{{ asset('icones/menu_dot.svg') }}" alt="Logo" width="auto" height="20" />
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
-                                <a href="{{ route('trecho.add', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>Adicionar trecho</span></a>
-                                <a href="javascript:editarVerbete('{{$verbete->id}}')" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>Editar veberte</span></a>
-                                <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#xcluirVerbeteModal"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>Excluir</span></a>
+                                <a href="{{ route('trecho.add', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Adicionar trecho')</span></a>
+                                <a href="javascript:editarVerbete('{{$verbete->id}}')" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Editar veberte')</span></a>
+                                <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#xcluirVerbeteModal"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Excluir')</span></a>
                             </div>
                         </span>
                         <div>
@@ -131,8 +131,8 @@
                                 <form id="form_editar_verbete_{{$verbete->id}}" method="POST" action="{{ route('verbete.edit', ['id' => $verbete->id]) }}">
                                     @csrf
                                     <input id="input_editar_verbete_{{$verbete->id}}" name="descricao" type="hidden"></input>
-                                    <a id="button_salvar_{{$verbete->id}}" class="btn" style="display: none; border-color:#d5d5d5; border-width:2px; height: 10px; background-color: white; color: #d5d5d5;" href="javascript:salvarVerbete('{{$verbete->id}}')"> Salvar</a>
-                                    <a id="button_cancelar_{{$verbete->id}}" class="btn" href="javascript:cancelarEditarVerbete('{{$verbete->id}}')" style="display: none; border-color:#d5d5d5; border-width:2px; height: 25px; background-color: white; color: #d5d5d5;">Cancelar</a>
+                                    <a id="button_salvar_{{$verbete->id}}" class="btn" style="display: none; border-color:#d5d5d5; border-width:2px; height: 10px; background-color: white; color: #d5d5d5;" href="javascript:salvarVerbete('{{$verbete->id}}')">@lang('mensagens.Salvar')</a>
+                                    <a id="button_cancelar_{{$verbete->id}}" class="btn" href="javascript:cancelarEditarVerbete('{{$verbete->id}}')" style="display: none; border-color:#d5d5d5; border-width:2px; height: 25px; background-color: white; color: #d5d5d5;">@lang('mensagens.Cancelar')</a>
                                 </form>
                             </p>
                         </div>
@@ -148,9 +148,9 @@
     @if (count($trechosAudios) != 0)
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Áudios</a></div>
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Áudios')</a></div>
                     <br>
-                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">Resultado: {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
+                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
             </div>
             <div class="col-sm-12">
                 <ul class="list-group">
@@ -161,17 +161,17 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="excluirVerbeteModalAudioLabel{{$trecho->id}}">Confirmar</h5>
+                                    <h5 class="modal-title" id="excluirVerbeteModalAudioLabel{{$trecho->id}}">@lang('mensagens.Confirmar')</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Tem certeza que deseja excluir esse trecho?
+                                    @lang('mensagens.Confirmacao')
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                    <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">Sim</button></a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
+                                    <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
                                 </div>
                                 </div>
                             </div>
@@ -203,7 +203,7 @@
                                     };
                                 </script>
                                 @endif
-                                <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="left: 5px">Áudio completo</a>
+                                <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="left: 5px">@lang('mensagens.Áudio completo')</a>
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -218,7 +218,7 @@
                                         </output>
                                         <span class="dropdown">
                                             <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                                <label class="campo_compartilhar_texto">Compartilhar</label>
+                                                <label class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</label>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                                                 <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
@@ -227,8 +227,8 @@
                                             </div>
                                         </span>
                                         @auth
-                                            <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a>
-                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">Excluir</label></a>
+                                            <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
+                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>
                                         @endauth                                        
                                     </div>
                                 </div>
@@ -255,9 +255,9 @@
     @if (count($trechosVideos) != 0)
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">Vídeos</a></div>
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Vídeos')</a></div>
                     <br>
-                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">Resultado: {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
+                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
             </div>
             <div class="col-sm-12">
                 <ul class="list-group">
@@ -268,17 +268,17 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="excluirVerbeteVideoModalLabel{{$trecho->id}}">Confirmar</h5>
+                                    <h5 class="modal-title" id="excluirVerbeteVideoModalLabel{{$trecho->id}}">@lang('mensagens.Confirmar')</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Tem certeza que deseja excluir esse trecho?
+                                    @lang('mensagens.Confirmacao')
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                    <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">Sim</button></a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
+                                    <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
                                 </div>
                                 </div>
                             </div>
@@ -375,7 +375,7 @@
                                     <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-right: 0.2rem;">
                                 @endif
                                 <p style="position: relative; left: 10px; top: 1rem;">
-                                    <a class="subtitulo_container" href="{{$trecho->endereco_video}}" >Vídeo completo</a>
+                                    <a class="subtitulo_container" href="{{$trecho->endereco_video}}" >@lang('mensagens.Vídeo completo')</a>
                                 </p>
                             </div>
                             <div class="col">
@@ -391,7 +391,7 @@
                                         </output>
                                         <span class="dropdown">
                                             <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                                <label class="campo_compartilhar_texto">Compartilhar</label>
+                                                <label class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</label>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                                                 <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
@@ -400,8 +400,8 @@
                                             </div>
                                         </span>
                                         @auth
-                                            <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">Editar</label></button></a>
-                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">Excluir</label></a>   
+                                            <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
+                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>   
                                         @endauth                                
                                     </div>
                                 </div>

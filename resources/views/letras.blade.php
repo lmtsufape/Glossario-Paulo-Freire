@@ -10,10 +10,10 @@
                         <div class="col-md-12">
                             <div class="row container">
                                 <div class="col-xs-2">
-                                    <a href="{{ route('glossario') }}" style="margin: 5px;">Glossário</a>
+                                    <a href="{{ route('glossario') }}" style="margin: 5px;">@lang('mensagens.Índices')</a>
                                 </div>
                                 <div class="col-xs-2">
-                                    <a href="{{ route('pesquisa') }}" style="margin: 5px;">Pesquisa</a>
+                                    <a href="{{ route('pesquisa') }}" style="margin: 5px;">@lang('mensagens.Busca')</a>
                                 </div>
                             </div>
                         </div>
@@ -40,9 +40,10 @@
                         @endif
                         <div class="col-md-12" style="margin-top: 5px;">
                             <div style="float: right">
-                                @auth<a href="{{ route('verbete.add') }}">Adicionar verbete</a> &nbsp; 
+                                @auth<a href="{{ route('verbete.add') }}">@lang('mensagens.Adicionar Verbete')</a> &nbsp; 
                                 @endauth
-                                <a href=" {{ route('listarPalavras') }} ">Listar todas as palavras</a>
+                                <a href=" {{ route('listarPalavras') }} ">@lang('mensagens.Listar todas as palavras')</a>
+                                </div>
                             </div>
                         </div>
                     </div>
