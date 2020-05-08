@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 @else
-                <a class="nav-item nav-link" href="{{ route('login') }}">@lang('mensagens.Login')</a>
+                {{-- <a class="nav-item nav-link" href="{{ route('login') }}">@lang('mensagens.Login')</a> --}}
                 @endauth
             </div>
             </div>
