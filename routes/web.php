@@ -35,13 +35,12 @@ Route::prefix(parseLocale())->group(function () {
 
     Auth::routes();
 
-    Route::any('/mudar-linguagem', 'ViewsController@mudarLinguagem')->name('mudar');
-
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/letras', 'ViewsController@glossario')->name('letras');
     Route::get('/listar-todas-as-palavras', 'ViewsController@listarPalavras')->name('listarPalavras');
     Route::get('/linha-do-tempo', 'ViewsController@LinhaDoTempo')->name('linhaDoTempo');
+    Route::get('/o-glossario', 'ViewsController@viewOhGlossario')->name('o.glossario');
 
     Route::get('/pesquisa', 'ViewsController@pesquisa')->name('pesquisa');
     Route::any('/pesquisar', 'PesquisaController@novaPesquisa')->name('pesquisa.nova');

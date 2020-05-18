@@ -27,4 +27,8 @@ class ViewsController extends Controller
         $trecho->quant_views = $trecho->quant_views + 1;
         $trecho->update();
     }
+
+    public function viewOhGlossario() {
+        return view('glossario.o_glossario');
+    }
 }

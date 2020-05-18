@@ -122,7 +122,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="#">@lang('mensagens.Home')</a>
-                <a class="nav-item nav-link" href="#">@lang('mensagens.O glossário')</a>
+                <a class="nav-item nav-link" href="{{route('o.glossario')}}">@lang('mensagens.O glossário')</a>
                 <a class="nav-item nav-link" href="#">@lang('mensagens.Conheça Paulo Freire')</a>
                 <a class="nav-item nav-link" href="{{ route('linhaDoTempo') }}">@lang('mensagens.Linha do Tempo')</a>
                 <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">@lang('mensagens.Biblioteca')</a>
