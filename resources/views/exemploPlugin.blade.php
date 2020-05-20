@@ -12,95 +12,11 @@
         <!-- Styles -->
         
 
-        <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
+        <link href="{{ asset('video.js/node_modules/video.js/dist/video-js.min.css')}}" rel="stylesheet"/>
 
-        
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+        <link href="{{ asset('video.js/node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.css')}}" rel="stylesheet"/>
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
-            .vjs-resolution-button .vjs-icon-placeholder:before {
-                content: '\f110';
-                font-family: VideoJS;
-                font-weight: normal;
-                font-style: normal;
-                font-size: 1.8em;
-                line-height: 1.67em;
-            }
-
-            .vjs-resolution-button .vjs-resolution-button-label {
-                font-size: 1em;
-                line-height: 3em;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-                box-sizing: inherit;
-                display: none;
-            }
-
-            .vjs-resolution-button .vjs-menu .vjs-menu-content {
-                width: 4em;
-                left: 50%; /* Center the menu, in it's parent */
-                margin-left: -2em; /* half of width, to center */
-            }
-
-            .vjs-resolution-button .vjs-menu li {
-                text-transform: none;
-                font-size: 1em;
-            }
-        </style>
-        <link href="css/video-js.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('video.js/style.css') }}">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -135,45 +51,46 @@
                 </div>
             </div>
             
-             <!-- script do video.js -->
-            <script src="{{ asset('video.js/dist/video.js') }}"></script>
-            
-            <!-- script do swich de qualidade de video -->
-            <script src="{{ asset('videojs-resolution-switcher/lib/videojs-resolution-switcher.js') }}"></script>
+            <script src="{{ asset('video.js/node_modules/video.js/dist/video.js')}}"></script>
+            <script src="{{ asset('video.js/node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.js')}}"></script>
 
-            <video id="my_video_1" class="video-js vjs-default-skin" poster="{{ asset('imagens/imagem_video.png') }}">
-            </video>
+            <div class="container-fluid section">
+                <div class="row">
+                    <div class="col-md-6" style="height: 200px; width: 400px;">
+                    <video id='video' class="video-js vjs-default-skin" controls style="width: 400px; max-width: 100%;"></video>
+                    </div>
+                </div>
+            </div>
+                        
             <script>
-                videojs('my_video_1', {
+                videojs('video', {
                     controls: true,
+                    fluid: true,
                     plugins: {
                         videoJsResolutionSwitcher: {
-                            default: 'low', // Default resolution [{Number}, 'low', 'high'],
-                            dynamicLabel: true,
+                        default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                        dynamicLabel: true
                         }
                     }
                 }, function(){
-                    
                     var player = this;
                     window.player = player
                     player.updateSrc([
-                    {
-                        src: "{{ asset('video/teste.mp4') }}",
+                        {
+                        src: "{{ asset('teste.mp4')}}?SD",
                         type: 'video/mp4',
                         label: 'SD',
                         res: 360
-                    },
-                    {
-                        src: "{{ asset('video/teste.mp4') }}",
+                        },
+                        {
+                        src: "{{ asset('test.mp4')}}?HD",
                         type: 'video/mp4',
                         label: 'HD',
                         res: 720
-                    },
+                        }
                     ])
                     player.on('resolutionchange', function(){
-                        
-                        console.info('Source changed to %s', player.src());
-                        
+                        console.info('Source changed to %s', player.src())
                     })
                 })
             </script>

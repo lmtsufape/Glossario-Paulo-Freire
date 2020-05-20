@@ -19,8 +19,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Fonts do video.js e videojs-resolution-swicher -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('video.js/dist/video-js.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('videojs-resolution-switcher/lib/videojs-resolution-switcher.css') }}">
+    <link href="{{ asset('video.js/node_modules/video.js/dist/video-js.min.css')}}" rel="stylesheet"/>
+
+    <link href="{{ asset('video.js/node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.css')}}" rel="stylesheet"/>
     <style>
             .full-height {
                 background-color: #fff;
@@ -74,38 +75,6 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-
-            .vjs-resolution-button .vjs-icon-placeholder:before {
-                content: '\f110';
-                font-family: VideoJS;
-                font-weight: normal;
-                font-style: normal;
-                font-size: 1.8em;
-                line-height: 1.67em;
-            }
-
-            .vjs-resolution-button .vjs-resolution-button-label {
-                font-size: 1em;
-                line-height: 3em;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-                box-sizing: inherit;
-            }
-
-            .vjs-resolution-button .vjs-menu .vjs-menu-content {
-                width: 4em;
-                left: 50%; /* Center the menu, in it's parent */
-                margin-left: -2em; /* half of width, to center */
-            }
-
-            .vjs-resolution-button .vjs-menu li {
-                text-transform: none;
-                font-size: 1em;
-            }
         </style>
 </head>
 <body>
@@ -147,10 +116,10 @@
     </nav>
 
     <!-- script do video.js -->
-    <script src="{{ asset('video.js/dist/video.js') }}"></script>
+    <script src="{{ asset('video.js/node_modules/video.js/dist/video.js')}}"></script>
     
     <!-- script do swich de qualidade de video -->
-    <script src="{{ asset('videojs-resolution-switcher/lib/videojs-resolution-switcher.js') }}"></script>
+    <script src="{{ asset('video.js/node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.js')}}"></script>
     
     <!-- conteudo da pagina -->
     <main class="py-4">

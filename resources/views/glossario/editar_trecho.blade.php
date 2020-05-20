@@ -95,70 +95,70 @@
                                 <div class="col-sm-5">
                                     @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
                                         <div id="videojs" style="height: 250px; max-width: 100%">
-                                            <video-js id="my_video_{{ $trecho->id }}" class="vjs-default-skin" preload="auto" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
-                                            </video-js>
+                                            <video id="my_video_{{ $trecho->id }}" class="video-js vjs-default-skin" onclick="contarView()" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%" >
+                                            </video>
                                             <script>
                                                 videojs('my_video_{{ $trecho->id }}', {
                                                 controls: true,
-                                                plugins: {
-                                                videoJsResolutionSwitcher: {
-                                                    default: 'low', // Default resolution [{Number}, 'low', 'high'],
-                                                    dynamicLabel: true,
-                                                }
-                                                }
+                                                    plugins: {
+                                                        videoJsResolutionSwitcher: {
+                                                            default: 'low', // Default resolution [{Number}, 'low', 'high'],
+                                                            dynamicLabel: true,
+                                                        }
+                                                    }
                                                 }, function(){
                                                     var player = this;
                                                     window.player = player
-                                                    player.updateSrc([
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                        type: 'video/mp4',
-                                                        label: 'SD',
-                                                        res: 360
-                                                    },
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                        type: 'video/webm',
-                                                        label: 'SD',
-                                                        res: 360
-                                                    },
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                        type: 'video/mkv',
-                                                        label: 'SD',
-                                                        res: 360
-                                                    },
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                        type: 'video/ogv',
-                                                        label: 'SD',
-                                                        res: 360
-                                                    },
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                        type: 'video/mp4',
-                                                        label: 'HD',
-                                                        res: 720
-                                                    },
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                        type: 'video/webm',
-                                                        label: 'HD',
-                                                        res: 720
-                                                    },
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                        type: 'video/mkv',
-                                                        label: 'HD',
-                                                        res: 720
-                                                    },
-                                                    {
-                                                        src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                        type: 'video/ogv',
-                                                        label: 'HD',
-                                                        res: 720
-                                                    },
-                                                    ])
+                                                        player.updateSrc([
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                                            type: 'video/mp4',
+                                                            label: 'SD',
+                                                            res: 360
+                                                        },
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                                            type: 'video/webm',
+                                                            label: 'SD',
+                                                            res: 360
+                                                        },
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                                            type: 'video/mkv',
+                                                            label: 'SD',
+                                                            res: 360
+                                                        },
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
+                                                            type: 'video/ogv',
+                                                            label: 'SD',
+                                                            res: 360
+                                                        },
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                                            type: 'video/mp4',
+                                                            label: 'HD',
+                                                            res: 720
+                                                        },
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                                            type: 'video/webm',
+                                                            label: 'HD',
+                                                            res: 720
+                                                        },
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                                            type: 'video/mkv',
+                                                            label: 'HD',
+                                                            res: 720
+                                                        },
+                                                        {
+                                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
+                                                            type: 'video/ogv',
+                                                            label: 'HD',
+                                                            res: 720
+                                                        },
+                                                        ])
                                                     player.on('resolutionchange', function(){
                                                         console.info('Source changed to %s', player.src())
                                                     })
