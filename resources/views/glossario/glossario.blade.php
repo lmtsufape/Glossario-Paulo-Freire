@@ -123,7 +123,9 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
                                 <a href="{{ route('trecho.add', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Adicionar trecho')</span></a>
                                 <a href="javascript:editarVerbete('{{$verbete->id}}')" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Editar veberte')</span></a>
-                                <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#xcluirVerbeteModal"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Excluir')</span></a>
+                                @if (Auth()->user()->email === "admin@ufape.edu.br")
+                                    <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#xcluirVerbeteModal"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Excluir')</span></a>
+                                @endif
                             </div>
                         </span>
                         <div>
@@ -228,7 +230,9 @@
                                         </span>
                                         @auth
                                             <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
-                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>
+                                            @if (Auth()->user()->email === "admin@ufape.edu.br")
+                                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>
+                                            @endif
                                         @endauth                                        
                                     </div>
                                 </div>
@@ -401,7 +405,9 @@
                                         </span>
                                         @auth
                                             <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
-                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>   
+                                            @if (Auth()->user()->email === "admin@ufape.edu.br")
+                                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>   
+                                            @endif
                                         @endauth                                
                                     </div>
                                 </div>
