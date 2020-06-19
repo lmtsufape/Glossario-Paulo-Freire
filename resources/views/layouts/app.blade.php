@@ -78,6 +78,38 @@
         </style>
 </head>
 <body>
+    <!-- Botão para acionar modal -->
+    {{-- <button type="button" class="btn btn-primary" >
+        Abrir modal de demonstração
+    </button> --}}
+  
+    <!-- Modal o glossário -->
+    <div class="modal fade" id="modalOhGlossario" tabindex="-1" role="dialog" aria-labelledby="modalOhGlossario" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="border-radius: 15px; justify-items: center; max-width: 100%; height: 50%; background-color: rgba(5, 21, 51, 0.900);">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalOhGlossario" style="color: white;">@lang('mensagens.O glossário')</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" style="border-color: white; color: white;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-indent: 0.5cm; text-align: justify; font-size: 15px; color: white;">
+                <p>
+                    O Glossário audiovisual do educador Paulo Freire nasceu de uma demanda do Instituto Paulo Freire (SP), realizada em parceria com a Universidade Federal Rural de Pernambuco, atualmente Universidade Federal do Agreste de Pernambuco, por meio do Laboratório Multidisciplinar de Tecnologias Sociais.
+                </p>
+                <p>
+                    Foram identificados vídeos e áudios do educador, editados conteúdos audiovisuais e preparado espaço virtual para disponibilização do glossário.
+                </p>
+                <p>
+                    Com a realização desta iniciativa, esperamos oferecer como resultados da realização deste projeto contribuições para a formação inicial e continuada de estudantes, professores e interessados acerca da vida, obra e ao legado do patrono da Educação Brasileira e patrimônio educacional pernambucano, a disseminação da vida, obra e legado de Paulo Freire e a melhoria da qualidade sociocultural e socioambiental da educação pública.
+                </p>
+                <p>
+                    O glossário é composto, atualmente, por mais de trezentos verbetes, sendo estes abordados pelo educador em diferentes temáticas tanto educacional como experiências de vida compartilhadas por Freire.
+                </p>
+            </div>
+        </div>
+        </div>
+    </div>
     <!-- menu -->
     <nav class="navbar navbar-expand-lg navbar-light classNavBar">
         <div class="container">
@@ -91,7 +123,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="#">@lang('mensagens.Home')</a>
-                <a class="nav-item nav-link" href="{{route('o.glossario')}}">@lang('mensagens.O glossário')</a>
+                <a class="nav-item nav-link" data-toggle="modal" data-target="#modalOhGlossario">@lang('mensagens.O glossário')</a>
                 <a class="nav-item nav-link" href="#">@lang('mensagens.Conheça Paulo Freire')</a>
                 <a class="nav-item nav-link" href="{{ route('linhaDoTempo') }}">@lang('mensagens.Linha do Tempo')</a>
                 <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">@lang('mensagens.Biblioteca')</a>

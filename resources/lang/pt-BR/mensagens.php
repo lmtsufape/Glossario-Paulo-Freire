@@ -11,7 +11,7 @@ return [
     'Glossário Paulo Freire' => 'Glossário Paulo Freire',
     'Índices' => 'Índices',
     'Busca' => 'Busca',
-    'Listar todas as palavras' => 'Listar todas as palavras',
+    'Listar todas as palavras' => 'Listar todas os verbetes',
     'Comunidade Freiriana Internacional' => 'Comunidade Freiriana Internacional',
     'Instituto Paulo Freire' => 'Instituto Paulo Freire',
     'Laboratório Multidisciplinar de Tecnologias Sociais' => 'Laboratório Multidisciplinar de Tecnologias Sociais',
