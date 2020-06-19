@@ -69,7 +69,7 @@ return [
     'Esqueceu sua senha?' => 'Olvidaste tu contraseña?',
     'Resetar senha' => 'Restablecer contraseña',
     'Enviar link para redefinicao de senha' => 'Enviar enlace de restablecimiento de contraseña',
-    'Novo usuário' => 'Nuevo usuario',
+    'Novo usuário' => 'Nuevo editor',
     'Sair' => 'Salir',
     'Confirmar senha' => 'Confirmar seña',
     'Registrar' => 'Registrarse',

@@ -69,7 +69,7 @@ return [
     'Esqueceu sua senha?' => 'Forgot your password?',
     'Resetar senha' => 'Reset password',
     'Enviar link para redefinicao de senha' => 'Send password reset link',
-    'Novo usuário' => 'New user',
+    'Novo usuário' => 'New editor',
     'Sair' => 'Logout',
     'Confirmar senha' => 'Confirm password',
     'Registrar' => 'Register',

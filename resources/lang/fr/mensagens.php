@@ -69,7 +69,7 @@ return [
     'Esqueceu sua senha?' => 'Vous avez oublié votre mot de passe',
     'Resetar senha' => 'Réinitialiser le mot de passe',
     'Enviar link para redefinicao de senha' => 'Envoyer le link de réinitialisation du mot de passe',
-    'Novo usuário' => 'Nouvel utilisateur',
+    'Novo usuário' => 'Nouvel éditeur',
     'Sair' => 'Quitter',
     'Confirmar senha' => 'Confirmer le mot de passe',
     'Registrar' => "S'inscrire",
