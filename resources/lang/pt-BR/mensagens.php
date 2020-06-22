@@ -74,4 +74,6 @@ return [
     'Confirmar senha' => 'Confirmar senha',
     'Registrar' => 'Registrar',
     'Redefinir senha' => 'Redefinir senha',
+    'audioSD' => 'Arquivo de áudio em SD',
+    'audioHD' => 'Arquivo de áudio em HD',
 ];

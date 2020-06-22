@@ -37,8 +37,11 @@
                                         </audio> 
                                     @endif
                                     <br>
-                                    @lang('mensagens.Arquivo de áudio'): </br>
-                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd" id="arquivo"></input>
+                                    @lang('mensagens.audioHD'): <br>
+                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_hd_audio" id="arquivo">
+                                    <br>
+                                    @lang('mensagens.audioSD'): <br>
+                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd_audio" id="arquivo">
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -49,15 +52,15 @@
                                             </p>
                                             <p>
                                                 <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Titulo'):</span><br>
-                                                <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}"></input>
+                                                <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}">
                                             </p>
                                             <p>
                                                 <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Tempo'):</span><br>
-                                                <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}"></input>
+                                                <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}">
                                             </p>
                                             <p>
                                                 <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Link do áudio completo'):</span><br>
-                                                <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}"></input>
+                                                <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}">
                                             </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
@@ -170,12 +173,12 @@
                                     @endif
                                     <br>
                                     <p>
-                                        @lang('mensagens.HD')</br>
-                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd" id="arquivo_hd"></input>
+                                        @lang('mensagens.HD')<br>
+                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd_video" id="arquivo_hd_video">
                                     </p>
                                     <p>
-                                        @lang('mensagens.SD')</br>
-                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd" id="arquivo_sd"></input>
+                                        @lang('mensagens.SD')<br>
+                                        <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd_video" id="arquivo_sd_video">
                                     </p>
                                 </div>
                                 <div class="col">
@@ -187,15 +190,15 @@
                                             </p>
                                             <p>
                                                 <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Titulo'):</span><br>
-                                                <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}"></input>
+                                                <input name="titulo_video" type="text" size="50px" value="{{$trecho->titulo_video}}">
                                             </p>
                                             <p>
                                                 <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Tempo'):</span><br>
-                                                <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}"></input>
+                                                <input name="tempo" type="text" size="50px" value="{{$trecho->tempo}}">
                                             </p>
                                             <p>
                                                 <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Link do vídeo completo'):</span><br>
-                                                <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}"></input>
+                                                <input name="endereco_video" type="text" size="50px" value="{{$trecho->endereco_video}}">
                                             </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">

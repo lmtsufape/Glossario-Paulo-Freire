@@ -23,17 +23,21 @@
                             <div class="col-sm-5">
                                 <div class="row" id="paragrafoAudio" style="display: none;">
                                     <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%;">
-                                    @lang('mensagens.Arquivo de áudio'): </br>
+                                    @lang('mensagens.audioHD'): <br>
+                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_hd_audio" id="arquivo_hd">
+                                    <br>
+                                    @lang('mensagens.audioSD'): <br>
+                                    <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd_audio" id="arquivo_sd">
                                 </div>
 
                                 <p class="row" id="paragrafoVideo" style="display: none;">
                                     <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: 430px; max-width: 100%;">
-                                    @lang('mensagens.SD'): </br>
-                                    <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd" id="arquivo_hd" style=""></input>
-                                    </br>
-                                    @lang('mensagens.HD'): </br>
+                                    @lang('mensagens.HD'): <br>
+                                    <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd_video" id="arquivo_hd">
+                                    <br>
+                                    @lang('mensagens.SD'): <br>
+                                    <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd_video" id="arquivo_sd">
                                 </p>
-                                <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd" id="arquivo_sd" style="display: none;"></input>
                             </div>
                             <div class="col">
                                 <div class="row">
@@ -44,7 +48,7 @@
                                         </p>
                                         <p>
                                             <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Titulo'):</span><br>
-                                            <input name="titulo_video" type="text" size="50px" value="" required></input>
+                                            <input name="titulo_video" type="text" size="50px" value="" required>
                                         </p>
                                         <p>
                                             <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Tipo de recurso'):</span><br>
@@ -56,11 +60,11 @@
                                         </p>
                                         <p>
                                             <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Tempo'):</span><br>
-                                            <input name="tempo" type="text" size="50px" value="" required></input>
+                                            <input name="tempo" type="text" size="50px" value="" required>
                                         </p>
                                         <p>
                                             <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Link do áudio/vídeo completo'):</span><br>
-                                            <input name="endereco_video" type="text" size="50px" value="" required></input>
+                                            <input name="endereco_video" type="text" size="50px" value="" required>
                                         </p>
                                     </div>
                                     <div class="col-sm-12" style="padding: 1rem;">
@@ -85,19 +89,9 @@
         if (combobox.value == "áudio") {
             document.getElementById('paragrafoAudio').style.display = 'inline';
             document.getElementById('paragrafoVideo').style.display = 'none';
-            document.getElementById('arquivo_sd').accept = ".mp3,.mp4,.m4a,.ogg,.flac";
-            document.getElementById('arquivo_sd').style.display = 'inline';
         } else if (combobox.value == "vídeo") {
             document.getElementById('paragrafoAudio').style.display = 'none';
             document.getElementById('paragrafoVideo').style.display = 'inline';
-            document.getElementById('arquivo_sd').accept = ".mp4,.mkv,.ogv,.webm";
-            document.getElementById('arquivo_sd').style.display = 'inline';
-        } else {
-            document.getElementById('paragrafoAudio').style.display = 'none';
-            document.getElementById('paragrafoVideo').style.display = 'none';
-            document.getElementById('arquivo_sd').accept = '';
-            document.getElementById('arquivo_sd').style.display = 'none';
-            
         }
     }
 </script>

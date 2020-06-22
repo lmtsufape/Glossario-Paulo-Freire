@@ -26,10 +26,15 @@ class TrechoController extends Controller
             'arquivo_hd' => 'nullable',
             'arquivo_sd' => 'nullable',
         ]);
+
+        if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
+            return redirect()->back()->withErrors(['error' => "link inválido"]);
+        }
         
         //substituindo o texto e o titulo do $request no trecho
         $trecho->texto = $request->texto;
         $trecho->titulo_video = $request->titulo_video;
+        $trecho->endereco_video = $request->endereco_video;
         $trecho->tempo = $request->tempo;
         
         //salvar o nome do arquivo para resetar as views
@@ -38,36 +43,40 @@ class TrechoController extends Controller
 
         //colocando os nomes dos arquivos como referencia
 
-        if (is_null($request->file('arquivo_hd'))) {
-            $trecho->arquivo_hd = $trecho->arquivo_hd;
+        if ($trecho->tipo_recurso == "áudio") {
+            if (is_null($request->file('arquivo_hd_audio'))) {
+                $trecho->arquivo_hd = $trecho->arquivo_hd;
+            } else {
+                $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd_audio'), $trecho->arquivo_hd);
+            }
+    
+            if (is_null($request->file('arquivo_sd_audio'))) {
+                $trecho->arquivo_hd = $trecho->arquivo_hd;
+            } else {
+                $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd_audio'), $trecho->arquivo_sd);
+            }
         } else {
-            $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd'), $trecho->arquivo_hd);
-        }
-
-        if (is_null($request->file('arquivo_sd'))) {
-            $trecho->arquivo_hd = $trecho->arquivo_hd;
-        } else {
-            $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd'), $trecho->arquivo_sd);
+            if (is_null($request->file('arquivo_hd_video'))) {
+                $trecho->arquivo_hd = $trecho->arquivo_hd;
+            } else {
+                $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd_video'), $trecho->arquivo_hd);
+            }
+    
+            if (is_null($request->file('arquivo_sd_video'))) {
+                $trecho->arquivo_hd = $trecho->arquivo_hd;
+            } else {
+                $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd_video'), $trecho->arquivo_sd);
+            }
         }
         
         //checagem se mudou de arquivo para resetar as views
-        //se o hd for '' e o sd algum arquivo então é um audio
-        if ($trecho->arquivo_hd == '' && $trecho->arquivo_sd != '') {
-            //se o nome antigo for diferente do atual então reseta as views
-            if ($nome_antigo_sd != $trecho->arquivo_sd) {
-                $trecho->quant_views = 0;
-            }
-        } else {
-            //se não então é um video
-            //as views dos videos só seram resetadas se os dois aquivos mudarem
-            if ($nome_antigo_sd != $trecho->arquivo_sd && $nome_antigo_hd != $trecho->arquivo_hd) {
-                $trecho->quant_views = 0;
-            }
+        //as views só seram resetadas se os dois arquivos forem mudados
+        if ($nome_antigo_sd != $trecho->arquivo_sd && $nome_antigo_hd != $trecho->arquivo_hd) {
+            $trecho->quant_views = 0;
         }
 
         //salva a edição
         $trecho->update();
-
         return redirect()->back()->with('mensagem', 'Trecho salvo com sucesso!');
     }
 
@@ -89,6 +98,7 @@ class TrechoController extends Controller
     }
 
     public function salvar(Request $request, $id) {
+        // dd($request);
         $validated = $request->validate([
             'texto' => 'required',
             'titulo_video' => 'required',
@@ -98,6 +108,10 @@ class TrechoController extends Controller
             'arquivo_hd' => 'nullable',
             'arquivo_sd' => 'nullable',
         ]);
+
+        if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
+            return redirect()->back()->withErrors(['error' => "link inválido"]);
+        }
 
         $trecho = new \App\Trecho();
 
@@ -109,21 +123,36 @@ class TrechoController extends Controller
         $trecho->endereco_video = $request->endereco_video;
         $trecho->quant_views = 0;
         
-        //colocando os nomes dos arquivos como referencia
-        if (is_null($request->file('arquivo_hd')) || $request->file('arquivo_hd') == '') {
-            $trecho->arquivo_hd = '';
-        } else {
-            $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd'), '');
-        }
+        if ($request->tipo_recurso == "áudio") {
+            //colocando os nomes dos arquivos como referencia
+            if (is_null($request->file('arquivo_hd_audio'))) {
+                $trecho->arquivo_hd = '';
+            } else {
+                $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd_audio'), '');
+            }
 
-        if (is_null($request->file('arquivo_sd')) || $request->file('arquivo_sd') == '') {
-            $trecho->arquivo_sd = '';
+            if (is_null($request->file('arquivo_sd_audio'))) {
+                $trecho->arquivo_sd = '';
+            } else {
+                $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd_audio'), '');
+            }
         } else {
-            $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd'), '');
+            //colocando os nomes dos arquivos como referencia
+            if (is_null($request->file('arquivo_hd_video'))) {
+                $trecho->arquivo_hd = '';
+            } else {
+                $trecho->arquivo_hd = $this->nomeDoArquivo($request->file('arquivo_hd_video'), '');
+            }
+
+            if (is_null($request->file('arquivo_sd_video'))) {
+                $trecho->arquivo_sd = '';
+            } else {
+                $trecho->arquivo_sd = $this->nomeDoArquivo($request->file('arquivo_sd_video'), '');
+            } 
         }
 
         $trecho->save();
-
+        
         return redirect( route('verbete', ['id' => $id]) )->with('mensagem', 'Trecho salvo com sucesso!');
     }
 
