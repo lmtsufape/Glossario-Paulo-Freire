@@ -269,7 +269,7 @@
                     <div class="row box_ano"></div>
                     <h3 class="titulo_preto_negrito direito">PRIMEIRAS <span class="titulo_vermelho_negrito">EXPERIÊNCIAS</span></h3>
                     <p class="direito paragrafo">
-                        Seu equipe foi responsável pela alfabetização de 300 cortadores de cana em apenas 45 dias. </br>
+                        Sua equipe foi responsável pela alfabetização de 300 cortadores de cana em apenas 45 dias. </br>
                     </p>
                 </div>
                 <div class="col-md-2 coluna_vermelha texto_italico_central">
@@ -595,7 +595,7 @@
             <div class="row">
                 <div class="col-md-4"> 
                     <div class="row box_ano"></div>
-                    <h3 class="titulo_preto_negrito direito"><span class="titulo_vermelho_negrito">FUNDAÇÃO</span> PAULO FREIRE</h3>
+                    <h3 class="titulo_preto_negrito direito"><span class="titulo_vermelho_negrito">CRIAÇÃO</span> DO INSTITUTO PAULO FREIRE</h3>
                     <p class="direito paragrafo">
                         Em 1991, o Instituto Paulo Freire foi criado em São Paulo para ampliar e elaborar as suas teorias da educação popular. O instituto já tem projetos em muitos países e está sediada na Escola de Educação e Estudos de Informação da Universidade da Califórnia em Los Angeles (UCLA), onde arquivos de Freire são mantidos. </br>
                     </p>
@@ -656,7 +656,7 @@
                 </div>
                 <div class="col-md-6"> 
                     <div class="row box_ano"></div>
-                    <h3 class="titulo_preto_negrito ">PAULO FREIRE <span class="titulo_vermelho_negrito">MORRE</span> AOS 70 ANOS</h3>
+                    <h3 class="titulo_preto_negrito ">PAULO FREIRE <span class="titulo_vermelho_negrito">MORRE</span> AOS 75 ANOS</h3>
                     <p class="paragrafo">
                         Freire morreu de um ataque cardíaco em 2 de maio de 1997, às 6h53, no Hospital Albert Einstein, em São Paulo. </br>
                     </p>
