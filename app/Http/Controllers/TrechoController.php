@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Http\File;
 
 class TrechoController extends Controller
 {
@@ -170,5 +171,49 @@ class TrechoController extends Controller
         $trecho->delete();
 
         return redirect()->back()->with('mensagem', 'Trecho excluido com sucesso!');
+    }
+
+    public function baixarSD($id) {
+        $trecho = \App\Trecho::find($id);
+
+        if (Storage::disk()->exists($trecho->arquivo_sd)) {
+            return Storage::download($trecho->arquivo_sd, "TrechoSD.".explode(".", $trecho->arquivo_sd)[1]);
+        }
+      
+        return abort(404);
+    }
+
+    public function baixarHD($id) {
+        $trecho = \App\Trecho::find($id);
+
+        if (Storage::disk()->exists($trecho->arquivo_hd)) {
+            return Storage::download($trecho->arquivo_hd, "TrechoHD.".explode(".", $trecho->arquivo_sd)[1]);
+        }
+      
+        return abort(404);
+    }
+
+    public function excluirSD($id) {
+        $trecho = \App\Trecho::find($id);
+
+        if (Storage::disk()->exists($trecho->arquivo_sd)) {
+            Storage::delete($trecho->arquivo_sd);
+        } 
+
+        $trecho->arquivo_sd = '';
+        $trecho->update();
+        return redirect()->back()->with(['mensagem' => 'Arquivo de video excluido com sucesso.']);
+    }
+
+    public function excluirHD($id) {
+        $trecho = \App\Trecho::find($id);
+
+        if (Storage::disk()->exists($trecho->arquivo_hd)) {
+            Storage::delete($trecho->arquivo_hd);
+        } 
+
+        $trecho->arquivo_hd = '';
+        $trecho->update();
+        return redirect()->back()->with(['mensagem' => 'Arquivo de video excluido com sucesso.']);
     }
 }

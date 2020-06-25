@@ -37,10 +37,10 @@
                                         </audio> 
                                     @endif
                                     <br>
-                                    @lang('mensagens.audioHD'): <br>
+                                    @lang('mensagens.audioHD'): @if($trecho->arquivo_hd != '') <a href="{{ route('baixar.arquivo_hd', ['id' => $trecho->id]) }}">Arquivo atual</a> <a href="#" data-toggle="modal" data-target="#modalExcluirHD"><img src="{{ asset('icones/excluir.svg') }}" alt="" width="20px" height="auto" style="margin-bottom: 5px;"></a>@endif <br>
                                     <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_hd_audio" id="arquivo">
                                     <br>
-                                    @lang('mensagens.audioSD'): <br>
+                                    @lang('mensagens.audioSD'): @if($trecho->arquivo_sd != '') <a href="{{ route('baixar.arquivo_sd', ['id' => $trecho->id]) }}">Arquivo atual</a> <a href="#" data-toggle="modal" data-target="#modalExcluirSD"><img src="{{ asset('icones/excluir.svg') }}" alt="" width="20px" height="auto" style="margin-bottom: 5px;"></a>@endif <br>
                                     <input type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd_audio" id="arquivo">
                                 </div>
                                 <div class="col">
@@ -173,11 +173,11 @@
                                     @endif
                                     <br>
                                     <p>
-                                        @lang('mensagens.HD')<br>
+                                        @lang('mensagens.HD'): @if($trecho->arquivo_hd != '') <a href="{{ route('baixar.arquivo_hd', ['id' => $trecho->id]) }}">Arquivo atual</a> <a href="#" data-toggle="modal" data-target="#modalExcluirHD"><img src="{{ asset('icones/excluir.svg') }}" alt="" width="20px" height="auto" style="margin-bottom: 5px;"></a>@endif <br>
                                         <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd_video" id="arquivo_hd_video">
                                     </p>
                                     <p>
-                                        @lang('mensagens.SD')<br>
+                                        @lang('mensagens.SD'): @if($trecho->arquivo_sd != '') <a href="{{ route('baixar.arquivo_sd', ['id' => $trecho->id]) }}">Arquivo atual</a> <a href="#" data-toggle="modal" data-target="#modalExcluirSD"><img src="{{ asset('icones/excluir.svg') }}" alt="" width="20px" height="auto" style="margin-bottom: 5px;"></a>@endif <br>
                                         <input type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd_video" id="arquivo_sd_video">
                                     </p>
                                 </div>
@@ -202,8 +202,8 @@
                                             </p>
                                         </div>
                                         <div class="col-sm-12" style="padding: 1rem;">
-                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">@lang('mensagens.Salvar')</label></button>
-                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><label class="campo_compartilhar_texto">@lang('mensagens.Cancelar')</label></button></a>                                    
+                                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">@lang('mensagens.Salvar')</button>
+                                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">@lang('mensagens.Cancelar')</button></a>                                    
                                         </div>
                                     </div>
                                 </div>
@@ -214,4 +214,44 @@
             </div>
     </div>
 @endif
+<!-- Modal excluir HD-->
+<div class="modal fade" id="modalExcluirHD" tabindex="-1" role="dialog" aria-labelledby="modalExcluirHD" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modalExcluirHD">@lang('mensagens.Confirmar')</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            @lang('mensagens.Confirmacao')
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
+            <a href="{{ route('delete.arquivoHD', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- Modal excluir SD-->
+<div class="modal fade" id="modalExcluirSD" tabindex="-1" role="dialog" aria-labelledby="modalExcluirSD" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modalExcluirSD">@lang('mensagens.Confirmar')</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            @lang('mensagens.Confirmacao')
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
+        <a href="{{ route('delete.arquivoSD', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
+        </div>
+    </div>
+    </div>
+</div>
 @endsection

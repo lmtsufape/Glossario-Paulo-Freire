@@ -57,4 +57,10 @@ Route::prefix(parseLocale())->group(function () {
     Route::any('/adicionar/verbete/salvar', 'VerbeteController@adicionar')->name('verbete.add.save')->middleware('auth');
     Route::post('/editar/verbete/{id}', 'VerbeteController@editar')->name('verbete.edit')->middleware('auth');
     Route::get('/excluir/verbete/{id}', 'VerbeteController@deletar')->name('verbete.del')->middleware('auth');
+
+    Route::get('/baixar/arquivo-sd/{id}', 'TrechoController@baixarSD')->name('baixar.arquivo_sd')->middleware('auth');
+    Route::get('/baixar/arquivo-hd/{id}', 'TrechoController@baixarHD')->name('baixar.arquivo_hd')->middleware('auth');
+
+    Route::get('/excluir/arquivo-sd/{id}', 'TrechoController@excluirSD')->name('delete.arquivoSD')->middleware('auth');
+    Route::get('/excluir/arquivo-hd/{id}', 'TrechoController@excluirHD')->name('delete.arquivoHD')->middleware('auth');
 });
