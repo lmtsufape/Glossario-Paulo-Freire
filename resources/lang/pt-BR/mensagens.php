@@ -8,7 +8,7 @@ return [
     'Biblioteca' => 'Biblioteca',
     'Acervo' => 'Acervo',
     'Acervo Digital' => 'Acervo Digital',
-    'Glossário Paulo Freire' => 'Glossário Paulo Freire',
+    'Glossário Paulo Freire' => 'Glossário',
     'Índices' => 'Índices',
     'Busca' => 'Busca',
     'Listar todas as palavras' => 'Listar todos os verbetes',

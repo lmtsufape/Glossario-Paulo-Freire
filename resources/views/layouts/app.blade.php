@@ -167,12 +167,14 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="row alinhamento_container">
-                        <div class="col-md-12" style="margin-top:1rem; padding-bottom: 1rem;">
-                            <img src=" {{ asset('icones/institutoPF.png') }}" alt="Logo" width="100" height="58" />
-                        </div>
-                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: red;">@lang('mensagens.INSTITUTO')</a></div> 
-                        <div class="col-md-12"><a style="color: white; font-size: 15px; color: blue;">@lang('mensagens.PAULO FREIRE')</a></div>
-                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: 1rem;"><a style="color: white; font-size: 15px;">@lang('mensagens.Instituto de Educação e Direitos Humanos Paulo Freire')</a></div>
+                        <a href="https://www.paulofreire.org/" target="_blank" style="color: white; text-decoration: none;">
+                            <div class="col-md-12" style="margin-top:1rem; padding-bottom: 1rem;">
+                                <img src=" {{ asset('icones/institutoPF.png') }}" alt="Logo" width="100" height="58" />
+                            </div>
+                            <div class="col-md-12" style="font-size: 15px; color: red; ">@lang('mensagens.INSTITUTO')</div> 
+                            <div class="col-md-12" style="font-size: 15px; color: blue;">@lang('mensagens.PAULO FREIRE')</div>
+                            <div class="col-md-12" style="margin-top: 1rem; margin-bottom: 1rem; color: white; font-size: 15px;">@lang('mensagens.Instituto de Educação e Direitos Humanos Paulo Freire')</div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -188,7 +190,6 @@
                         <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://biblioteca.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Biblioteca')</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="{{ route('glossario') }}" style="color: white;">@lang('mensagens.Glossário Paulo Freire')</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/o-acervo-paulo-freire-apresentacao/17-unifreire/52-comunidade-freiriana-encontros-inter-f%C3%B3rum-paulo-freire" target="_blank" style="color: white;">@lang('mensagens.Comunidade Freiriana Internacional')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Instituto Paulo Freire')</a></div>   
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -201,7 +202,7 @@
                 <div class="col-md-2">
                     <div class="row" style="text-align: center">
                         <div class="col-md-12" style="margin-top: 1rem; margin-bottom: -1rem;">
-                            <img src="{{ asset('icones/UNESCO.png') }}" alt="Logo" width="134" height="134" />
+                            <a href="https://nacoesunidas.org/" target="_blank"><img src="{{ asset('icones/UNESCO.png') }}" alt="Logo" width="134" height="134" /></a>
                         </div>
                         <div class="col-md-12">
                             <label style="font-size: 10px; color: white;">@lang('mensagens.Acervo reconhecido pela UNESCO')</label>

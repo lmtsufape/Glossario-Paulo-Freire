@@ -8,7 +8,7 @@ return [
     'Biblioteca' => 'Bibliothèque',
     'Acervo' => 'Collection',
     'Acervo Digital' => 'Collection numérique',
-    'Glossário Paulo Freire' => 'Glossaire Paulo Freire',
+    'Glossário Paulo Freire' => 'Glossaire',
     'Índices' => 'Index',
     'Busca' => 'Cherchez',
     'Listar todas as palavras' => 'Liste tous les mots',

@@ -8,7 +8,7 @@ return [
     'Biblioteca' => 'Library',
     'Acervo' => 'Collection',
     'Acervo Digital' => 'Digital Asset',
-    'Glossário Paulo Freire' => 'Paulo Freire Glossary',
+    'Glossário Paulo Freire' => 'Glossary',
     'Índices' => 'Indexes',
     'Busca' => 'Search',
     'Listar todas as palavras' => 'List all words',
