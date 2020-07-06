@@ -76,4 +76,7 @@ return [
     'Redefinir senha' => 'Redefine password',
     'audioSD' => 'SD audio file',
     'audioHD' => 'HD audio file',
+    'SelecioneHD' => 'Select an HD file',
+    'SelecioneSD' => 'Select an SD file',
+    'Arquivo atual' => 'Current file',
 ];

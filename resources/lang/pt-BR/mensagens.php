@@ -55,7 +55,7 @@ return [
     'HD' => 'Arquivo de vídeo em HD',
     'SD' => 'Arquivo de vídeo em SD',
     'Texto' => 'Texto',
-    'Titulo' => 'Titulo',
+    'Titulo' => 'Título',
     'Tipo de recurso' => 'Tipo de recurso',
     'Tempo' => 'Tempo',
     'Link do áudio/vídeo completo' => 'Link do áudio/vídeo completo',
@@ -76,4 +76,7 @@ return [
     'Redefinir senha' => 'Redefinir senha',
     'audioSD' => 'Arquivo de áudio em SD',
     'audioHD' => 'Arquivo de áudio em HD',
+    'SelecioneHD' => 'Selecione um arquivo HD',
+    'SelecioneSD' => 'Selecione um arquivo SD',
+    'Arquivo atual' => 'Arquivo atual',
 ];

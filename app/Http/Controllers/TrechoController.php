@@ -18,24 +18,25 @@ class TrechoController extends Controller
         //recuperando o trecho
         $arquivo = '';
         $trecho = \App\Trecho::find($id);
-
         $validated = $request->validate([
             'texto' => 'required',
             'titulo_video' => 'required',
             'tempo' => 'required',
-            'endereco_video' => 'required',
-            'arquivo_hd' => 'nullable',
-            'arquivo_sd' => 'nullable',
+            'endereco' => 'required',
+            'arquivo_hd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
+            'arquivo_sd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
+            'arquivo_hd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
+            'arquivo_sd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
         ]);
-
-        if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
-            return redirect()->back()->withErrors(['error' => "link inválido"]);
-        }
         
+        // if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
+        //     return redirect()->back()->withErrors(['error' => "link inválido"]);
+        // }
+
         //substituindo o texto e o titulo do $request no trecho
         $trecho->texto = $request->texto;
         $trecho->titulo_video = $request->titulo_video;
-        $trecho->endereco_video = $request->endereco_video;
+        $trecho->endereco_video = $request->endereco;
         $trecho->tempo = $request->tempo;
         
         //salvar o nome do arquivo para resetar as views
@@ -105,14 +106,16 @@ class TrechoController extends Controller
             'titulo_video' => 'required',
             'tipo_recurso' => 'required',
             'tempo' => 'required',
-            'endereco_video' => 'required',
-            'arquivo_hd' => 'nullable',
-            'arquivo_sd' => 'nullable',
+            'endereco' => 'required',
+            'arquivo_hd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
+            'arquivo_sd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
+            'arquivo_hd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
+            'arquivo_sd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
         ]);
 
-        if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
-            return redirect()->back()->withErrors(['error' => "link inválido"]);
-        }
+        // if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
+        //     return redirect()->back()->withErrors(['error' => "link inválido"]);
+        // }
 
         $trecho = new \App\Trecho();
 
@@ -121,7 +124,7 @@ class TrechoController extends Controller
         $trecho->titulo_video = $request->titulo_video;
         $trecho->tipo_recurso = $request->tipo_recurso;
         $trecho->tempo = $request->tempo;
-        $trecho->endereco_video = $request->endereco_video;
+        $trecho->endereco_video = $request->endereco;
         $trecho->quant_views = 0;
         
         if ($request->tipo_recurso == "áudio") {

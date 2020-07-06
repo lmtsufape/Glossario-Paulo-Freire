@@ -64,7 +64,7 @@
                                         </p>
                                         <p>
                                             <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Link do áudio/vídeo completo'):</span><br>
-                                            <input name="endereco_video" type="text" size="50px" value="" required>
+                                            <input name="endereco" type="text" size="50px" value="" required>
                                         </p>
                                     </div>
                                     <div class="col-sm-12" style="padding: 1rem;">

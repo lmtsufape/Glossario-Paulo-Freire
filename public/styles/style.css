@@ -16,10 +16,11 @@
 .menu_glossario_design{
 	background-color: white; 
 	opacity: 0.9; 
-	width: 600px; 
+	width: 58%;  
 	height: 100%; 
 	border:solid 0px; 
 	border-radius:12px;
+	font-family: serif;
 }
 
 /*glossario*/
@@ -50,7 +51,22 @@
 	text-align: center; 
 	font-size: 19px; 
 	margin-top: 3px; 
-	font-family:time;
+	font-family: 'Segoe UI';
+	font-weight: bolder;
+}
+
+#menu_glossario_botao{
+	background-color: white;
+	opacity: 1; 
+	margin: 5px; border-color:#d5d5d5; border-width:2px; height: 40px;
+}
+
+.link-menu-glossario a {
+	color:  #B1B1B1;
+}
+
+.link-menu-glossario a:hover {
+	color: #1492E6;
 }
 
 #erro_alert {
@@ -58,12 +74,6 @@
 	opacity: 1; 
 	margin: 5px; border-width:2px; height: 40px;
 	border-left-color: rgb(145, 8, 8);
-}
-
-#menu_glossario_botao{
-	background-color: white;
-	opacity: 1; 
-	margin: 5px; border-color:#d5d5d5; border-width:2px; height: 40px;
 }
 
 #todas_botao{
@@ -88,7 +98,7 @@
 
 /*lista de palavras*/
 .lista_item{
-	margin-bottom: 1rem; border-radius: 5px; width: 100%; box-shadow: inset 0 0 0em white, 0 0 0.3em grey;
+	margin-bottom: 1rem; border-radius: 5px; width: 100%; box-shadow: inset 0 0 0em white, 0 0 0.3em grey; font-weight: bolder;
 }
 .lista_item:hover{
 	 border-radius: 5px; width: 100%; border-color: red; box-shadow: inset 0 0 1em white, 0 0 1em grey;
@@ -103,11 +113,11 @@ li.selected{
 }
 
 #titulo_lista{
-	font-size: 30px; font-family:arial;
+	font-size: 30px; font-family:arial; font-weight: bolder;
 }
 
 #subtitulo_lista{
-	font-family:sans-serif; color: #aaaaaa;
+	font-family:sans-serif; color: #313131; font-weight: bolder;
 }
 
 #titulo_busca{
@@ -257,4 +267,36 @@ li.selected{
     position: relative;
     right: 20px;
     top: 120px;
+}
+
+/* Editar trecho */
+
+.form-control:focus {
+	color: #495057;
+	background-color: #fff;
+	border-color: #464646;
+	outline: 0;
+  	box-shadow: 0 0 0 0.2rem rgba(97, 97, 97, 0.25);
+}
+
+.custom-file-input:lang(pt-br) ~ .custom-file-label::after {
+	content: "Procurar";
+}
+
+.custom-file-input:lang(fr) ~ .custom-file-label::after {
+	content: "Rechercher";
+}
+
+.custom-file-input:lang(es) ~ .custom-file-label::after {
+	content: "Buscar";
+}
+
+.custom-file-input ~ .custom-file-label[data-browse]::after {
+	content: attr(data-browse);
+}
+
+.custom-select:focus {
+	border-color: #464646;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(97, 97, 97, 0.25);
 }

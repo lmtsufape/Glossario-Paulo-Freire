@@ -22,6 +22,10 @@
     <link href="{{ asset('video.js/node_modules/video.js/dist/video-js.min.css')}}" rel="stylesheet"/>
 
     <link href="{{ asset('video.js/node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.css')}}" rel="stylesheet"/>
+
+    {{-- css do player de video e audio --}}
+    <link rel="stylesheet" href="{{ asset('jlplayer-custom/jlplayer.css')}} ">
+    <link rel="stylesheet" href="{{ asset('player-audio/player_audio.css') }} ">
     <style>
             .full-height {
                 background-color: #fff;
@@ -74,6 +78,15 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+
+            .btn-atualizar {
+                width: 100%;
+                border-radius: 5px;
+                border-color: #d5d5d5;
+                box-shadow: black;
+                color: white;
+                background-color: rgb(10, 173, 64);
             }
         </style>
 </head>
@@ -269,6 +282,11 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+    {{-- scripts do player de video e audio --}}
+
+    <script src="{{ asset('jlplayer-custom/jlplayer.js') }}"></script>
+    <script src="{{ asset('player-audio/player-audio.js') }}"></script>
+
     <!-- funcao lista_menu css -->
     <script type="text/javascript">
         var $li = $('#lista_menu li').click(function() {
@@ -301,6 +319,49 @@
             } else {
                 window.location.href = "{{ url('') }}";
             }
+        }
+        
+        // funções para troca de qualidade de video
+        function mudarParaHD(button) {
+            var container_video = document.getElementById($(button).parent().parent().attr('id'));
+            var tempo = container_video.children[0].currentTime;
+            container_video.children[0].src = container_video.children[0].children[4].value;
+            container_video.children[0].currentTime = tempo;
+            container_video.children[2].style.display = "none";
+            container_video.children[4].children[0].innerHTML = '<svg viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM12 1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"/></svg><span class="jlplayer-tooltip">Pausar</span>';
+            container_video.children[0].play();
+        }
+        function mudarParaSD(button) {
+            var container_video = document.getElementById($(button).parent().parent().attr('id'));
+            var tempo = container_video.children[0].currentTime;
+            container_video.children[0].src = container_video.children[0].children[5].value;
+            container_video.children[0].currentTime = tempo;
+            container_video.children[2].style.display = "none";
+            container_video.children[4].children[0].innerHTML = '<svg viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM12 1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"/></svg><span class="jlplayer-tooltip">Pausar</span>';
+            container_video.children[0].play();
+        }
+
+        function mudarAudioParaHD(button) {
+            var audio = document.getElementById($(button).parent().parent().attr('id'));
+            var tempo = audio.children[0].currentTime;
+            audio.children[0].src = audio.children[0].children[5].value;
+            audio.parentElement.style.backgroundImage = audio.children[0].children[7].value.split(" ")[0];
+            audio.parentElement.style.backgroundSize = audio.children[0].children[7].value.split(" ")[1];
+            audio.children[0].currentTime = tempo;
+            audio.children[2].style.display = "none";
+            audio.children[3].children[0].innerHTML = '<svg viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM12 1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"/></svg><span class="player-audio-tooltip">Pausar</span>';
+            audio.children[0].play();
+        }
+        function mudarAudioParaSD(button) {
+            var audio = document.getElementById($(button).parent().parent().attr('id'));
+            var tempo = audio.children[0].currentTime;
+            audio.children[0].src = audio.children[0].children[6].value;
+            audio.parentElement.style.backgroundImage = audio.children[0].children[7].value.split(" ")[0];
+            audio.parentElement.style.backgroundSize = audio.children[0].children[7].value.split(" ")[1];
+            audio.children[0].currentTime = tempo;
+            audio.children[2].style.display = "none";
+            audio.children[3].children[0].innerHTML = '<svg viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM12 1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"/></svg><span class="player-audio-tooltip">Pausar</span>';
+            audio.children[0].play();
         }
     </script>
 </body>

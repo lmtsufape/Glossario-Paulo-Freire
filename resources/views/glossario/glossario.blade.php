@@ -37,11 +37,20 @@
                 <div class="row" style="margin: 1rem">
                     <div class="col-md-12">
                         <div class="row container">
-                            <div class="col-xs-2">
-                                <a href="{{ route('glossario') }}" style="margin: 5px;">@lang('mensagens.Índices')</a>
+                            <div class="col-xs-2 link-menu-glossario">
+                                <a href="{{ route('glossario') }}">
+                                    <div onmousemove="this.children[0].src='{{ asset('icones/dicionario_azul.png') }}'" onmouseout="this.children[0].src='{{ asset('icones/dicionario_cinza.png')}}'">
+                                        <img src="{{ asset('icones/dicionario_cinza.png') }}" alt="" width="22" height="auto" style="margin-right: 4px;">@lang('mensagens.Índices')
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-xs-2">
-                                <a href="{{ route('pesquisa') }}" style="margin: 5px;">@lang('mensagens.Busca')</a>
+                            &nbsp;&nbsp;
+                            <div class="col-xs-2 link-menu-glossario">
+                                <a href="{{ route('pesquisa') }}">
+                                    <div onmousemove="this.children[0].src='{{ asset('icones/icone_pesquisar_azul.png') }}'" onmouseout="this.children[0].src='{{ asset('icones/icone_pesquisar_cinza.png')}}'">
+                                        <img src="{{ asset('icones/icone_pesquisar_cinza.png') }}" alt="" width="22" height="auto">@lang('mensagens.Busca')
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -50,8 +59,9 @@
                             @foreach ($letras as $letra)
                             <div class="menu_glossario_letra_borda">
                                 @if($letra->count > 0)
-                                <div class="col-xs-1 menu_glossario_letra"><a href="{{ route('letra', ['l' => $letra->l]) }}">
-                                {{$letra->l}}</a></div>
+                                <a href="{{ route('letra', ['l' => $letra->l]) }}">
+                                <div class="col-xs-1 menu_glossario_letra">
+                                {{$letra->l}}</div></a>
                                 @else
                                 <div class="col-xs-1 menu_glossario_letra">{{$letra->l}}</div>
                                 @endif
@@ -159,7 +169,7 @@
                     @foreach ($trechosAudios as $trecho)
                         @if($trecho->tipo_recurso == "áudio")
                         <!-- Modal -->
-                        <div class="modal fade" id="xcluirTrechoAudioModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoModalAudioLabel{{$trecho->id}}" aria-hidden="true">
+                        <div class="modal fade" id="excluirTrechoAudioModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoModalAudioLabel{{$trecho->id}}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
@@ -179,66 +189,93 @@
                             </div>
                         </div>
                         <li class="list-group-item div_container">
-                        <div class="row">
-                            <div class="col-sm-5" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-left: 0.5rem;">
-                                <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
-                                @if ($trecho->arquivo_sd != '')
-                                <audio id="my_audio_{{$trecho->id}}" controls style="height: 35px; max-width: 100%;">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
-                                </audio>
-                                <input id="confirmacao" type="hidden" value="0"></input>
-                                <script>
-                                    var audio = document.getElementById("my_audio_{{$trecho->id}}");
-                                    audio.onplay = function() {
-                                        var audio = document.getElementById('my_audio_{{$trecho->id}}');
-                                        var confirmacao = document.getElementById('confirmacao').value;
-                                        if (confirmacao = "0") {
-                                            document.getElementById('confirmacao').value = "1";
-                                            var xmlhttp = new XMLHttpRequest();
-                                            var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
-                                            xmlhttp.open("GET", url, true);
-                                            xmlhttp.send();
-                                        }
-                                    };
-                                </script>
-                                @endif
-                                <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="left: 5px">@lang('mensagens.Áudio completo')</a>
+                            <div class="row">
+                                <div class="col-sm-12" @if ($trecho->arquivo_sd != '') style="width: 100%; max-height: 140px;" @endif>
+                                    @if ($trecho->arquivo_sd != '')
+                                        <div id="my_audio_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%; max-height: 140px;" onclick="contarView()">
+            
+                                            <!-- Chamar elemento audio com class player-audio -->
+                                            {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
+                                            <audio class="player-audio" >
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/m4a">
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
+
+                                                <!-- Qualidades do aúdio -->
+                                                <input id="audioHD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                                <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                                
+                                                <!-- Imagens do background quando der play e pause -->
+                                                <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 100%">
+                                                <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 100%">
+                                            </audio> 
+                                            
+                                        </div>
+                                        <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
+                                        <script>
+                                            function contarView() {
+                                                var audio = document.getElementById('my_audio_{{ $trecho->id }}').children[0].children[0];
+                                                var confirmacao = document.getElementById('confirmacao{{ $trecho->id }}').value;
+                                                if (audio.paused != true && confirmacao == "0") {
+                                                    document.getElementById('confirmacao{{ $trecho->id }}').value = "1";
+                                                    var xmlhttp = new XMLHttpRequest();
+                                                    var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
+                                                    xmlhttp.open("GET", url, true);
+                                                    xmlhttp.send();
+                                                }
+                                            }
+                                        </script>
+                                    @else
+                                        <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                    @endif
+                                </div>
                             </div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-sm-12" style="padding-top: 1rem;">
-                                        <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
-                                        <span  class="subtitulo_container" >{{$trecho->titulo_video}}</span>
-                                    </div>
-                                    <div class="col-sm-12" style="padding: 1rem;">
-                                        <output class="campo_contador">
-                                            <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
-                                        </output>
-                                        <span class="dropdown">
-                                            <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                                <label class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</label>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                            <div class="row">
+                                <div class="col-sm-12" style="padding-top: 1rem;">
+                                    <span class="subtitulo_container">{{ $trecho->titulo }}</span>
+                                </div>
+                            </div>
+                            <div class="row" style="font-size: 14px;">
+                                <div class="col-sm-5" style="padding-top: 1rem;">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <img src="{{ asset('icones/eye_dark.svg') }}" width="22,12" height="auto"/>
+                                            <span class="campo_compartilhar_texto">{{ $trecho->quant_views }}</span>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="{{ asset('icones/share_dark.svg') }}" width="22,12" height="auto" />
+                                                <span class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</span>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size: 14px;">
                                                 <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
                                                 <a class="dropdown-item" onclick="shareWhatsPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
                                                 <a class="dropdown-item" onclick="shareTwitterPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
                                             </div>
-                                        </span>
-                                        @auth
-                                            <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
-                                            @if (Auth()->user()->email === "admin@ufape.edu.br")
-                                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>
-                                            @endif
-                                        @endauth                                        
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-7" style="padding-top: 1rem; text-align: right;">
+                                    <a href="{{ $trecho->endereco_video }}" target="_blank">Clique aqui</a><span  style="color: #8b8b8b;font-size: 8;"> para assistir o video completo.</span> 
+                                </div>
                             </div>
-                        </div>
-                        </li>
+                            <hr>
+                            <div class="row" style="padding: 0px 15px 15px 15px;">
+                                <output style="width: 100%; word-wrap: break-word; text-align: justify; font-weight: 500;">
+                                    {{ $trecho->texto }}
+                                </output>
+                            </div>
+                            <div class="row" style="padding: 0px 15px 15px 15px; float: right;">
+                                @auth
+                                    @if (Auth()->user()->email === "admin@ufape.edu.br")
+                                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
+                                    @endif
+                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" />@lang('mensagens.Editar')</button></a>
+                                @endauth 
+                            </div>
+                          </li>
                 
                         <!-- <div class="div_mais_resultados">
                             <div >
@@ -268,7 +305,7 @@
                     @foreach ($trechosVideos as $trecho)
                         @if($trecho->tipo_recurso == "vídeo")
                         <!-- Modal -->
-                        <div class="modal fade" id="xcluirTrechoVideoModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoVideoModalLabel{{$trecho->id}}" aria-hidden="true">
+                        <div class="modal fade" id="excluirTrechoVideoModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoVideoModalLabel{{$trecho->id}}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
@@ -288,85 +325,30 @@
                             </div>
                         </div>
                         <li class="list-group-item div_container">
-                        <div class="row">
-                            <div class="col-sm-5.5">
-                                @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
-                                    <div id="videojs" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-left: 0.5rem;" >
-                                        <video id="my_video_{{ $trecho->id }}" class="video-js vjs-default-skin" onclick="contarView()" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%" >
-                                        </video>
-                                        <input id="confirmacao" type="hidden" value="0"></input>
-                                        <script>
-                                            videojs('my_video_{{ $trecho->id }}', {
-                                            controls: true,
-                                            plugins: {
-                                            videoJsResolutionSwitcher: {
-                                                default: 'low', // Default resolution [{Number}, 'low', 'high'],
-                                                dynamicLabel: true,
-                                            }
-                                            }
-                                            }, function() {
-                                                var player = this;
-                                                window.player = player
-                                                player.updateSrc([
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                    type: 'video/mp4',
-                                                    label: 'SD',
-                                                    res: 360
-                                                },
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                    type: 'video/webm',
-                                                    label: 'SD',
-                                                    res: 360
-                                                },
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                    type: 'video/mkv',
-                                                    label: 'SD',
-                                                    res: 360
-                                                },
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                                    type: 'video/ogv',
-                                                    label: 'SD',
-                                                    res: 360
-                                                },
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                    type: 'video/mp4',
-                                                    label: 'HD',
-                                                    res: 720
-                                                },
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                    type: 'video/webm',
-                                                    label: 'HD',
-                                                    res: 720
-                                                },
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                    type: 'video/mkv',
-                                                    label: 'HD',
-                                                    res: 720
-                                                },
-                                                {
-                                                    src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                                    type: 'video/ogv',
-                                                    label: 'HD',
-                                                    res: 720
-                                                },
-                                                ])
-                                                player.on('resolutionchange', function(){
-                                                    console.info('Source changed to %s', player.src())
-                                                })
-                                            })
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
+                                        <div id="my_video_{{ $trecho->id }}" class="video-container" onclick="contarView()">
+                                            <!-- Chamar elemento vídeo com class jlplayer-video -->
+                                            <video preload="none" class="jlplayer-video" >
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/mp4">
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/mkv">
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/ogv">
+                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/webm">
 
+                                                <input id="videoHD" type="hidden" value="{{asset('storage/' . $trecho->arquivo_hd)}}">
+                                                <input id="videoSD" type="hidden" value="{{asset('storage/' . $trecho->arquivo_sd)}}">
+                                            </video>
+                                            
+                                        </div>
+                                        <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
+
+                                        <script>
                                             function contarView() {
-                                                var video = videojs('my_video_{{ $trecho->id }}');
-                                                var confirmacao = document.getElementById('confirmacao').value;
-                                                if (video.currentTime() == 0 && confirmacao == "0") {
-                                                    document.getElementById('confirmacao').value = "1";
+                                                var video = document.getElementById('my_video_{{ $trecho->id }}').children[0].children[0];
+                                                var confirmacao = document.getElementById('confirmacao{{ $trecho->id }}').value;
+                                                if (video.paused != true && confirmacao == "0") {
+                                                    document.getElementById('confirmacao{{ $trecho->id }}').value = "1";
                                                     var xmlhttp = new XMLHttpRequest();
                                                     var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
                                                     xmlhttp.open("GET", url, true);
@@ -374,45 +356,54 @@
                                                 }
                                             }
                                         </script>
-                                    </div>
-                                @else
-                                    <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: 180px; width: 280px; top: 1rem; padding-right: 0.2rem;">
-                                @endif
-                                <p style="position: relative; left: 10px; top: 1rem;">
-                                    <a class="subtitulo_container" href="{{$trecho->endereco_video}}" >@lang('mensagens.Vídeo completo')</a>
-                                </p>
+                                    @else
+                                        <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: auto; width: 100%; top: 1rem; padding-right: 0.2rem;">
+                                    @endif
+                                </div>
                             </div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-sm-12" style="padding-top: 1rem;">
-                                        <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
-                                        <span  class="subtitulo_container" >{{$trecho->titulo_video}}</span>
-                                    </div>
-                                    <div class="col-sm-12" style="padding: 1rem;">
-                                        <output class="campo_contador">
-                                            <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
-                                            <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
-                                        </output>
-                                        <span class="dropdown">
-                                            <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                                <label class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</label>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                            <div class="row">
+                                <div class="col-sm-12" style="padding-top: 1rem;">
+                                    <span class="subtitulo_container">{{ $trecho->titulo_video }}</span>
+                                </div>
+                            </div>
+                            <div class="row" style="font-size: 14px;">
+                                <div class="col-sm-5" style="padding-top: 1rem;">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <img src="{{ asset('icones/eye_dark.svg') }}" width="22,12" height="auto"/>
+                                            <span class="campo_compartilhar_texto">{{ $trecho->quant_views }}</span>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src="{{ asset('icones/share_dark.svg') }}" width="22,12" height="auto" />
+                                                <span class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</span>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size: 14px;">
                                                 <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
                                                 <a class="dropdown-item" onclick="shareWhatsPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/whatsapp.svg') }}"><span>Whatsapp</span></a>
                                                 <a class="dropdown-item" onclick="shareTwitterPopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/twitter.png') }}"><span>Twitter</span></a>
                                             </div>
-                                        </span>
-                                        @auth
-                                            <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
-                                            @if (Auth()->user()->email === "admin@ufape.edu.br")
-                                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>   
-                                            @endif
-                                        @endauth                                
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-7" style="padding-top: 1rem; text-align: right;">
+                                    <a href="{{ $trecho->endereco_video }}" target="_blank">Clique aqui</a><span  style="color: #8b8b8b;font-size: 8;"> para assistir o video completo.</span> 
+                                </div>
                             </div>
-                        </div>
+                            <hr>
+                            <div class="row" style="padding: 0px 15px 15px 15px;">
+                                <output style="width: 100%; word-wrap: break-word; text-align: justify; font-weight: 500;">
+                                    {{ $trecho->texto }}
+                                </output>
+                            </div>
+                            <div class="row" style="padding: 0px 15px 15px 15px; float: right;">
+                                @auth
+                                    @if (Auth()->user()->email === "admin@ufape.edu.br")
+                                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#excluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
+                                    @endif
+                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" />@lang('mensagens.Editar')</button></a>
+                                @endauth 
+                            </div>
                         </li>
                 
                         <!-- <div class="div_mais_resultados">

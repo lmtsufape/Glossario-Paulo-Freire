@@ -9,11 +9,20 @@
                     <div class="row" style="margin: 1rem">
                         <div class="col-md-12">
                             <div class="row container">
-                                <div class="col-xs-2">
-                                    <a href="{{ route('glossario') }}" style="margin: 5px;">@lang('mensagens.Índices')</a>
+                                <div class="col-xs-2 link-menu-glossario">
+                                    <a href="{{ route('glossario') }}">
+                                        <div onmousemove="this.children[0].src='{{ asset('icones/dicionario_azul.png') }}'" onmouseout="this.children[0].src='{{ asset('icones/dicionario_cinza.png')}}'">
+                                            <img src="{{ asset('icones/dicionario_cinza.png') }}" alt="" width="22" height="auto" style="margin-right: 4px;">@lang('mensagens.Índices')
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="col-xs-2">
-                                    <a href="{{ route('pesquisa') }}" style="margin: 5px;">@lang('mensagens.Busca')</a>
+                                &nbsp;&nbsp;
+                                <div class="col-xs-2 link-menu-glossario">
+                                    <a href="{{ route('pesquisa') }}">
+                                        <div onmousemove="this.children[0].src='{{ asset('icones/icone_pesquisar_azul.png') }}'" onmouseout="this.children[0].src='{{ asset('icones/icone_pesquisar_cinza.png')}}'">
+                                            <img src="{{ asset('icones/icone_pesquisar_cinza.png') }}" alt="" width="22" height="auto">@lang('mensagens.Busca')
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
