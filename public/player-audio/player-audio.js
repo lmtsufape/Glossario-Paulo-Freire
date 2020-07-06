@@ -469,7 +469,8 @@
                     played = true;
                     playerAudio.play();
                     playerAudio.parentElement.parentElement.style.backgroundImage = playerAudio.children[7].value.split(" ")[0];
-                    playerAudio.parentElement.parentElement.style.backgroundSize = playerAudio.children[7].value.split(" ")[1];
+                    playerAudio.parentElement.parentElement.style.backgroundSize = playerAudio.children[7].value.split(" ")[1] + " " + playerAudio.children[7].value.split(" ")[2];
+                    playerAudio.parentElement.parentElement.style.paddingBottom = playerAudio.children[7].value.split(" ")[3];
                     playerAudio.parentElement.children[2].style.display = "none";
                     playerBtnPlay.innerHTML = svgIcos.pause;
                     //jlPlayerBtnPlayCenter.innerHTML = svgIcos.pausec;
@@ -480,7 +481,8 @@
                     played = false;
                     playerAudio.pause();
                     playerAudio.parentElement.parentElement.style.backgroundImage = playerAudio.children[8].value.split(" ")[0];
-                    playerAudio.parentElement.parentElement.style.backgroundSize = playerAudio.children[8].value.split(" ")[1];
+                    playerAudio.parentElement.parentElement.style.backgroundSize = playerAudio.children[8].value.split(" ")[1] + " " + playerAudio.children[8].value.split(" ")[2];
+                    playerAudio.parentElement.parentElement.style.paddingBottom = playerAudio.children[8].value.split(" ")[3];
                     playerAudio.parentElement.children[2].style.display = "block";
                     playerBtnPlay.innerHTML = svgIcos.play;
                     //jlPlayerBtnPlayCenter.innerHTML = svgIcos.playc;
@@ -493,7 +495,8 @@
                 played = true;
                 playerAudio.play();
                 playerAudio.parentElement.parentElement.style.backgroundImage = playerAudio.children[7].value.split(" ")[0];
-                playerAudio.parentElement.parentElement.style.backgroundSize = playerAudio.children[7].value.split(" ")[1];
+                playerAudio.parentElement.parentElement.style.backgroundSize = playerAudio.children[7].value.split(" ")[1] + " " + playerAudio.children[7].value.split(" ")[2];
+                playerAudio.parentElement.parentElement.style.paddingBottom = playerAudio.children[7].value.split(" ")[3];
                 playerAudio.parentElement.children[2].style.display = "none";
                 playerBtnPlay.innerHTML = svgIcos.pause;
                 //jlPlayerBtnPlayCenter.innerHTML = svgIcos.pausec;

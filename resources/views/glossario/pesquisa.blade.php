@@ -110,29 +110,45 @@
                     </div>
                     <li class="list-group-item div_container">
                     <div class="row">
-                        <div class="col-sm-5">
-                            <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                        <div class="col-sm-6">
                             @if ($trecho->arquivo_sd != '')
-                            <audio id="my_audio_{{$trecho->id}}" class="col-sm-12" controls style="height: 35px;">
-                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
-                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
-                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
-                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
-                            </audio>
-                            <input id="confirmacao" type="hidden" value="0"></input>
-                            <script>
-                                var audio = document.getElementById("my_audio_{{$trecho->id}}");
-                                audio.onplay = function() {
-                                    var confirmacao = document.getElementById('confirmacao').value;
-                                    if (confirmacao = "0") {
-                                        document.getElementById('confirmacao').value = "1";
-                                        var xmlhttp = new XMLHttpRequest();
-                                        var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
-                                        xmlhttp.open("GET", url, true);
-                                        xmlhttp.send();
+                            <div id="my_audio_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%, 73%; padding-bottom: 13.2%;" onclick="contarView()">
+
+                                <!-- Chamar elemento audio com class player-audio -->
+                                {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
+                                <audio class="player-audio" >
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/m4a">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
+
+                                    <!-- Qualidades do aúdio -->
+                                    <input id="audioHD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                    <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                    
+                                    <!-- Imagens do background quando der play e pause -->
+                                    <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 100%, 73% 25%">
+                                    <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 100%, 73% 13.2%">
+                                </audio> 
+                                    
+                                </div>
+                                <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
+                                <script>
+                                    function contarView() {
+                                        var audio = document.getElementById('my_audio_{{ $trecho->id }}').children[0].children[0];
+                                        var confirmacao = document.getElementById('confirmacao{{ $trecho->id }}').value;
+                                        if (audio.paused != true && confirmacao == "0") {
+                                            document.getElementById('confirmacao{{ $trecho->id }}').value = "1";
+                                            var xmlhttp = new XMLHttpRequest();
+                                            var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
+                                            xmlhttp.open("GET", url, true);
+                                            xmlhttp.send();
+                                        }
                                     }
-                                };
-                            </script>
+                                </script>
+                            @else
+                                <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                             @endif
                             <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative;left: 10px">@lang('mensagens.Áudio completo')</a>
                         </div>
@@ -215,93 +231,37 @@
                     <li class="list-group-item div_container">
                     <div class="row">
                         <div class="col-sm-5">
-                        @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
-                            <div id="videojs" style="position: relative; height: 250px; max-width: 100%;">
-                                <video id="my_video_{{ $trecho->id }}" class="video-js vjs-default-skin" onclick="contarView()" poster="{{ asset('imagens/imagem_video.png') }}" style="max-height: 100%; max-width: 100%">
-                                </video>
-                                <input id="confirmacao" type="hidden" value="0"></input>
-                                <script>
-                                    videojs('my_video_{{ $trecho->id }}', {
-                                    controls: true,
-                                    plugins: {
-                                    videoJsResolutionSwitcher: {
-                                        default: 'low', // Default resolution [{Number}, 'low', 'high'],
-                                        dynamicLabel: true,
-                                    }
-                                    }
-                                    }, function(){
-                                        var player = this;
-                                        window.player = player
-                                        player.updateSrc([
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                            type: 'video/mp4',
-                                            label: 'SD',
-                                            res: 360
-                                        },
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                            type: 'video/webm',
-                                            label: 'SD',
-                                            res: 360
-                                        },
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                            type: 'video/mkv',
-                                            label: 'SD',
-                                            res: 360
-                                        },
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_sd) }}?SD",
-                                            type: 'video/ogv',
-                                            label: 'SD',
-                                            res: 360
-                                        },
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                            type: 'video/mp4',
-                                            label: 'HD',
-                                            res: 720
-                                        },
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                            type: 'video/webm',
-                                            label: 'HD',
-                                            res: 720
-                                        },
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                            type: 'video/mkv',
-                                            label: 'HD',
-                                            res: 720
-                                        },
-                                        {
-                                            src: "{{ asset('storage/' . $trecho->arquivo_hd) }}?HD",
-                                            type: 'video/ogv',
-                                            label: 'HD',
-                                            res: 720
-                                        },
-                                        ])
-                                        player.on('resolutionchange', function(){
-                                            console.info('Source changed to %s', player.src())
-                                        })
-                                    })
+                            @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
+                            <div id="my_video_{{ $trecho->id }}" class="video-container" onclick="contarView()">
+                                <!-- Chamar elemento vídeo com class jlplayer-video -->
+                                <video preload="none" class="jlplayer-video" poster="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/mp4">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/mkv">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/ogv">
+                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/webm">
 
-                                    function contarView() {
-                                        var video = videojs('my_video_{{ $trecho->id }}');
-                                        var confirmacao = document.getElementById('confirmacao').value;
-                                        if (video.currentTime() == 0 && confirmacao == "0") {
-                                            document.getElementById('confirmacao').value = "1";
-                                            var xmlhttp = new XMLHttpRequest();
-                                            var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
-                                            xmlhttp.open("GET", url, true);
-                                            xmlhttp.send();
-                                        }
-                                    }
-                                </script>
+                                    <input id="videoHD" type="hidden" value="{{asset('storage/' . $trecho->arquivo_hd)}}">
+                                    <input id="videoSD" type="hidden" value="{{asset('storage/' . $trecho->arquivo_sd)}}">
+                                </video>
+                                
                             </div>
+                            <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
+
+                            <script>
+                                function contarView() {
+                                    var video = document.getElementById('my_video_{{ $trecho->id }}').children[0].children[0];
+                                    var confirmacao = document.getElementById('confirmacao{{ $trecho->id }}').value;
+                                    if (video.paused != true && confirmacao == "0") {
+                                        document.getElementById('confirmacao{{ $trecho->id }}').value = "1";
+                                        var xmlhttp = new XMLHttpRequest();
+                                        var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
+                                        xmlhttp.open("GET", url, true);
+                                        xmlhttp.send();
+                                    }
+                                }
+                            </script>
                         @else
-                            <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                            <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: auto; width: 100%; top: 1rem; padding-right: 0.2rem;">
                         @endif
                             <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative; left: 10px;">@lang('mensagens.Vídeo completo')</a>
                         </div>

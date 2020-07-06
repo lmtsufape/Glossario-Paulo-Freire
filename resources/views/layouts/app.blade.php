@@ -346,7 +346,8 @@
             var tempo = audio.children[0].currentTime;
             audio.children[0].src = audio.children[0].children[5].value;
             audio.parentElement.style.backgroundImage = audio.children[0].children[7].value.split(" ")[0];
-            audio.parentElement.style.backgroundSize = audio.children[0].children[7].value.split(" ")[1];
+            audio.parentElement.style.backgroundSize = audio.children[0].children[7].value.split(" ")[1] + " " + audio.children[0].children[7].value.split(" ")[2];
+            audio.parentElement.style.paddingBottom = audio.children[0].children[7].value.split(" ")[3];
             audio.children[0].currentTime = tempo;
             audio.children[2].style.display = "none";
             audio.children[3].children[0].innerHTML = '<svg viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM12 1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"/></svg><span class="player-audio-tooltip">Pausar</span>';
@@ -357,7 +358,8 @@
             var tempo = audio.children[0].currentTime;
             audio.children[0].src = audio.children[0].children[6].value;
             audio.parentElement.style.backgroundImage = audio.children[0].children[7].value.split(" ")[0];
-            audio.parentElement.style.backgroundSize = audio.children[0].children[7].value.split(" ")[1];
+            audio.parentElement.style.backgroundSize = audio.children[0].children[7].value.split(" ")[1] + " " + audio.children[0].children[7].value.split(" ")[2];
+            audio.parentElement.style.paddingBottom = audio.children[0].children[7].value.split(" ")[3];
             audio.children[0].currentTime = tempo;
             audio.children[2].style.display = "none";
             audio.children[3].children[0].innerHTML = '<svg viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM12 1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"/></svg><span class="player-audio-tooltip">Pausar</span>';

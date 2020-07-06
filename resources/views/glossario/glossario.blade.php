@@ -124,9 +124,9 @@
                         </div>
                     </div>
                 </div>
-                <li class="list-group-item lista_item" >
+                @auth
+                    <li class="list-group-item lista_item" >
                         <a id="verbete_{{$verbete->id}}" href="{{ route('verbete', ['id' => $verbete->id]) }}">{{$verbete->descricao}}</a>
-                    @auth
                         <span class="dropdown">
                             <button button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float: right; border: none; background-color: white;"><img src="{{ asset('icones/menu_dot.svg') }}" alt="Logo" width="auto" height="20" />
                             </button>
@@ -148,8 +148,14 @@
                                 </form>
                             </p>
                         </div>
-                    @endauth
-                </li>
+                    </li>
+                @else
+                    <a id="verbete_{{$verbete->id}}" href="{{ route('verbete', ['id' => $verbete->id]) }}">
+                        <li class="list-group-item lista_item" >
+                            {{$verbete->descricao}}
+                        </li>
+                    </a>
+                @endauth
                 @endforeach
             </ul>
         </div>
@@ -192,7 +198,7 @@
                             <div class="row">
                                 <div class="col-sm-12" @if ($trecho->arquivo_sd != '') style="width: 100%; max-height: 140px;" @endif>
                                     @if ($trecho->arquivo_sd != '')
-                                        <div id="my_audio_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%; max-height: 140px;" onclick="contarView()">
+                                        <div id="my_audio_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%, 75%; padding-bottom: 13.5%;" onclick="contarView()">
             
                                             <!-- Chamar elemento audio com class player-audio -->
                                             {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
@@ -208,8 +214,8 @@
                                                 <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
                                                 
                                                 <!-- Imagens do background quando der play e pause -->
-                                                <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 100%">
-                                                <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 100%">
+                                                <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 100%, 75% 24%">
+                                                <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 100%, 75% 13.5%">
                                             </audio> 
                                             
                                         </div>
