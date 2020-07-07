@@ -261,6 +261,10 @@
 
         // Ação de reiniciar o vídeo quando acabar
         function restartVideo(evt) {
+            playerAudio.parentElement.parentElement.style.backgroundImage = playerAudio.children[8].value.split(" ")[0];
+            playerAudio.parentElement.parentElement.style.backgroundSize = playerAudio.children[8].value.split(" ")[1] + " " + playerAudio.children[8].value.split(" ")[2];
+            playerAudio.parentElement.parentElement.style.paddingBottom = playerAudio.children[8].value.split(" ")[3];
+            playerAudio.parentElement.children[2].style.display = "block";
             playerBtnPlay.innerHTML = svgIcos.restart;
             var e = playerElem.className;
             playerElem.className = e.replace("player-audio-cursor-hidden", "player-audio-cursor-show");

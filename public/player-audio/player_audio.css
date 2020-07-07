@@ -193,15 +193,21 @@
 .btns-audio-centrais {
     position: relative;
     top: 20px;
+    right: 100px;
     text-align: center;
+}
+
+.btns-audio-centrais .quality-sd {
+    position: absolute;
 }
 
 .btns-audio-centrais button {
     color: white;
-    margin: 5px;
+    margin: 6.5px;
     padding: 15px;
+    font-size: 12px;
     background-color: rgba(51, 51, 51, 0.849);
-    text-align: center;
+    /* text-align: center; */
     display: inline;
 }
 
