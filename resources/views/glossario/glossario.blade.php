@@ -251,7 +251,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-7" style="padding-top: 1rem; text-align: right;">
-                                    <a href="{{ $trecho->endereco_video }}" target="_blank">Clique aqui</a><span  style="color: #8b8b8b;font-size: 8;"> para assistir o video completo.</span> 
+                                    <a href="{{ $trecho->endereco_video }}" target="_blank">@lang('mensagens.Clique aqui')</a><span  style="color: #8b8b8b;font-size: 8;"> @lang('mensagens.para ouvir o áudio completo').</span> 
                                 </div>
                             </div>
                             <hr>
@@ -365,7 +365,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-7" style="padding-top: 1rem; text-align: right;">
-                                    <a href="{{ $trecho->endereco_video }}" target="_blank">Clique aqui</a><span  style="color: #8b8b8b;font-size: 8;"> para assistir o video completo.</span> 
+                                    <a href="{{ $trecho->endereco_video }}" target="_blank">@lang('mensagens.Clique aqui')</a><span  style="color: #8b8b8b;font-size: 8;"> @lang('mensagens.para assistir ao vídeo completo').</span> 
                                 </div>
                             </div>
                             <hr>

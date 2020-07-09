@@ -79,4 +79,7 @@ return [
     'SelecioneHD' => 'Select an HD file',
     'SelecioneSD' => 'Select an SD file',
     'Arquivo atual' => 'Current file',
+    'Clique aqui' => 'Click here',
+    'para assistir ao vídeo completo' => 'to watch the full video',
+    'para ouvir o áudio completo' => 'to listen to the full audio',
 ];
