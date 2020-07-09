@@ -271,14 +271,6 @@ li.selected{
 
 /* Editar trecho */
 
-.form-control:focus {
-	color: #495057;
-	background-color: #fff;
-	border-color: #464646;
-	outline: 0;
-  	box-shadow: 0 0 0 0.2rem rgba(97, 97, 97, 0.25);
-}
-
 .custom-file-input:lang(pt-br) ~ .custom-file-label::after {
 	content: "Procurar";
 }

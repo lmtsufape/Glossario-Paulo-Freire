@@ -263,7 +263,7 @@
                             <div class="row" style="padding: 0px 15px 15px 15px; float: right;">
                                 @auth
                                     @if (Auth()->user()->email === "admin@ufape.edu.br")
-                                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
+                                        <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
                                     @endif
                                     <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" />@lang('mensagens.Editar')</button></a>
                                 @endauth 
@@ -377,7 +377,7 @@
                             <div class="row" style="padding: 0px 15px 15px 15px; float: right;">
                                 @auth
                                     @if (Auth()->user()->email === "admin@ufape.edu.br")
-                                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#excluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
+                                        <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
                                     @endif
                                     <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" />@lang('mensagens.Editar')</button></a>
                                 @endauth 

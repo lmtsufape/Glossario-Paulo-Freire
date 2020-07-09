@@ -80,6 +80,24 @@
                 margin-bottom: 30px;
             }
 
+            /* botões */
+            .form-control:focus {
+                color: #495057;
+                background-color: #fff;
+                border-color: #464646;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(97, 97, 97, 0.25);
+            }
+
+            .btn:focus, .btn.focus {
+                box-shadow: 0 0 0 0.2rem #b8b8b8;
+            }
+
+            .btn-primary:focus, .btn-primary.focus {
+                box-shadow: 0 0 0 0.2rem #b8b8b8;
+            }
+
+            /* editar trecho */
             .btn-atualizar {
                 width: 100%;
                 border-radius: 5px;

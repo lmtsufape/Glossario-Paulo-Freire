@@ -89,7 +89,7 @@
                 @foreach ($trechosAudios as $trecho)
                     @if($trecho->tipo_recurso == "áudio")
                     <!-- Modal -->
-                    <div class="modal fade" id="xcluirTrechoAudioModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoModalAudioLabel{{$trecho->id}}" aria-hidden="true">
+                    <div class="modal fade" id="excluirTrechoAudioModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoModalAudioLabel{{$trecho->id}}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -163,7 +163,7 @@
                                 @auth
                                     <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
                                     @if (Auth()->user()->email === "admin@ufape.edu.br")
-                                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>
+                                        <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>
                                     @endif
                                 @endauth 
                             </div>
@@ -196,7 +196,7 @@
                 @foreach ($trechosVideos as $trecho)
                     @if($trecho->tipo_recurso=="vídeo")
                      <!-- Modal -->
-                     <div class="modal fade" id="xcluirTrechoVideoModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoVideoModalLabel{{$trecho->id}}" aria-hidden="true">
+                     <div class="modal fade" id="excluirTrechoVideoModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoVideoModalLabel{{$trecho->id}}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -262,7 +262,7 @@
                                     @auth
                                         <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
                                         @if (Auth()->user()->email === "admin@ufape.edu.br") 
-                                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#xcluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>    
+                                            <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>    
                                         @endif
                                     @endauth 
                                 </div>
