@@ -97,6 +97,11 @@
                 box-shadow: 0 0 0 0.2rem #b8b8b8;
             }
 
+            .custom-file-input:focus ~ .custom-file-label {
+                border-color: #464646;
+                box-shadow: 0 0 0 0.2rem #b8b8b8;
+            }
+
             /* editar trecho */
             .btn-atualizar {
                 width: 100%;

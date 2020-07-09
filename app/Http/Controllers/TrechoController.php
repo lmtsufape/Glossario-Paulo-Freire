@@ -103,10 +103,10 @@ class TrechoController extends Controller
         // dd($request);
         $validated = $request->validate([
             'texto' => 'required',
-            'titulo_video' => 'required',
-            'tipo_recurso' => 'required',
+            'título' => 'required',
+            'tipo_de_recurso' => 'required',
             'tempo' => 'required',
-            'endereco' => 'required',
+            'endereço' => 'required',
             'arquivo_hd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
             'arquivo_sd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
             'arquivo_hd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
@@ -121,13 +121,13 @@ class TrechoController extends Controller
 
         $trecho->verbete_id = $id;
         $trecho->texto = $request->texto;
-        $trecho->titulo_video = $request->titulo_video;
-        $trecho->tipo_recurso = $request->tipo_recurso;
+        $trecho->titulo_video = $request->título;
+        $trecho->tipo_recurso = $request->tipo_de_recurso;
         $trecho->tempo = $request->tempo;
-        $trecho->endereco_video = $request->endereco;
+        $trecho->endereco_video = $request->endereço;
         $trecho->quant_views = 0;
         
-        if ($request->tipo_recurso == "áudio") {
+        if ($request->tipo_de_recurso == "áudio") {
             //colocando os nomes dos arquivos como referencia
             if (is_null($request->file('arquivo_hd_audio'))) {
                 $trecho->arquivo_hd = '';
