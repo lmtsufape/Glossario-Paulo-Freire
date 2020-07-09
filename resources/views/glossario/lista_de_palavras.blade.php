@@ -30,8 +30,9 @@
                             @foreach ($letras as $letra)
                             <div class="menu_glossario_letra_borda">
                                 @if($letra->count > 0)
-                                <div class="col-xs-1 menu_glossario_letra"><a href="{{ route('letra', ['l' => $letra->l]) }}">
-                                {{$letra->l}}</a></div>
+                                <a href="{{ route('letra', ['l' => $letra->l]) }}">
+                                <div class="col-xs-1 menu_glossario_letra">
+                                {{$letra->l}}</div></a>
                                 @else
                                 <div class="col-xs-1 menu_glossario_letra">{{$letra->l}}</div>
                                 @endif
