@@ -112,7 +112,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             @if ($trecho->arquivo_sd != '')
-                            <div id="my_audio_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%, 73%; padding-bottom: 13.2%;" onclick="contarView()">
+                            <div id="my_midia_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%, 73%; padding-bottom: 13.2%;" onclick="contarView('{{ $trecho->id }}', '{{ url( route('contarView', ['id' => $trecho->id ]) ) }}')">
 
                                 <!-- Chamar elemento audio com class player-audio -->
                                 {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
@@ -132,21 +132,8 @@
                                     <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 100%, 73% 13.2%">
                                 </audio> 
                                     
-                                </div>
-                                <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
-                                <script>
-                                    function contarView() {
-                                        var audio = document.getElementById('my_audio_{{ $trecho->id }}').children[0].children[0];
-                                        var confirmacao = document.getElementById('confirmacao{{ $trecho->id }}').value;
-                                        if (audio.paused != true && confirmacao == "0") {
-                                            document.getElementById('confirmacao{{ $trecho->id }}').value = "1";
-                                            var xmlhttp = new XMLHttpRequest();
-                                            var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
-                                            xmlhttp.open("GET", url, true);
-                                            xmlhttp.send();
-                                        }
-                                    }
-                                </script>
+                            </div>
+                            <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
                             @else
                                 <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                             @endif
@@ -232,7 +219,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             @if ($trecho->arquivo_hd != '' || $trecho->arquivo_hd != '')
-                            <div id="my_video_{{ $trecho->id }}" class="video-container" onclick="contarView()">
+                            <div id="my_midia_{{ $trecho->id }}" class="video-container" onclick="contarView('{{ $trecho->id }}', '{{ url( route('contarView', ['id' => $trecho->id ]) ) }}')">
                                 <!-- Chamar elemento vídeo com class jlplayer-video -->
                                 <video preload="none" class="jlplayer-video" poster="{{ asset('storage/' . $trecho->arquivo_sd) }}">
                                     <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="video/mp4">
@@ -246,20 +233,6 @@
                                 
                             </div>
                             <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
-
-                            <script>
-                                function contarView() {
-                                    var video = document.getElementById('my_video_{{ $trecho->id }}').children[0].children[0];
-                                    var confirmacao = document.getElementById('confirmacao{{ $trecho->id }}').value;
-                                    if (video.paused != true && confirmacao == "0") {
-                                        document.getElementById('confirmacao{{ $trecho->id }}').value = "1";
-                                        var xmlhttp = new XMLHttpRequest();
-                                        var url = "{{ url( route('contarView', ['id' => $trecho->id ]) ) }}";
-                                        xmlhttp.open("GET", url, true);
-                                        xmlhttp.send();
-                                    }
-                                }
-                            </script>
                         @else
                             <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: auto; width: 100%; top: 1rem; padding-right: 0.2rem;">
                         @endif
@@ -345,6 +318,17 @@
 
     function shareTwitterPopUp(url){
         window.open("https://twitter.com/intent/tweet?url=" + url,  "minhaJanelaTw", "height=1000,width=1000");
+    }
+
+    function contarView(id, url) {
+        var midia = document.getElementById('my_midia_' + id).children[0].children[0];
+        var confirmacao = document.getElementById('confirmacao' + id);
+        if (midia.paused != true && confirmacao.value == "0") {
+            confirmacao.value = "1";
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
     }
 </script>
 @endsection
