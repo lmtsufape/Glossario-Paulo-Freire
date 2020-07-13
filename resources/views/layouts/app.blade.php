@@ -147,18 +147,17 @@
         </div>
     </div>
     <!-- menu -->
-    <nav class="navbar navbar-expand-lg navbar-light classNavBar">
+    <nav class="navbar navbar-expand-lg navbar-light classNavBar" style="font-weight: bolder;">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('imagens/logo_Colorida_institutoPF.png') }}" height="30">
-                @lang('mensagens.Instituto Paulo Freire')
+            <a class="navbar-brand" href="{{ route('glossario') }}">
+                <img src="{{ asset('imagens/MVPF_M.png') }}" width="200px" height="auto">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon" onclick="mostrarOpcoes();"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">@lang('mensagens.Home')</a>
+                {{-- <a class="nav-item nav-link" href="#">@lang('mensagens.Home')</a> --}}
                 <a class="nav-item nav-link" data-toggle="modal" data-target="#modalOhGlossario">@lang('mensagens.O glossário')</a>
                 <a class="nav-item nav-link" href="#">@lang('mensagens.Conheça Paulo Freire')</a>
                 <a class="nav-item nav-link" href="{{ route('linhaDoTempo') }}">@lang('mensagens.Linha do Tempo')</a>
