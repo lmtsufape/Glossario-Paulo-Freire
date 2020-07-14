@@ -32,9 +32,9 @@
 
 <div style="padding-top: 80px;">
     <div class="imagem_fundo" style="background-image: url({{asset('imagens/img_grande_50.png')}})">
-        <div class="card-body menu_glossario">
+        <div class="row card-body menu_glossario">
             <div class="menu_glossario_design">
-                <div class="row" style="margin: 1rem">
+                <div class="row" style="margin: 2rem">
                     <div class="col-md-12">
                         <div class="row container">
                             <div class="col-xs-2 link-menu-glossario">
