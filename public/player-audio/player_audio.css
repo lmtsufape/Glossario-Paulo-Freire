@@ -53,8 +53,8 @@
     position: relative;
     width: 100%;
     min-width: 150px;
-    height: auto;
-    padding-bottom: 143px;
+    height: 100%;
+    /* padding-bottom: 100px; */
     border-radius: inherit;
     direction: ltr;
     background-color: #ffffff;
@@ -146,9 +146,9 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     color: #fff;
     z-index: 2;
     padding: 7px;
@@ -192,23 +192,26 @@
 
 .btns-audio-centrais {
     position: relative;
-    top: 20px;
-    right: 100px;
-    text-align: center;
-}
-
-.btns-audio-centrais .quality-sd {
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    padding: 0;
+    transform: translate(2%, 0%);
+    z-index: 2;
+    -webkit-transition: opacity .2s .1s ease;
+    transition: opacity .2s .1s ease;
+    -o-transition: opacity .2s .1s ease;
+    transition: opacity .2s .1s ease;
 }
 
 .btns-audio-centrais button {
+    position: relative;
+    top: 20px;
     color: white;
-    margin: 6.5px;
-    padding: 15px;
+    margin-right: 10px;
+    padding: 10px;
     font-size: 12px;
     background-color: rgba(51, 51, 51, 0.849);
-    /* text-align: center; */
-    display: inline;
 }
 
 .btns-audio-centrais button:hover {

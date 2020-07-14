@@ -21,7 +21,7 @@ return [
     'PAULO FREIRE' => 'PAULO FREIRE',
     'Acervo reconhecido pela UNESCO' => 'Acervo reconhecido pela UNESCO',
     'Buscar' => 'Buscar',
-    'Todas' => 'Todas',
+    'Todas' => 'Todos',
     'Áudio' => 'Áudio',
     'Vídeo' => 'Vídeo',
     'Áudios' => 'Áudios',

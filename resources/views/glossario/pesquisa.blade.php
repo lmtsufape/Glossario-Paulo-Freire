@@ -44,20 +44,20 @@
                     @endif
                     <div class="col-md-12" style="margin-bottom: 1px;">
                         <div class="row" style="margin-top: 1rem; margin-bottom: 1rem; justify-content: center; ">
-                            <button id="todas_botao" class="btn" onclick="buscarTodos(todas_botao)">
+                            <button id="todas_botao" class="btn" onclick="buscarTodos(todas_botao)" style="color: #acabab;">
                                 <img src="{{ asset('icones/search.svg') }}" alt="Logo" width="16,74" height="18,34" />
                                 <input id="boxTodas" value="" type="hidden" name="buscaTodos">
-                                <label class="campo_compartilhar_texto">@lang('mensagens.Todas')</label>
+                                @lang('mensagens.Todas')
                             </button>
-                            <button id="audio_botao" class="btn" onclick="buscarAudios(audio_botao)">
+                            <button id="audio_botao" class="btn" onclick="buscarAudios(audio_botao)" style="color: #acabab;">
                                 <img src="{{ asset('icones/audio.svg') }}" alt="Logo" width="16,74" height="18,34" />
                                 <input id="boxAudio" value="" type="hidden" name="buscaAudio">
-                                <label class="campo_compartilhar_texto">@lang('mensagens.Áudio')</label>
+                                @lang('mensagens.Áudio')
                             </button>
-                            <button id="video_botao" class="btn" onclick="buscarVideos(video_botao)">
+                            <button id="video_botao" class="btn" onclick="buscarVideos(video_botao)" style="color: #acabab;">
                                 <img src="{{ asset('icones/video.svg') }}" alt="Logo" width="16,74" height="18,34" />
                                 <input id="boxVideo" value="" type="hidden" name="buscaVideo">
-                                <label class="campo_compartilhar_texto">@lang('mensagens.Vídeo')</label>
+                                @lang('mensagens.Vídeo')
                             </button>
                         </div>
                     </div>
@@ -80,10 +80,16 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
+            {{-- <div style="margin-left: 12px;"><a id="titulo_busca">@lang('mensagens.Áudios')</a></div> --}}
+            <div style="margin-left: 12px;"><a id="subtitulo_busca">@lang('mensagens.Resultado'): {{$resultado}}</a><output id="letraSelecionada"></output></div>
+        </div>
+    </div>
+    <div class="row">
+        {{-- <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
             <div style="margin-left: 12px;"><a id="titulo_busca">@lang('mensagens.Áudios')</a></div>
                 <br>
             <div style="margin-left: 12px; margin-top: -35px;"><a id="subtitulo_busca">@lang('mensagens.Resultado'): {{$resultado}}</a><output id="letraSelecionada"></output></div>
-        </div>
+        </div> --}}
         <div class="col-sm-12">
             <ul class="list-group">
                 @foreach ($trechosAudios as $trecho)
@@ -110,34 +116,36 @@
                     </div>
                     <li class="list-group-item div_container">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             @if ($trecho->arquivo_sd != '')
-                            <div id="my_midia_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%, 73%; padding-bottom: 13.2%;" onclick="contarView('{{ $trecho->id }}', '{{ url( route('contarView', ['id' => $trecho->id ]) ) }}')">
+                            <div style="height: 150px; width: 100%;">
+                                <div id="my_midia_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 450px 105px; padding-bottom: 68px;" onclick="contarView('{{ $trecho->id }}', '{{ url( route('contarView', ['id' => $trecho->id ]) ) }}')">
 
-                                <!-- Chamar elemento audio com class player-audio -->
-                                {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
-                                <audio class="player-audio" >
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/m4a">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
-                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
-
-                                    <!-- Qualidades do aúdio -->
-                                    <input id="audioHD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
-                                    <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
-                                    
-                                    <!-- Imagens do background quando der play e pause -->
-                                    <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 100%, 73% 25%">
-                                    <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 100%, 73% 13.2%">
-                                </audio> 
-                                    
+                                    <!-- Chamar elemento audio com class player-audio -->
+                                    {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
+                                    <audio class="player-audio" >
+                                        <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                                        <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
+                                        <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/m4a">
+                                        <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
+                                        <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
+    
+                                        <!-- Qualidades do aúdio -->
+                                        <input id="audioHD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                        <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                        
+                                        <!-- Imagens do background quando der play e pause -->
+                                        <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 450px105px 126px">
+                                        <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 450px105px 68px">
+                                    </audio> 
+                                        
+                                </div>
                             </div>
                             <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
                             @else
                                 <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
                             @endif
-                            <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative;left: 10px">@lang('mensagens.Áudio completo')</a>
+                            
                         </div>
                     <div class="col">
                         <div class="row">
@@ -145,14 +153,17 @@
                                 <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
                                 <span class="subtitulo_container">{{$trecho->titulo_video}}</span>
                             </div>
+                            <div class="col-sm-12">
+                                <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative;left: 0px">@lang('mensagens.Áudio completo')</a>
+                            </div>
                             <div class="col-sm-12" style="padding: 1rem;">
                                 <output class="campo_contador">
                                     <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                     <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
                                 </output>
                                 <span class="dropdown">
-                                    <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                        <label class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</label>
+                                    <button button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                        @lang('mensagens.Compartilhar')
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                                         <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>
@@ -161,9 +172,9 @@
                                     </div>
                                 </span>
                                 @auth
-                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
+                                    <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" />@lang('mensagens.Editar')</button></a>
                                     @if (Auth()->user()->email === "admin@ufape.edu.br")
-                                        <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>
+                                        <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
                                     @endif
                                 @endauth 
                             </div>
@@ -186,11 +197,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
+        {{-- <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
             <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Vídeos')</a></div>
                 <br>
             <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$resultado}} </a><output id="letraSelecionada"></output></div>
-        </div>
+        </div> --}}
         <div class="col-sm-12">
             <ul class="list-group">
                 @foreach ($trechosVideos as $trecho)
@@ -236,7 +247,7 @@
                         @else
                             <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: auto; width: 100%; top: 1rem; padding-right: 0.2rem;">
                         @endif
-                            <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative; left: 10px;">@lang('mensagens.Vídeo completo')</a>
+                            
                         </div>
                         <div class="col">
                             <div class="row">
@@ -244,14 +255,17 @@
                                     <output style="width: 100%; word-wrap: break-word;">{{$trecho->texto}}</output>
                                     <span  class="subtitulo_container" >{{$trecho->titulo_video}}</span>
                                 </div>
+                                <div class="col-sm-12">
+                                    <a class="subtitulo_container" href="{{$trecho->endereco_video}}" style="position: relative; left: 0px;">@lang('mensagens.Vídeo completo')</a>
+                                </div>
                                 <div class="col-sm-12" style="padding: 1rem;">
                                     <output class="campo_contador">
                                         <img src="{{ asset('icones/eye.svg') }}" alt="Logo" width="22,12" height="14,41" />
                                         <label class="campo_compartilhar_texto">{{$trecho->quant_views}}</label>
                                     </output>
                                     <span class="dropdown">
-                                        <button button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
-                                            <label class="campo_compartilhar_texto">@lang('mensagens.Compartilhar')</label>
+                                        <button button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;"><img src="{{ asset('icones/share.svg') }}" alt="Logo" width="16,74" height="18,34" />
+                                            @lang('mensagens.Compartilhar')
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                                             <a class="dropdown-item" onclick="shareFacePopUp('{{ url( route('pesquisa.id', ['id' => $trecho->id])) }}')"><img width="25" height="25" src="{{ asset('icones/facebook.png') }}"><span>Facebook</span></a>

@@ -166,9 +166,9 @@
     @if (count($trechosAudios) != 0)
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Áudios')</a></div>
+                {{-- <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Áudios')</a></div>
                     <br>
-                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
+                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div> --}}
             </div>
             <div class="col-sm-12">
                 <ul class="list-group">
@@ -196,28 +196,30 @@
                         </div>
                         <li class="list-group-item div_container">
                             <div class="row">
-                                <div class="col-sm-12" @if ($trecho->arquivo_sd != '') style="width: 100%; max-height: 140px;" @endif>
+                                <div class="col-sm-12">
                                     @if ($trecho->arquivo_sd != '')
-                                        <div id="my_midia_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 100%, 75%; padding-bottom: 13.5%;" onclick="contarView('{{ $trecho->id }}', '{{ url( route('contarView', ['id' => $trecho->id ]) ) }}')">
+                                        <div style="width: 100%; height: 140px">
+                                            <div id="my_midia_{{ $trecho->id }}" class="audio-container" style="background-image: url('{{ asset('player-audio/gifs/giphy_stop.png')}}'); background-size: 600px; padding-bottom: 105px;" onclick="contarView('{{ $trecho->id }}', '{{ url( route('contarView', ['id' => $trecho->id ]) ) }}')">
             
-                                            <!-- Chamar elemento audio com class player-audio -->
-                                            {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
-                                            <audio class="player-audio" >
-                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
-                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
-                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/m4a">
-                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
-                                                <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
-
-                                                <!-- Qualidades do aúdio -->
-                                                <input id="audioHD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
-                                                <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                                <!-- Chamar elemento audio com class player-audio -->
+                                                {{-- ATENÇÃO: os formatos e a ordem dos inputs influenciam no gif de fundo e nos botes de mudar qualidade --}}
+                                                <audio class="player-audio" >
+                                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp3">
+                                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/mp4">
+                                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/m4a">
+                                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/ogg">
+                                                    <source src="{{ asset('storage/' . $trecho->arquivo_sd) }}" type="audio/flac">
+    
+                                                    <!-- Qualidades do aúdio -->
+                                                    <input id="audioHD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                                    <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
+                                                    
+                                                    <!-- Imagens do background quando der play e pause -->
+                                                    <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 593px 140px">
+                                                    <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 593px 105px">
+                                                </audio> 
                                                 
-                                                <!-- Imagens do background quando der play e pause -->
-                                                <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 100%, 75% 24%">
-                                                <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 100%, 75% 13.5%">
-                                            </audio> 
-                                            
+                                            </div>
                                         </div>
                                         <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
                                     @else
@@ -289,9 +291,9 @@
     @if (count($trechosVideos) != 0)
     <div class="row">
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Vídeos')</a></div>
+                {{-- <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Vídeos')</a></div>
                     <br>
-                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div>
+                <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div> --}}
             </div>
             <div class="col-sm-12">
                 <ul class="list-group">
