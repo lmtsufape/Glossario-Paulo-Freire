@@ -215,8 +215,8 @@
                                                     <input id="audioSD" type="hidden" value="{{ asset('storage/' . $trecho->arquivo_sd) }}">
                                                     
                                                     <!-- Imagens do background quando der play e pause -->
-                                                    <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 593px 140px">
-                                                    <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 593px 105px">
+                                                    <input id="gif"     type="hidden" value="url('{{ asset('player-audio/gifs/giphy.gif')}}') 600px140px 140px">
+                                                    <input id="gifStop" type="hidden" value="url('{{ asset('player-audio/gifs/giphy_stop.png')}}') 600px140px 105px">
                                                 </audio> 
                                                 
                                             </div>
