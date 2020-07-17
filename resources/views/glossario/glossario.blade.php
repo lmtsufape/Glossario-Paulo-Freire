@@ -105,11 +105,11 @@
             <ul class="list-group">
                 @foreach ($verbetes as $verbete)
                 <!-- Modal -->
-                <div class="modal fade" id="xcluirVerbeteModal" tabindex="-1" role="dialog" aria-labelledby="excluirVerbeteModalLabel" aria-hidden="true">
+                <div class="modal fade" id="excluirVerbeteModal_{{ $verbete->id }}" tabindex="-1" role="dialog" aria-labelledby="excluirVerbeteModalLabel_{{ $verbete->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="excluirVerbeteModalLabel">@lang('mensagens.Confirmar')</h5>
+                            <h5 class="modal-title" id="excluirVerbeteModalLabel_{{ $verbete->id }}">@lang('mensagens.Confirmar')</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -134,7 +134,7 @@
                                 <a href="{{ route('trecho.add', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Adicionar trecho')</span></a>
                                 <a href="javascript:editarVerbete('{{$verbete->id}}')" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Editar veberte')</span></a>
                                 @if (Auth()->user()->email === "admin@ufape.edu.br")
-                                    <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#xcluirVerbeteModal"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Excluir')</span></a>
+                                    <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#excluirVerbeteModal_{{ $verbete->id }}"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Excluir')</span></a>
                                 @endif
                             </div>
                         </span>
@@ -142,7 +142,7 @@
                             <p>
                                 <form id="form_editar_verbete_{{$verbete->id}}" method="POST" action="{{ route('verbete.edit', ['id' => $verbete->id]) }}">
                                     @csrf
-                                    <input id="input_editar_verbete_{{$verbete->id}}" name="descricao" type="hidden"></input>
+                                    <input id="input_editar_verbete_{{$verbete->id}}" name="descricao" type="hidden">
                                     <a id="button_salvar_{{$verbete->id}}" class="btn" style="display: none; border-color:#d5d5d5; border-width:2px; height: 10px; background-color: white; color: #d5d5d5;" href="javascript:salvarVerbete('{{$verbete->id}}')">@lang('mensagens.Salvar')</a>
                                     <a id="button_cancelar_{{$verbete->id}}" class="btn" href="javascript:cancelarEditarVerbete('{{$verbete->id}}')" style="display: none; border-color:#d5d5d5; border-width:2px; height: 25px; background-color: white; color: #d5d5d5;">@lang('mensagens.Cancelar')</a>
                                 </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VerbeteController extends Controller
 {
@@ -25,8 +26,21 @@ class VerbeteController extends Controller
 
     public function deletar($id) {
         $verbete = \App\Verbete::find($id);
-        $verbete->delete();
+        
+        $trechos = \App\Trecho::where('verbete_id', $id)->get();
 
+        foreach ($trechos as $trecho) {
+            if ($trecho->arquivo_hd != '' && Storage::disk()->exists($trecho->arquivo_hd)) {
+                Storage::delete($trecho->arquivo_hd);
+            }
+    
+            if ($trecho->arquivo_sd != '' && Storage::disk()->exists($trecho->arquivo_sd)) {
+                Storage::delete($trecho->arquivo_sd);
+            }
+            $trecho->delete();
+        }
+
+        $verbete->delete();
         return redirect( route('glossario') )->with('mensagem', 'Verbete excluido com sucesso!');
     }
 
