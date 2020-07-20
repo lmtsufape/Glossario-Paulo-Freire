@@ -16,7 +16,7 @@
                     <div class="row" style="margin-top:10px;">
                         <div class="col-sm-8">
                             <label for="titulo" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Titulo'):</label>
-                            <input type="text" class="form-control @error('titulo_video') is-invalid @enderror" id="titulo" name="titulo_video" value="@if(old('titulo_video') != null) {{ old('titulo_video') }} @else {{ $trecho->titulo_video }} @endif">                                    
+                            <input autofocus type="text" class="form-control @error('titulo_video') is-invalid @enderror" id="titulo" name="titulo_video" value="@if(old('titulo_video') != null) {{old('titulo_video')}} @else {{$trecho->titulo_video}} @endif">                                    
                         </div>
 
                         @error('titulo_video')

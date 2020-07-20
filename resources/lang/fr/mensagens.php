@@ -83,4 +83,5 @@ return [
     'Clique aqui' => 'Cliquez ici',
     'para assistir ao vídeo completo' => 'pour regarder la vidéo complète',
     'para ouvir o áudio completo' => "pour écouter l'intégralité de l'audio",
+    'Adicionar' => 'Ajouter',
 ];

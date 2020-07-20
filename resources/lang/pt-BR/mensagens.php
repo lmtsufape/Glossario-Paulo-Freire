@@ -83,4 +83,5 @@ return [
     'Clique aqui' => 'Clique aqui',
     'para assistir ao vídeo completo' => 'para assistir ao vídeo completo',
     'para ouvir o áudio completo' => 'para ouvir o áudio completo',
+    'Adicionar' => 'Adicionar',
 ];

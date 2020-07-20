@@ -23,7 +23,7 @@
                             <div class="row" style="margin-top:10px;">
                                 <div class="col-sm-8">
                                     <label for="titulo" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Titulo'):</label>
-                                    <input type="text" class="form-control @error('título') is-invalid @enderror" id="titulo" name="título" value="@if(old('título') != null) {{old('título')}} @endif">                                    
+                                    <input autofocus type="text" class="form-control @error('título') is-invalid @enderror" id="titulo" name="título" value="@if(old('título') != null) {{old('título')}} @endif">                                    
                                 
                                     @error('título')
                                         <span class="invalid-feedback" role="alert">

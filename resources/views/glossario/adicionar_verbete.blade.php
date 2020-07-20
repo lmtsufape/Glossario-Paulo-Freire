@@ -1,39 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-        <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Adicionar um verbete')</a></div>
-    </div>
-    <form action="{{ route('verbete.add.save') }}" method="POST">
-        <div class="col-sm-12">
-        @if ($errors->any())
-            <div class="col-md-12" style="margin-top: 5px;">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li class="alert alert-danger" role="alert">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        </div>
-        <div class="col-sm-12">
-            <ul class="list-group">
-                <li class="list-group-item div_container">
-                    @csrf
-                    <div class="row">
-                        <div class="col-sm-12" style="padding-top: 1rem;">
-                            <span style="width: 100%; word-wrap: break-word;">@lang('mensagens.Nome'):</span>
-                            <input type="text" name="nome" style="width: 100%; word-wrap: break-word;"></input>
-                        </div>
+<div class="row" style="justify-content: center; margin-top: 2rem; margin-bottom: 2rem;">
+    <div class="col-sm-5">
+        <h3>@lang('mensagens.Adicionar um verbete')</h3>
+        <div class="card">
+            <div class="row">
+                <div class="card-body">
+                    <form action="{{ route('verbete.add.save') }}" method="POST">
+                        @csrf
                         <div class="col-sm-12" style="padding: 1rem;">
-                            <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">@lang('mensagens.Salvar')</button>
-                            <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;">@lang('mensagens.Cancelar')</button></a>                                 
+                            <label for="nome" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Nome'):</label>
+                            <input autofocus type="text" class="form-control @error('nome') is-invalid @enderror" id="nome" name="nome" value="@if(old('nome') != null) {{old('nome')}} @endif">
+
+                            @error('nome')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    </div>
-                </li>
-            </ul>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6" style="padding: 1rem;">
+                                    <a href="javascript:history.back()"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; width: 100%; background-color: white; color: #acabab;">@lang('mensagens.Cancelar')</button></a>                                 
+                                </div>
+                                <div class="col-sm-6" style="padding: 1rem;">
+                                    <button type="submit" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; width: 100%; background-color: white; color: white; background-color: rgb(10, 173, 64);">@lang('mensagens.Adicionar')</button>                                
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 @endsection
