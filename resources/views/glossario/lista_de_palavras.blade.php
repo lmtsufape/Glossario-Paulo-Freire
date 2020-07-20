@@ -61,7 +61,7 @@
         <div class="col-md-10" style="margin-left: 1rem; margin-top: 10%; margin-bottom: 1rem;">
                 <ul class="list-group">
                 @foreach ($verbetes as $verbete)
-                    @if (str_split($verbete->descricao)[0] == $letra->l)
+                    @if (str_split(\App\Http\Controllers\ListarTrechoController::tirarAcentos($verbete->descricao))[0] == $letra->l || str_split(\App\Http\Controllers\ListarTrechoController::tirarAcentos($verbete->descricao))[0] == strtolower($letra->l))
                     <a href="{{ route('verbete', ['id' => $verbete->id]) }}">
                         <li class="list-group-item lista_item" >
                                 <div class="row">
