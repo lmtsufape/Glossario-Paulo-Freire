@@ -61,6 +61,7 @@ return [
     'Link do áudio/vídeo completo' => 'Link do áudio/vídeo completo',
     'Link do áudio completo' => 'Link do áudio completo',
     'Link do vídeo completo' => 'Link do vídeo completo',
+    'Link do arquivo completo' => 'Link do arquivo completo',
     'Editar trecho' => 'Editar trecho',
     'Login' => 'Login',
     'Endereço de e-mail' => 'Endereço de e-mail',

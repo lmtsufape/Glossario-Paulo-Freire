@@ -127,7 +127,7 @@
                             @enderror
                         </div>
                         <div class="col-sm-6">
-                            <label id="endereco_label" for="endereco" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Link do áudio completo'):</label>
+                            <label id="endereco_label" for="endereco" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Link do arquivo completo'):</label>
                             <input id="endereco" name="endereco" class="form-control @error('endereco') is-invalid @enderror" type="text" size="50px" value="@if(old('endereco') != null) {{old('endereco')}} @else {{$trecho->endereco_video}} @endif">
                             
                             @error('endereco')
@@ -193,30 +193,38 @@
 
 <script>
     var combobox = document.getElementById('tipo');
+    var labelEndereco = document.getElementById('endereco_label');
 
     if (combobox.value == "áudio") {
         document.getElementById('paragrafoAudio').style.display = 'inline';
         document.getElementById('paragrafoVideo').style.display = 'none';
+        labelEndereco.innerText = "@lang('mensagens.Link do áudio completo')";
     } else if (combobox.value == "vídeo") {
         document.getElementById('paragrafoAudio').style.display = 'none';
         document.getElementById('paragrafoVideo').style.display = 'inline';
+        labelEndereco.innerText = "@lang('mensagens.Link do vídeo completo')";
     } else {
         document.getElementById('paragrafoAudio').style.display = 'none';
         document.getElementById('paragrafoVideo').style.display = 'none';
+        labelEndereco.innerText = "@lang('mensagens.Link do arquivo completo')";
     }
 
     function mudar() {
         var combobox = document.getElementById('tipo');
+        var labelEndereco = document.getElementById('endereco_label');
 
         if (combobox.value == "áudio") {
             document.getElementById('paragrafoAudio').style.display = 'inline';
             document.getElementById('paragrafoVideo').style.display = 'none';
+            labelEndereco.innerText = "@lang('mensagens.Link do áudio completo')";
         } else if (combobox.value == "vídeo") {
             document.getElementById('paragrafoAudio').style.display = 'none';
             document.getElementById('paragrafoVideo').style.display = 'inline';
+            labelEndereco.innerText = "@lang('mensagens.Link do vídeo completo')";
         } else {
             document.getElementById('paragrafoAudio').style.display = 'none';
             document.getElementById('paragrafoVideo').style.display = 'none';
+            labelEndereco.innerText = "@lang('mensagens.Link do arquivo completo')";
         }
     }
 </script>
