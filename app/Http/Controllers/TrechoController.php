@@ -15,6 +15,7 @@ class TrechoController extends Controller
     }
 
     public function update(Request $request, $id) {
+        // dd($request);
         //recuperando o trecho
         $arquivo = '';
         $trecho = \App\Trecho::find($id);
@@ -35,6 +36,7 @@ class TrechoController extends Controller
 
         //substituindo o texto e o titulo do $request no trecho
         $trecho->texto = $request->texto;
+        $trecho->tipo_recurso = $request->tipo_de_recurso;
         $trecho->titulo_video = $request->titulo_video;
         $trecho->endereco_video = $request->endereco;
         $trecho->tempo = $request->tempo;
