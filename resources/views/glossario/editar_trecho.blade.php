@@ -62,8 +62,8 @@
                         </div>
                         <div class="row" style="margin-top:10px;">
                             <div class="col-sm-6">
-                                <input id="arquivo_hd_audio" class="custom-file-input" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_hd_audio" style="width: 93%; left: 15px;">
-                                <label class="custom-file-label @error('arquivo_hd_audio') is-invalid @enderror" for="arquivo_hd_audio" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneHD')...</label>
+                                <input id="arquivo_hd_audio" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_hd_audio" style="width: 93%; left: 15px;">
+                                {{-- <label class="custom-file-label @error('arquivo_hd_audio') is-invalid @enderror" for="arquivo_hd_audio" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneHD')...</label> --}}
                                 
                                 @error('arquivo_hd_audio')
                                 <span class="invalid-feedback" role="alert">
@@ -72,8 +72,8 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <input id="arquivo_sd_audio" class="custom-file-input" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd_audio" style="width: 93%; left: 15px;">
-                                <label class="custom-file-label @error('arquivo_sd_audio') is-invalid @enderror" for="arquivo_sd_audio" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneSD')...</label>
+                                <input id="arquivo_sd_audio" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd_audio" style="width: 93%; left: 15px;">
+                                {{-- <label class="custom-file-label @error('arquivo_sd_audio') is-invalid @enderror" for="arquivo_sd_audio" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneSD')...</label> --}}
                             
                                 @error('arquivo_sd_audio')
                                 <span class="invalid-feedback" role="alert">
@@ -94,8 +94,8 @@
                         </div>
                         <div class="row" style="margin-top:10px;">
                             <div class="col-sm-6">
-                                <input id="arquivo_hd_video" class="custom-file-input" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd_video" style="width: 93%; left: 15px;">
-                                <label class="custom-file-label @error('arquivo_hd_video') is-invalid @enderror" for="arquivo_hd_video" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneHD')...</label>
+                                <input id="arquivo_hd_video" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd_video" style="width: 93%; left: 15px;">
+                                {{-- <label class="custom-file-label @error('arquivo_hd_video') is-invalid @enderror" for="arquivo_hd_video" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneHD')...</label> --}}
                             
                                 @error('arquivo_hd_video')
                                 <span class="invalid-feedback" role="alert">
@@ -104,8 +104,8 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <input id="arquivo_sd_video" class="custom-file-input" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd_video" style="width: 93%; left: 15px;">
-                                <label class="custom-file-label @error('arquivo_sd_video') is-invalid @enderror" for="arquivo_sd_video" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneSD')...</label>
+                                <input id="arquivo_sd_video" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd_video" style="width: 93%; left: 15px;">
+                                {{-- <label class="custom-file-label @error('arquivo_sd_video') is-invalid @enderror" for="arquivo_sd_video" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneSD')...</label> --}}
                                 
                                 @error('arquivo_sd_video')
                                 <span class="invalid-feedback" role="alert">
