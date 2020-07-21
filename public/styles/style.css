@@ -20,7 +20,7 @@
 	height: 100%; 
 	border:solid 0px; 
 	border-radius:12px;
-	font-family: serif;
+	font-family: 'Segoe UI', serif;
 }
 
 /*glossario*/
@@ -51,7 +51,7 @@
 	text-align: center; 
 	font-size: 19px; 
 	margin-top: 3px; 
-	font-family: 'Segoe UI';
+	font-family: 'Segoe UI', serif;
 	font-weight: bolder;
 }
 
@@ -113,19 +113,19 @@ li.selected{
 }
 
 #titulo_lista{
-	font-size: 30px; font-family:arial; font-weight: bolder;
+	font-size: 30px; font-family:'Segoe UI', serif; font-weight: bolder;
 }
 
 #subtitulo_lista{
-	font-family:sans-serif; color: #313131; font-weight: bolder;
+	font-family:'Segoe UI', serif; color: #313131; font-weight: bolder;
 }
 
 #titulo_busca{
-	font-size: 25px; font-family:arial;
+	font-size: 25px; font-family:'Segoe UI', serif;
 }
 
 #subtitulo_busca{
-	font-family:sans-serif; color: #aaaaaa;
+	font-family:'Segoe UI', serif; color: #aaaaaa;
 }
 
 .div_container{
@@ -164,7 +164,7 @@ li.selected{
 /*########################### lista_de_palavras ###########################*/
 
 .letra{
-	font-size: 100px; font-family: time;
+	font-size: 100px; font-family: 'Segoe UI', serif;
 }
 
 .nav_text_size {

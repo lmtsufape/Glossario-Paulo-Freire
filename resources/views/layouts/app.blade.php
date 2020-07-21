@@ -30,7 +30,7 @@
             .full-height {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Nunito', sans-serif;
+                font-family: 'Segoe UI', serif;
                 font-weight: 200;
                 height: 10vh;
                 margin: 0;
@@ -110,6 +110,9 @@
                 box-shadow: black;
                 color: white;
                 background-color: rgb(10, 173, 64);
+            }
+            *{
+                font-family: 'Segoe UI', serif;
             }
         </style>
 </head>
