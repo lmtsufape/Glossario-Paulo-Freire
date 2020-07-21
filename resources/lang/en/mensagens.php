@@ -84,4 +84,5 @@ return [
     'para assistir ao vídeo completo' => 'to watch the full video',
     'para ouvir o áudio completo' => 'to listen to the full audio',
     'Adicionar' => 'Save',
+    'Verbete' => 'Word',
 ];

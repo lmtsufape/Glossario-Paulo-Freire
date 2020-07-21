@@ -43,7 +43,7 @@ return [
     'Compartilhar' => 'Compartilhar',
     'Editar' => 'Editar',
     'Excluir'=> 'Excluir',
-    'Palavras com a letra' => 'Palavras com a letra',
+    'Palavras com a letra' => 'Verbetes iniciando com a letra',
     'Lista' => 'Lista',
     'Adicionar trecho' => 'Adicionar trecho',
     'Editar veberte' => 'Editar verberte',
@@ -84,4 +84,5 @@ return [
     'para assistir ao vídeo completo' => 'para assistir ao vídeo completo',
     'para ouvir o áudio completo' => 'para ouvir o áudio completo',
     'Adicionar' => 'Adicionar',
+    'Verbete' => 'Verbete',
 ];

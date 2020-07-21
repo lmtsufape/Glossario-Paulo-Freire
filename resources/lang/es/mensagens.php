@@ -84,4 +84,5 @@ return [
     'para assistir ao vídeo completo' => 'para ver el video completo',
     'para ouvir o áudio completo' => 'para escuchar el audio completo',
     'Adicionar' => 'Añadir',
+    'Verbete' => 'Palabra',
 ];

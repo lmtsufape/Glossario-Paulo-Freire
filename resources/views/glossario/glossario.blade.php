@@ -165,11 +165,13 @@
 @if (Route::currentRouteName() === 'verbete')
     @if (count($trechosAudios) != 0)
     <div class="row">
+            @if(count($trechosAudios) != 0)
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                {{-- <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Áudios')</a></div>
-                    <br>
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;"><strong>@lang('mensagens.Verbete'):</strong> {{$verbeteSelecionado->descricao}}</a></div>
+                    {{-- <br>
                 <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div> --}}
             </div>
+            @endif
             <div class="col-sm-12">
                 <ul class="list-group">
                     @foreach ($trechosAudios as $trecho)
@@ -229,7 +231,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12" style="padding-top: 1rem;">
-                                    <span class="subtitulo_container">{{ $trecho->titulo }}</span>
+                                    <span class="subtitulo_container">{{ $trecho->titulo_video }}</span>
                                 </div>
                             </div>
                             <div class="row" style="font-size: 14px;">
@@ -290,11 +292,13 @@
     @endif
     @if (count($trechosVideos) != 0)
     <div class="row">
+            @if(count($trechosAudios) == 0)
             <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                {{-- <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Vídeos')</a></div>
-                    <br>
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;"><strong>@lang('mensagens.Verbete'):</strong> {{$verbeteSelecionado->descricao}}</a></div>
+                    {{-- <br>
                 <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div> --}}
             </div>
+            @endif
             <div class="col-sm-12">
                 <ul class="list-group">
                     @foreach ($trechosVideos as $trecho)
