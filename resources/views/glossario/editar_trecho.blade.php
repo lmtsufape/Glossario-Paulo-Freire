@@ -17,39 +17,47 @@
                         <div class="col-sm-8">
                             <label for="titulo" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Titulo'):</label>
                             <input autofocus type="text" class="form-control @error('titulo_video') is-invalid @enderror" id="titulo" name="titulo_video" value="@if(old('titulo_video') != null) {{old('titulo_video')}} @else {{$trecho->titulo_video}} @endif">                                    
+                            
+                            @error('titulo_video')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
-                        @error('titulo_video')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        
                         <div class="col-sm-4" style="font-weight: bolder;">
                             <label for="tipo">Tipo de recurso:</label>
-                            <select id="tipo" class="custom-select custom-select-sm-3" name="tipo_de_recurso" onchange="mudar()">
-                                @if (old('tipo') != null) 
+                            <select id="tipo" class="custom-select custom-select-sm-3 @error('tipo_de_recurso') is-invalid @enderror" name="tipo_de_recurso" onchange="mudar()">
+                                @if (old('tipo_de_recurso') != null) 
                                     <option selected>Selecione o tipo de recurso</option>
-                                    <option @if(old('tipo') == "áudio") selected @endif value="áudio">Áudio</option>
-                                    <option @if(old('tipo') == "vídeo") selected @endif value="vídeo">Vídeo</option>
+                                    <option @if(old('tipo_de_recurso') == "áudio") selected @endif value="áudio">Áudio</option>
+                                    <option @if(old('tipo_de_recurso') == "vídeo") selected @endif value="vídeo">Vídeo</option>
                                 @else 
                                     <option selected>Selecione o tipo de recurso</option>
                                     <option @if($trecho->tipo_recurso == "áudio") selected @endif value="áudio">Áudio</option>
                                     <option @if($trecho->tipo_recurso == "vídeo") selected @endif value="vídeo">Vídeo</option>
                                 @endif
                             </select>
+
+                            @error('tipo_de_recurso')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="row" style="margin-top:10px;">
                         <div class="col-sm-12">
                             <label for="texto" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Texto'):</label>
                             <textarea id="texto" name="texto" class="form-control @error('texto') is-invalid @enderror" rows="8" cols="90" style="width: 100%; word-wrap: break-word;">@if(old('texto') != null) @else {{ $trecho->texto }} @endif</textarea>
+                            
+                            @error('texto')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
-
-                        @error('texto')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
                     </div>
                     <div id="paragrafoAudio" style="display: none;">
                         <div class=row style="margin-top:10px;">
@@ -62,7 +70,7 @@
                         </div>
                         <div class="row" style="margin-top:10px;">
                             <div class="col-sm-6">
-                                <input id="arquivo_hd_audio" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_hd_audio" style="width: 93%; left: 15px;">
+                                <input class="@error('arquivo_hd_audio') is-invalid @enderror" id="arquivo_hd_audio" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_hd_audio" style="width: 93%; left: 15px;">
                                 {{-- <label class="custom-file-label @error('arquivo_hd_audio') is-invalid @enderror" for="arquivo_hd_audio" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneHD')...</label> --}}
                                 
                                 @error('arquivo_hd_audio')
@@ -72,7 +80,7 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <input id="arquivo_sd_audio" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd_audio" style="width: 93%; left: 15px;">
+                                <input class="@error('arquivo_sd_audio') is-invalid @enderror" id="arquivo_sd_audio" type="file" accept=".mp3,.mp4,.m4a,.ogg,.flac" name="arquivo_sd_audio" style="width: 93%; left: 15px;">
                                 {{-- <label class="custom-file-label @error('arquivo_sd_audio') is-invalid @enderror" for="arquivo_sd_audio" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneSD')...</label> --}}
                             
                                 @error('arquivo_sd_audio')
@@ -94,7 +102,7 @@
                         </div>
                         <div class="row" style="margin-top:10px;">
                             <div class="col-sm-6">
-                                <input id="arquivo_hd_video" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd_video" style="width: 93%; left: 15px;">
+                                <input class="@error('arquivo_hd_video') is-invalid @enderror" id="arquivo_hd_video" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_hd_video" style="width: 93%; left: 15px;">
                                 {{-- <label class="custom-file-label @error('arquivo_hd_video') is-invalid @enderror" for="arquivo_hd_video" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneHD')...</label> --}}
                             
                                 @error('arquivo_hd_video')
@@ -104,7 +112,7 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <input id="arquivo_sd_video" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd_video" style="width: 93%; left: 15px;">
+                                <input class="@error('arquivo_sd_video') is-invalid @enderror" id="arquivo_sd_video" type="file" accept=".mp4,.mkv,.ogv,.webm" name="arquivo_sd_video" style="width: 93%; left: 15px;">
                                 {{-- <label class="custom-file-label @error('arquivo_sd_video') is-invalid @enderror" for="arquivo_sd_video" style="width: 93%; left: 15px;">@lang('mensagens.SelecioneSD')...</label> --}}
                                 
                                 @error('arquivo_sd_video')

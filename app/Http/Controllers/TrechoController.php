@@ -15,21 +15,22 @@ class TrechoController extends Controller
     }
 
     public function update(Request $request, $id) {
-        // dd($request);
+        // dd($request->arquivo_sd_audio->getMimeType());
         //recuperando o trecho
         $arquivo = '';
         $trecho = \App\Trecho::find($id);
         $validated = $request->validate([
-            'texto' => 'required',
             'titulo_video' => 'required',
+            'tipo_de_recurso' => 'required',
+            'texto' => 'required',
             'tempo' => 'required',
             'endereco' => 'required',
-            'arquivo_hd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
-            'arquivo_sd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
-            'arquivo_hd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
-            'arquivo_sd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
+            'arquivo_hd_video' => 'nullable|file|mimetypes:video/mp4,video/mkv,video/ogv,video/webm',
+            'arquivo_sd_video' => 'nullable|file|mimetypes:video/mp4,video/mkv,video/ogv,video/webm',
+            'arquivo_hd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
+            'arquivo_sd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
         ]);
-        
+
         // if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
         //     return redirect()->back()->withErrors(['error' => "link inválido"]);
         // }
@@ -109,10 +110,10 @@ class TrechoController extends Controller
             'tipo_de_recurso' => 'required',
             'tempo' => 'required',
             'endereço' => 'required',
-            'arquivo_hd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
-            'arquivo_sd_video' => 'nullable|file|mimes:mp4,mkv,ogv,webm',
-            'arquivo_hd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
-            'arquivo_sd_audio' => 'nullable|file|mimes:mp3,mp4,m4a,ogg,flac,mpga',
+            'arquivo_hd_video' => 'nullable|file|mimetypes:video/mp4,video/mkv,video/ogv,video/webm',
+            'arquivo_sd_video' => 'nullable|file|mimetypes:video/mp4,video/mkv,video/ogv,video/webm',
+            'arquivo_hd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
+            'arquivo_sd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
         ]);
 
         // if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
