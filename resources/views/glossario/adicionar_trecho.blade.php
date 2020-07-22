@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
         <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-            <div style="margin-left: 12%; align-items: left;"><a style="font-size: 25px; font-family:'Segoe UI', serif;">@lang('mensagens.Adicionar trecho')</a></div>
+            <div style="margin-left: 12%; align-items: left;"><a style="font-size: 25px; font-family: 'Segoe-ui', 'Segoe-ui-ie', serif;">@lang('mensagens.Adicionar trecho')</a></div>
         <div class="col-sm-12">
         {{-- @if ($errors->any())
             <div class="col-md-12" style="margin-top: 5px;">

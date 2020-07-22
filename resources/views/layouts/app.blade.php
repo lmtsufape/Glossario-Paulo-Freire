@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,10 +27,24 @@
     <link rel="stylesheet" href="{{ asset('jlplayer-custom/jlplayer.css')}} ">
     <link rel="stylesheet" href="{{ asset('player-audio/player_audio.css') }} ">
     <style>
+            @font-face {
+                font-family: 'Segoe-ui';
+                font-style: normal;
+                font-weight: normal;
+                src: url({{ asset('fonts/segoe-ui.otf') }});
+            }
+
+            @font-face {
+                font-family: 'Segoe-ui-ie';
+                font-style: normal;
+                font-weight: normal;
+                src: url({{ asset('fonts/segoe-ui.eot') }});
+            }
+
             .full-height {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Segoe UI', serif;
+                font-family: 'Segoe-ui', 'Segoe-ui-ie', serif;
                 font-weight: 200;
                 height: 10vh;
                 margin: 0;
@@ -111,10 +125,13 @@
                 color: white;
                 background-color: rgb(10, 173, 64);
             }
+
             *{
-                font-family: 'Segoe UI', serif;
+                font-family: 'Segoe-ui', 'Segoe-ui-ie', serif;
             }
         </style>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
 </head>
 <body>
     <!-- Botão para acionar modal -->

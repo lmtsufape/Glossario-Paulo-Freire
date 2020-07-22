@@ -91,7 +91,7 @@
 </div>
 
 <div class="row" >
-    <div class="col-md-4" style="background-color: white; margin-top: 1rem; margin-left: 1rem; margin-right: 0.2rem; margin-bottom: 1rem; border: solid 2px; border-color: #d5d5d5; border-radius: 5px;">
+    <div class="col-md-4" style="background-color: white; margin-left: 1rem; margin-right: 0.2rem; margin-bottom: 1rem; border: solid 2px; border-color: #d5d5d5; border-radius: 5px;">
     <div class="row">
         <div class="col-sm-12" style="margin-bottom: 10px; margin-top: 20px;">
             <div style="margin-left: 12px;"><a id="titulo_lista">@lang('mensagens.Lista')</a></div>
@@ -166,8 +166,8 @@
     @if (count($trechosAudios) != 0)
     <div class="row">
             @if(count($trechosAudios) != 0)
-            <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 10px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:'Segoe UI', serif;"><strong>@lang('mensagens.Verbete'):</strong> {{$verbeteSelecionado->descricao}}</a></div>
+            <div class="col-sm-12" style="margin-bottom: 25px; margin-top: -5px;">
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family: 'Segoe-ui', 'Segoe-ui-ie', serif;"><strong>@lang('mensagens.Verbete'):</strong> {{$verbeteSelecionado->descricao}}</a></div>
                     {{-- <br>
                 <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div> --}}
             </div>
@@ -293,8 +293,8 @@
     @if (count($trechosVideos) != 0)
     <div class="row">
             @if(count($trechosAudios) == 0)
-            <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:'Segoe UI', serif;"><strong>@lang('mensagens.Verbete'):</strong> {{$verbeteSelecionado->descricao}}</a></div>
+            <div class="col-sm-12" style="margin-bottom: 25px; margin-top: -5px;">
+                <div style="margin-left: 12px;"><a style="font-size: 25px; font-family: 'Segoe-ui', 'Segoe-ui-ie', serif;"><strong>@lang('mensagens.Verbete'):</strong> {{$verbeteSelecionado->descricao}}</a></div>
                     {{-- <br>
                 <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$verbeteSelecionado->descricao}}</a><output id="letraSelecionada"></output></div> --}}
             </div>
