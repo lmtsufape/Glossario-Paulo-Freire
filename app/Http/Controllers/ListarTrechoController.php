@@ -11,7 +11,7 @@ class ListarTrechoController extends Controller
         $verbete = \App\Verbete::find($id);
         $descricao = $this->tirarAcentos($verbete->descricao);
         $l = str_split($descricao)[0];
-        $verbetes = DB::select("SELECT * FROM verbetes as V WHERE unaccent(V.descricao) ILIKE '" . $l . "%' ORDER BY V.descricao;");
+        $verbetes = DB::select("SELECT * FROM verbetes as V WHERE unaccent(V.descricao) ILIKE '" . $l . "%' ORDER BY unaccent(V.descricao);");
         
         $trechosVideos = \App\Trecho::where([['verbete_id', '=', $id], ['tipo_recurso', '=', 'vídeo']])->get();
         $trechosAudios = \App\Trecho::where([['verbete_id', '=', $id], ['tipo_recurso', '=', 'áudio']])->get();
