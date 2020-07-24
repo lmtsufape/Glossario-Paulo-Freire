@@ -211,7 +211,7 @@
                     <div class="row alinhamento_container_texto">
                         <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://biblioteca.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Biblioteca')</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="{{ route('glossario') }}" style="color: white;">@lang('mensagens.Glossário Paulo Freire')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/o-acervo-paulo-freire-apresentacao/17-unifreire/52-comunidade-freiriana-encontros-inter-f%C3%B3rum-paulo-freire" target="_blank" style="color: white;">@lang('mensagens.Comunidade Freiriana Internacional')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://paulofreire.org/unifreire/" target="_blank" style="color: white;">@lang('mensagens.Comunidade Freiriana')</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -237,15 +237,15 @@
                     <div class="row" style="text-align: left">
                         <!-- primeira coluna -->
                         <div class="col-md-1" style="color: white;">@lang('mensagens.Parceria'):</div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <a href="http://www.ufape.edu.br/" target="_blank" style="color: white;">
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <img src="{{ asset('icones/logo_ufape.png') }}" alt="Logo" width="auto" height="75" />
+                                    <div class="col-md-9">
+                                        <img src="{{ asset('imagens/logo_site_ufape.png') }}" alt="Logo" width="auto" height="80px" />
                                     </div>
-                                    <div class="col-md-9" style="padding-top: 20px; padding-bottom: 20px;">
+                                    {{-- <div class="col-md-9" style="padding-top: 20px; padding-bottom: 20px;">
                                         @lang('mensagens.Universidade Federal do Agreste de Pernambuco')
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </a>
                         </div>
@@ -264,7 +264,7 @@
                             </a>
                         </div>
                         <!-- terceira coluna -->
-                        <div class="col-md-2" style="padding-top: 30px; padding-bottom: 20px;">
+                        <div class="col-md-3" style="padding-top: 30px; padding-bottom: 20px;">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <select id="selecionarIdioma" class="custom-select custom-select-sm" onchange="mudarIdioma()">
