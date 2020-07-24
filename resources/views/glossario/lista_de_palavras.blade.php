@@ -16,7 +16,7 @@
                                 </a>
                             </div>
                             &nbsp;&nbsp;
-                            <div class="col-xs-2 link-menu-glossario">
+                            <div class="col-xs-2 link-menu-glossario" style="margin-top: 0.3%;">
                                 <a href="{{ route('pesquisa') }}">
                                     <div onmousemove="this.children[0].src='{{ asset('icones/icone_pesquisar_azul.png') }}'" onmouseout="this.children[0].src='{{ asset('icones/icone_pesquisar_cinza.png')}}'">
                                         <img src="{{ asset('icones/icone_pesquisar_cinza.png') }}" alt="" width="22" height="auto">@lang('mensagens.Busca')

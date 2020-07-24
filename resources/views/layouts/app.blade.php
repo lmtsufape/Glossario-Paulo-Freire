@@ -133,39 +133,7 @@
 
         <link rel="stylesheet" type="text/css" href="{{ asset('styles/style.css') }}">
 </head>
-<body>
-    <!-- Botão para acionar modal -->
-    {{-- <button type="button" class="btn btn-primary" >
-        Abrir modal de demonstração
-    </button> --}}
-  
-    <!-- Modal o glossário -->
-    <div class="modal fade" id="modalOhGlossario" tabindex="-1" role="dialog" aria-labelledby="modalOhGlossario" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content" style="border-radius: 15px; justify-items: center; max-width: 100%; height: 50%; background-color: rgba(5, 21, 51, 0.900);">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalOhGlossario" style="color: white;">@lang('mensagens.O glossário')</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" style="border-color: white; color: white;">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="text-indent: 0.5cm; text-align: justify; font-size: 15px; color: white;">
-                <p>
-                    O Glossário audiovisual do educador Paulo Freire nasceu de uma demanda do Instituto Paulo Freire (SP), realizada em parceria com a Universidade Federal Rural de Pernambuco, atualmente Universidade Federal do Agreste de Pernambuco, por meio do Laboratório Multidisciplinar de Tecnologias Sociais.
-                </p>
-                <p>
-                    Foram identificados vídeos e áudios do educador, editados conteúdos audiovisuais e preparado espaço virtual para disponibilização do glossário.
-                </p>
-                <p>
-                    Com a realização desta iniciativa, esperamos oferecer como resultados da realização deste projeto contribuições para a formação inicial e continuada de estudantes, professores e interessados acerca da vida, obra e ao legado do patrono da Educação Brasileira e patrimônio educacional pernambucano, a disseminação da vida, obra e legado de Paulo Freire e a melhoria da qualidade sociocultural e socioambiental da educação pública.
-                </p>
-                <p>
-                    O glossário é composto, atualmente, por mais de trezentos verbetes, sendo estes abordados pelo educador em diferentes temáticas tanto educacional como experiências de vida compartilhadas por Freire.
-                </p>
-            </div>
-        </div>
-        </div>
-    </div>
+<body>  
     <!-- menu -->
     <nav class="navbar navbar-expand-lg navbar-light classNavBar" style="font-weight: bolder;">
         <div class="container">
@@ -176,14 +144,15 @@
             <span class="navbar-toggler-icon" onclick="mostrarOpcoes();"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/">@lang('mensagens.Home')</a>
-                <a class="nav-item nav-link" href="{{ route('o.glossario') }}">@lang('mensagens.O glossário')</a> {{-- data-toggle="modal" data-target="#modalOhGlossario"--}}
-                <a class="nav-item nav-link" href="#">@lang('mensagens.Conheça Paulo Freire')</a>
-                <a class="nav-item nav-link" href="{{ route('linhaDoTempo') }}">@lang('mensagens.Linha do Tempo')</a>
+            <div class="navbar-nav" style="font-size: 12px;">
+                <a class="nav-item nav-link" href="{{ route('glossario') }}">@lang('mensagens.Home')</a>
+                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/">@lang('mensagens.Conheça Paulo Freire')</a>
+                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/">@lang('mensagens.Linha do Tempo')</a>
+                <a class="nav-item nav-link" href="{{ route('o.glossario') }}">@lang('mensagens.O glossário')</a>
+                <a class="nav-item nav-link" target="_blank" href="http://acervo.paulofreire.org/">@lang('mensagens.Acervo Digital')</a>
                 <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">@lang('mensagens.Biblioteca')</a>
-                <a class="nav-item nav-link" target="_blank" href="http://www.acervo.paulofreire.org/">@lang('mensagens.Acervo')</a>
-                <a class="nav-item nav-link" href="{{ route('glossario') }}">@lang('mensagens.Glossário Paulo Freire')</a>
+                <a class="nav-item nav-link" target="_blank" href="http://paulofreire.org/unifreire/">@lang('mensagens.Comunidade Freiriana')</a>
+                <a class="nav-item nav-link" href="mailto:ipf@paulofreire.org">@lang('mensagens.Contato')</a>
                 @auth
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -212,7 +181,7 @@
     <script src="{{ asset('video.js/node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.js')}}"></script> --}}
     
     <!-- conteudo da pagina -->
-    <main class="py-4">
+    <main class="py-4" style="margin-bottom: 2rem;">
         <div class="container">
             @yield('content')
         </div>
@@ -223,22 +192,19 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="row alinhamento_container">
-                        <a href="https://www.paulofreire.org/" target="_blank" style="color: white; text-decoration: none;">
-                            <div class="col-md-12" style="margin-top:1rem; padding-bottom: 1rem;">
-                                <img src=" {{ asset('icones/institutoPF.png') }}" alt="Logo" width="100" height="58" />
+                        <div class="row" style="justify-items: center">
+                            <div class="col-sm-12" style="margin-top: 1rem; margin-bottom: 1rem;">
+                                <a href="https://www.paulofreire.org/" target="_blank"><img src="{{ asset('imagens/logo-instituto.png') }}" alt="Logo" width="auto" height="170px" /></a>
                             </div>
-                            <div class="col-md-12" style="font-size: 15px; color: red; ">@lang('mensagens.INSTITUTO')</div> 
-                            <div class="col-md-12" style="font-size: 15px; color: blue;">@lang('mensagens.PAULO FREIRE')</div>
-                            <div class="col-md-12" style="margin-top: 1rem; margin-bottom: 1rem; color: white; font-size: 15px;">@lang('mensagens.Instituto de Educação e Direitos Humanos Paulo Freire')</div>
-                        </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="#" style="color: white;">@lang('mensagens.Home')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="https://www.paulofreire.org/paulo-freire-patrono-da-educacao-brasileira" target="_blank" style="color: white;">@lang('mensagens.Conheça Paulo Freire')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="{{ route('linhaDoTempo') }}" style="color: white;">@lang('mensagens.Linha do Tempo')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://www.acervo.paulofreire.org:8080/jspui/;jsessionid=607561537830C73439872CFC1F751B44" target="_blank" style="color: white;">@lang('mensagens.Acervo Digital')</a></div>
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://memorial.paulofreire.org/" style="color: white;">@lang('mensagens.Memorial Paulo Freire')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Conheça Paulo Freire')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/" style="color: white;">@lang('mensagens.Linha do Tempo')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://acervo.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Acervo Digital')</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -249,19 +215,19 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <div class="row alinhamento_container_texto">
-                        <a href="https://www.facebook.com/InstitutoPauloFreireIPF" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Facebook</div></a>
-                        <a href="https://www.instagram.com/institutopaulofreire" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Instagram</div></a>
+                    <div class="row alinhamento_container_texto" style="padding-top: 15px;">
+                        <a href="https://www.facebook.com/InstitutoPauloFreireIPF" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style=""><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Facebook</div></a>
+                        <a href="https://www.instagram.com/institutopaulofreire" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style=""><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Instagram</div></a>
                         <a href="mailto:ipf@paulofreire.org" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>E-mail</div></a>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="row" style="text-align: center">
-                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: -1rem;">
-                            <a href="https://nacoesunidas.org/" target="_blank"><img src="{{ asset('icones/UNESCO.png') }}" alt="Logo" width="134" height="134" /></a>
+                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: -2rem;">
+                            <a id="acervoReconhecido" href="https://nacoesunidas.org/" target="_blank"><img src="{{ asset('icones/UNESCO.png') }}" alt="Logo" width="auto" height="170px" /></a>
                         </div>
                         <div class="col-md-12">
-                            <label style="font-size: 10px; color: white;">@lang('mensagens.Acervo reconhecido pela UNESCO')</label>
+                            <label for="acervoReconhecido" style="font-size: 10px; color: white;">@lang('mensagens.Acervo reconhecido pela UNESCO')</label>
                         </div>
                     </div>
                 </div>
@@ -270,34 +236,35 @@
                 <div class="col-md-12">
                     <div class="row" style="text-align: left">
                         <!-- primeira coluna -->
-                        <div class="col-md-1" style="color: white;">@lang('mensagens.Parceria')</div>
-                        <div class="col-md-4">
-                            <a href="http://ww3.uag.ufrpe.br/" target="_blank" style="color: white;">
+                        <div class="col-md-1" style="color: white;">@lang('mensagens.Parceria'):</div>
+                        <div class="col-md-3">
+                            <a href="http://www.ufape.edu.br/" target="_blank" style="color: white;">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="{{ asset('icones/logo_ufape.svg') }}" alt="Logo" width="auto" height="75" />
+                                    <div class="col-md-3">
+                                        <img src="{{ asset('icones/logo_ufape.png') }}" alt="Logo" width="auto" height="75" />
                                     </div>
-                                    <div class="col-md-7">
-                                        <a href="http://ww3.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px">@lang('mensagens.Universidade Federal do Agreste de Pernambuco')</a>
+                                    <div class="col-md-9" style="padding-top: 20px; padding-bottom: 20px;">
+                                        @lang('mensagens.Universidade Federal do Agreste de Pernambuco')
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <!-- segunda coluna -->
-                        <div class="col-md-4">
+                        <div class="col-sm-1" style="color: white; margin-right: 50px;">@lang('mensagens.Desenvolvimento'):</div>
+                        <div class="col-md-4" style="padding-top: 20px;">
                             <a href="http://lmts.uag.ufrpe.br/" target="_blank" style="color: white;">
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-4" style="padding-bottom: 20px;">
                                         <img src="{{ asset('icones/LMTS.png') }}" alt="Logo" width="109" height="44" />
                                     </div>
-                                    <div class="col-md-7">
-                                        <a href="http://lmts.uag.ufrpe.br/" target="_blank" style="color: white; font-size: 15px;">@lang('mensagens.Laboratório Multidisciplinar de Tecnologias Sociais')</a>
+                                    <div class="col-md-8">
+                                        @lang('mensagens.Laboratório Multidisciplinar de Tecnologias Sociais')
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <!-- terceira coluna -->
-                        <div class="col-md-2">
+                        <div class="col-md-2" style="padding-top: 30px; padding-bottom: 20px;">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <select id="selecionarIdioma" class="custom-select custom-select-sm" onchange="mudarIdioma()">

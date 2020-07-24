@@ -34,7 +34,7 @@
     <div class="imagem_fundo" style="background-image: url({{asset('imagens/img_grande_50.png')}})">
         <div class="row card-body menu_glossario">
             <div class="menu_glossario_design">
-                <div class="row" style="margin: 2rem">
+                <div class="row" style="margin: 1rem;">
                     <div class="col-md-12">
                         <div class="row container">
                             <div class="col-xs-2 link-menu-glossario">
@@ -45,7 +45,7 @@
                                 </a>
                             </div>
                             &nbsp;&nbsp;
-                            <div class="col-xs-2 link-menu-glossario">
+                            <div class="col-xs-2 link-menu-glossario" style="margin-top: 0.3%;">
                                 <a href="{{ route('pesquisa') }}">
                                     <div onmousemove="this.children[0].src='{{ asset('icones/icone_pesquisar_azul.png') }}'" onmouseout="this.children[0].src='{{ asset('icones/icone_pesquisar_cinza.png')}}'">
                                         <img src="{{ asset('icones/icone_pesquisar_cinza.png') }}" alt="" width="22" height="auto">@lang('mensagens.Busca')

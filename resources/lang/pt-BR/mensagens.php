@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Home' => 'Home',
+    'Home' => 'Página inicial',
     'O glossário' => 'O glossário',
     'Conheça Paulo Freire' => 'Conheça Paulo Freire',
     'Linha do Tempo' => 'Linha do Tempo',
@@ -28,10 +28,10 @@ return [
     'Vídeos' => 'Vídeos',
     'Parceria' => 'Parceria',
     'Selecione o idioma' => 'Selecione o idioma',
-    'Inglês(EUA)' => 'Inglês(EUA)',
-    'Francês' => 'Francês',
-    'Espanhol' => 'Espanhol',
-    'Português (BRA)' => 'Português (BRA)',
+    'Inglês(EUA)' => 'Inglês (US)',
+    'Francês' => 'Francês (FR)',
+    'Espanhol' => 'Espanhol (ES)',
+    'Português (BRA)' => 'Português (PT_BR)',
     'Adicionar Verbete' => 'Adicionar Verbete',
     'Resultado' => 'Resultado',
     'Confirmacao' => 'Tem certeza que deseja excluir?',
@@ -85,4 +85,8 @@ return [
     'para ouvir o áudio completo' => 'para ouvir o áudio completo',
     'Adicionar' => 'Adicionar',
     'Verbete' => 'Verbete',
+    'Comunidade Freiriana' => 'Comunidade Freiriana',
+    'Contato' => 'Contato',
+    'Desenvolvimento' => 'Desenvolvimento',
+    'Memorial Paulo Freire' => 'Memorial Paulo Freire',
 ];
