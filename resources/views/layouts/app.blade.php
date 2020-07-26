@@ -149,7 +149,7 @@
                 <a class="nav-item nav-link" href="http://memorial.paulofreire.org/conheca-paulo-freire.html">@lang('mensagens.Conheça Paulo Freire')</a>
                 <a class="nav-item nav-link" href="http://memorial.paulofreire.org/Linha_do_tempo/linha_do_tempo.html">@lang('mensagens.Linha do Tempo')</a>
                 <a class="nav-item nav-link" href="{{ route('o.glossario') }}">@lang('mensagens.O glossário')</a>
-                <a class="nav-item nav-link" target="_blank" href="http://acervo.paulofreire.org/">@lang('mensagens.Acervo Digital')</a>
+                <a class="nav-item nav-link" target="_blank" href="http://acervo.paulofreire.org:8080/xmlui">@lang('mensagens.Acervo Digital')</a>
                 <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">@lang('mensagens.Biblioteca')</a>
                 <a class="nav-item nav-link" target="_blank" href="http://paulofreire.org/unifreire/">@lang('mensagens.Comunidade Freiriana')</a>
                 <a class="nav-item nav-link" href="mailto:ipf@paulofreire.org">@lang('mensagens.Contato')</a>
@@ -204,7 +204,7 @@
                         <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://memorial.paulofreire.org/" style="color: white;">@lang('mensagens.Memorial Paulo Freire')</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/conheca-paulo-freire.html" target="_blank" style="color: white;">@lang('mensagens.Conheça Paulo Freire')</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/Linha_do_tempo/linha_do_tempo.html" style="color: white;">@lang('mensagens.Linha do Tempo')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://acervo.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Acervo Digital')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://acervo.paulofreire.org:8080/xmlui" target="_blank" style="color: white;">@lang('mensagens.Acervo Digital')</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
