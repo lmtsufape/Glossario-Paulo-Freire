@@ -146,8 +146,8 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
             <div class="navbar-nav" style="font-size: 12px;">
                 <a class="nav-item nav-link" href="{{ route('glossario') }}">@lang('mensagens.Home')</a>
-                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/">@lang('mensagens.Conheça Paulo Freire')</a>
-                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/">@lang('mensagens.Linha do Tempo')</a>
+                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/conheca-paulo-freire.html">@lang('mensagens.Conheça Paulo Freire')</a>
+                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/Linha_do_tempo/linha_do_tempo.html">@lang('mensagens.Linha do Tempo')</a>
                 <a class="nav-item nav-link" href="{{ route('o.glossario') }}">@lang('mensagens.O glossário')</a>
                 <a class="nav-item nav-link" target="_blank" href="http://acervo.paulofreire.org/">@lang('mensagens.Acervo Digital')</a>
                 <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">@lang('mensagens.Biblioteca')</a>
@@ -202,8 +202,8 @@
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
                         <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://memorial.paulofreire.org/" style="color: white;">@lang('mensagens.Memorial Paulo Freire')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Conheça Paulo Freire')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/" style="color: white;">@lang('mensagens.Linha do Tempo')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/conheca-paulo-freire.html" target="_blank" style="color: white;">@lang('mensagens.Conheça Paulo Freire')</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/Linha_do_tempo/linha_do_tempo.html" style="color: white;">@lang('mensagens.Linha do Tempo')</a></div>
                         <div class="col-md-12 rodape_texto" ><a href="http://acervo.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Acervo Digital')</a></div>
                     </div>
                 </div>
