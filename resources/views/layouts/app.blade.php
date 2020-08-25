@@ -160,7 +160,7 @@
                         {{auth()->user()->name}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        @if (Auth()->user()->email === "admin@ufape.edu.br")
+                        @if (Auth()->user()->email === "admin@admin")
                             <a href="{{ route('register') }}" class="dropdown-item">@lang('mensagens.Novo usuário')</a>
                         @endif
                         <a href="{{ route('logout') }}" class="dropdown-item" type="button">@lang('mensagens.Sair')</a>

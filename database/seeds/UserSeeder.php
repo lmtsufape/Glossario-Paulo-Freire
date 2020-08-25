@@ -14,11 +14,11 @@ class UserSeeder extends Seeder
     {
         \App\User::create([
 			"name" => "Editor",
-			"email" => "editor@ufape.edu.br", 
+			"email" => "editor@editor", 
             "password" => Hash::make("12345678")]);
         \App\User::create([
             "name" => "Admin",
-            "email" => "admin@ufape.edu.br", 
-            "password" => Hash::make("dun2uxH5kRJ&")]);
+            "email" => "admin@admin", 
+            "password" => Hash::make("12345678")]);
     }
 }
