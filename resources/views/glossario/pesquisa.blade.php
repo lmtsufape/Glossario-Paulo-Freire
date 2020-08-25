@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="padding-top: 80px;">
-    <div class="imagem_fundo" style="background-image: url({{ asset('imagens/img_grande_50.png') }}); padding-bottom: 4rem;">
+    <div class="imagem_fundo" style="background-image: url({{ asset('imagens/fundo.png') }}); background-size: 1060px; padding-bottom: 4rem;">
         <div class="card-body menu_glossario">
             <div class="menu_glossario_design">
             <form method="POST" action="{{ route('pesquisa.nova') }}">
@@ -143,7 +143,7 @@
                             </div>
                             <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
                             @else
-                                <img src="{{ asset('imagens/imagem_audio.png') }}" alt="paper" style="width: auto; max-width: 100%">
+                                <img src="{{ asset('imagens/audio.jpg') }}" alt="paper" style="width: auto; max-width: 100%">
                             @endif
                             
                         </div>
@@ -245,7 +245,7 @@
                             </div>
                             <input id="confirmacao{{ $trecho->id }}" type="hidden" value="0">
                         @else
-                            <img src="{{ asset('imagens/imagem_video.png') }}" alt="paper" style="position: relative; height: auto; width: 100%; top: 1rem; padding-right: 0.2rem;">
+                            <img src="{{ asset('imagens/video.jpg') }}" alt="paper" style="position: relative; height: auto; width: 100%; top: 1rem; padding-right: 0.2rem;">
                         @endif
                             
                         </div>

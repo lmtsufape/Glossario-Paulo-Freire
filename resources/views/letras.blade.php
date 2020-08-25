@@ -3,7 +3,7 @@
 @section('content')    
 <div class="container">
     <div style="padding-top: 80px;">
-        <div class="imagem_fundo" style="background-image: url(imagens/img_grande_50.png)">
+        <div class="imagem_fundo" style="background-image: url({{ asset('imagens/fundo.png') }}); background-size: 1060px;">
             <div class="card-body menu_glossario">
                 <div class="menu_glossario_design">
                     <div class="row" style="margin: 1rem">

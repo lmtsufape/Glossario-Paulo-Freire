@@ -137,22 +137,23 @@
     <!-- menu -->
     <nav class="navbar navbar-expand-lg navbar-light classNavBar" style="font-weight: bolder;">
         <div class="container">
-            <a class="navbar-brand" href="http://memorial.paulofreire.org/">
-                <img src="{{ asset('imagens/MVPF_M.png') }}" width="200px" height="auto">
+            <a class="navbar-brand" href="#">
+                {{-- <img src="#" width="200px" height="auto"> --}}
+                <span style="font-size: 40px;">LOGO</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
-            <span class="navbar-toggler-icon" onclick="mostrarOpcoes();"></span>
+                <span class="navbar-toggler-icon" onclick="mostrarOpcoes();"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="display: none">
             <div class="navbar-nav" style="font-size: 12px;">
-                <a class="nav-item nav-link" href="{{ route('glossario') }}">@lang('mensagens.Home')</a>
-                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/conheca-paulo-freire.html">@lang('mensagens.Conheça Paulo Freire')</a>
-                <a class="nav-item nav-link" href="http://memorial.paulofreire.org/Linha_do_tempo/linha_do_tempo.html">@lang('mensagens.Linha do Tempo')</a>
-                <a class="nav-item nav-link" href="{{ route('o.glossario') }}">@lang('mensagens.O glossário')</a>
-                <a class="nav-item nav-link" target="_blank" href="http://acervo.paulofreire.org:8080/xmlui">@lang('mensagens.Acervo Digital')</a>
-                <a class="nav-item nav-link" target="_blank" href="http://biblioteca.paulofreire.org/">@lang('mensagens.Biblioteca')</a>
-                <a class="nav-item nav-link" target="_blank" href="http://paulofreire.org/unifreire/">@lang('mensagens.Comunidade Freiriana')</a>
-                <a class="nav-item nav-link" href="mailto:ipf@paulofreire.org">@lang('mensagens.Contato')</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.LinkCabecalho') 1</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.LinkCabecalho') 2</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.LinkCabecalho') 3</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.LinkCabecalho') 4</a>
+                <a class="nav-item nav-link" target="_blank" href="#">@lang('mensagens.LinkCabecalho') 5</a>
+                <a class="nav-item nav-link" target="_blank" href="#">@lang('mensagens.LinkCabecalho') 6</a>
+                <a class="nav-item nav-link" target="_blank" href="#">@lang('mensagens.LinkCabecalho') 7</a>
+                <a class="nav-item nav-link" href="#">@lang('mensagens.LinkCabecalho') 8</a>
                 @auth
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -173,12 +174,6 @@
 
         </div>
     </nav>
-
-    {{-- <!-- script do video.js -->
-    <script src="{{ asset('video.js/node_modules/video.js/dist/video.js')}}"></script>
-    
-    <!-- script do swich de qualidade de video -->
-    <script src="{{ asset('video.js/node_modules/videojs-resolution-switcher/lib/videojs-resolution-switcher.js')}}"></script> --}}
     
     <!-- conteudo da pagina -->
     <main class="py-4" style="margin-bottom: 2rem;">
@@ -191,44 +186,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="row alinhamento_container">
-                        <div class="row" style="justify-items: center">
-                            <div class="col-sm-12" style="margin-top: 1rem; margin-bottom: 1rem;">
-                                <a href="https://www.paulofreire.org/" target="_blank"><img src="{{ asset('imagens/logo-instituto.png') }}" alt="Logo" width="auto" height="170px" /></a>
-                            </div>
-                        </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row alinhamento_container_texto">
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="#" style="color: white;">@lang('mensagens.LinkRodape') 1</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="#" target="_blank" style="color: white;">@lang('mensagens.LinkRodape') 2</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="#" style="color: white;">@lang('mensagens.LinkRodape') 3</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="#" target="_blank" style="color: white;">@lang('mensagens.LinkRodape') 4</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://memorial.paulofreire.org/" style="color: white;">@lang('mensagens.Memorial Paulo Freire')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/conheca-paulo-freire.html" target="_blank" style="color: white;">@lang('mensagens.Conheça Paulo Freire')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://memorial.paulofreire.org/Linha_do_tempo/linha_do_tempo.html" style="color: white;">@lang('mensagens.Linha do Tempo')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://acervo.paulofreire.org:8080/xmlui" target="_blank" style="color: white;">@lang('mensagens.Acervo Digital')</a></div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="row alinhamento_container_texto">
-                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="http://biblioteca.paulofreire.org/" target="_blank" style="color: white;">@lang('mensagens.Biblioteca')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="{{ route('glossario') }}" style="color: white;">@lang('mensagens.Glossário Paulo Freire')</a></div>
-                        <div class="col-md-12 rodape_texto" ><a href="http://paulofreire.org/unifreire/" target="_blank" style="color: white;">@lang('mensagens.Comunidade Freiriana')</a></div>
+                        <div class="col-md-12 rodape_texto" style="margin-top: 1rem;"><a href="#" target="_blank" style="color: white;">@lang('mensagens.LinkRodape') 5</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="#" style="color: white;">@lang('mensagens.LinkRodape') 6</a></div>
+                        <div class="col-md-12 rodape_texto" ><a href="#" target="_blank" style="color: white;">@lang('mensagens.LinkRodape') 7</a></div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="row alinhamento_container_texto" style="padding-top: 15px;">
-                        <a href="https://www.facebook.com/InstitutoPauloFreireIPF" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style=""><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Facebook</div></a>
-                        <a href="https://www.instagram.com/institutopaulofreire" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style=""><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Instagram</div></a>
-                        <a href="mailto:ipf@paulofreire.org" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>E-mail</div></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="row" style="text-align: center">
-                        <div class="col-md-12" style="margin-top: 1rem; margin-bottom: -2rem;">
-                            <a id="acervoReconhecido" href="https://nacoesunidas.org/" target="_blank"><img src="{{ asset('icones/UNESCO.png') }}" alt="Logo" width="auto" height="170px" /></a>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="acervoReconhecido" style="font-size: 10px; color: white;">@lang('mensagens.Acervo reconhecido pela UNESCO')</label>
-                        </div>
+                        <a href="#" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style=""><img src="{{ asset('icones/facebook.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Facebook</div></a>
+                        <a href="#" target="_blank" style="color: white;"><div class="col-md-12 rodape_texto" style=""><img src="{{ asset('icones/instagram.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>Instagram</div></a>
+                        <a href="#" style="color: white;"><div class="col-md-12 rodape_texto" ><img src="{{ asset('icones/email.svg') }}" alt="Logo" width="31,57" height="31.57" style="margin-right: 1rem;"/>E-mail</div></a>
                     </div>
                 </div>
             </div>
@@ -243,9 +221,6 @@
                                     <div class="col-md-9">
                                         <img src="{{ asset('imagens/logo_site_ufape.png') }}" alt="Logo" width="auto" height="80px" />
                                     </div>
-                                    {{-- <div class="col-md-9" style="padding-top: 20px; padding-bottom: 20px;">
-                                        @lang('mensagens.Universidade Federal do Agreste de Pernambuco')
-                                    </div> --}}
                                 </div>
                             </a>
                         </div>
