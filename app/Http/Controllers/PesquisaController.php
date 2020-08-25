@@ -11,6 +11,7 @@ use DB;
 
 class PesquisaController extends Controller
 {
+    // Função de pesquisa do verbete pelo oque foi digitado na página de pesquisa
     public function novaPesquisa(Request $request) {
         $validated = $request->validate([
             'buscaTodos' => 'nullable',
@@ -35,6 +36,7 @@ class PesquisaController extends Controller
         return redirect( route('pesquisa') );
     }
 
+    // Função que retorna os áudios da busca
     public function audios($busca) {
         return DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
                     ->select('trechos.*')
@@ -42,6 +44,7 @@ class PesquisaController extends Controller
                     ->get();
     }
 
+    // Função que retorna os vídeos da busca
     public function videos($busca) {
         return DB::table('verbetes')->join('trechos', 'verbetes.id', '=', 'trechos.verbete_id')
                     ->select('trechos.*')
@@ -49,6 +52,7 @@ class PesquisaController extends Controller
                     ->get();
     }
 
+    // Função de busca por id para os trechos compartilhados
     public function pesquisaId($id) {
         $trecho = \App\Trecho::find($id);
         

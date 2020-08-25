@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Storage;
 
 class VerbeteController extends Controller
 {
+    // Função que retorna a view para adicionar o verbete
     public function exibir() {
         return view('glossario.adicionar_verbete');
     }
 
+    // Função que salva o novo verbete
     public function adicionar(Request $request) {
         $validated = $request->validate([
             'nome' => 'required',
@@ -24,6 +26,7 @@ class VerbeteController extends Controller
         return redirect( route('glossario') )->with('mensagem', 'Verbete salvo com sucesso!');
     }
 
+    // Função que deleta o verbete
     public function deletar($id) {
         $verbete = \App\Verbete::find($id);
         
@@ -44,6 +47,7 @@ class VerbeteController extends Controller
         return redirect( route('glossario') )->with('mensagem', 'Verbete excluido com sucesso!');
     }
 
+    // Função que salva a edição do verbete
     public function editar(Request $request, $id) {
         $validated = $request->validate([
             'descricao' => 'required',

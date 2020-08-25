@@ -76,25 +76,20 @@
         </div>
     </div>
 </div>
+{{-- Checa se a rota atual é 'pesquisa.nova' ou 'pesquisa.id' --}}
 @if (Route::currentRouteName() === 'pesquisa.nova' || Route::currentRouteName() === 'pesquisa.id')
 <div class="container">
     <div class="row">
         <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-            {{-- <div style="margin-left: 12px;"><a id="titulo_busca">@lang('mensagens.Áudios')</a></div> --}}
             <div style="margin-left: 12px;"><a id="subtitulo_busca">@lang('mensagens.Resultado'): {{$resultado}}</a><output id="letraSelecionada"></output></div>
         </div>
     </div>
     <div class="row">
-        {{-- <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-            <div style="margin-left: 12px;"><a id="titulo_busca">@lang('mensagens.Áudios')</a></div>
-                <br>
-            <div style="margin-left: 12px; margin-top: -35px;"><a id="subtitulo_busca">@lang('mensagens.Resultado'): {{$resultado}}</a><output id="letraSelecionada"></output></div>
-        </div> --}}
         <div class="col-sm-12">
             <ul class="list-group">
                 @foreach ($trechosAudios as $trecho)
                     @if($trecho->tipo_recurso == "áudio")
-                    <!-- Modal -->
+                    <!-- Modal para confirmação de exclusão do trecho de áudio-->
                     <div class="modal fade" id="excluirTrechoAudioModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoModalAudioLabel{{$trecho->id}}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -173,6 +168,7 @@
                                 </span>
                                 @auth
                                     <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" />@lang('mensagens.Editar')</button></a>
+                                    {{-- Checa se o usuário logado é o admin --}}
                                     @if (Auth()->user()->email === "admin@admin")
                                         <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color: #acabab;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
                                     @endif
@@ -185,28 +181,14 @@
                     @endif
                 @endforeach
             </ul>
-                <!-- <div class="div_mais_resultados"> 
-                    <div >
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                        <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                        <a href="">Ver todos.</a>
-                    </div>
-                </div> -->
         </div>
     </div>
     <div class="row">
-        {{-- <div class="col-sm-12" style="margin-bottom: 25px; margin-top: 25px;">
-            <div style="margin-left: 12px;"><a style="font-size: 25px; font-family:arial;">@lang('mensagens.Vídeos')</a></div>
-                <br>
-            <div style="margin-left: 12px; margin-top: -35px;"><a style="font-family:sans-serif; color: #aaaaaa;">@lang('mensagens.Resultado'): {{$resultado}} </a><output id="letraSelecionada"></output></div>
-        </div> --}}
         <div class="col-sm-12">
             <ul class="list-group">
                 @foreach ($trechosVideos as $trecho)
                     @if($trecho->tipo_recurso=="vídeo")
-                     <!-- Modal -->
+                     <!-- Modal para confirmação de exclusão do trecho de vídeo-->
                      <div class="modal fade" id="excluirTrechoVideoModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoVideoModalLabel{{$trecho->id}}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -275,6 +257,7 @@
                                     </span>
                                     @auth
                                         <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" /><label class="campo_compartilhar_texto">@lang('mensagens.Editar')</label></button></a>
+                                        {{-- Checa se o usuário logado é o admin --}}
                                         @if (Auth()->user()->email === "admin@admin") 
                                             <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" /><label class="campo_compartilhar_texto">@lang('mensagens.Excluir')</label></a>    
                                         @endif
@@ -287,21 +270,12 @@
                     @endif
                 @endforeach
             </ul>
-            <!-- <div class="div_mais_resultados">
-                <div >
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                    <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                    <a href="">Ver todos.</a>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>
 @endif
-            
 <script type="text/javascript">
+    //Funções que mudão o value do input para retornar todos os resultados, somente áudios ou somente vídeos.
     function buscarTodos(id) {
         var formulario = id.id;
         var inputBox = document.getElementById("boxBuscar");
@@ -320,8 +294,8 @@
 
         document.getElementById("boxAudio").value = inputBox.value;
     } 
-</script>
-<script type="text/javascript">
+
+    //Funções de compartilhamento do trecho com o facebook, whatsapp ou twitter.
     function shareFacePopUp(url){
         window.open("https://www.facebook.com/sharer/sharer.php?u=" + url,  "minhaJanelaFB", "height=1000,width=1000");
     }
@@ -334,6 +308,7 @@
         window.open("https://twitter.com/intent/tweet?url=" + url,  "minhaJanelaTw", "height=1000,width=1000");
     }
 
+    //Função para contabilizar a view do vídeo ou áudio.
     function contarView(id, url) {
         var midia = document.getElementById('my_midia_' + id).children[0].children[0];
         var confirmacao = document.getElementById('confirmacao' + id);

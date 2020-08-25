@@ -138,6 +138,7 @@
     <nav class="navbar navbar-expand-lg navbar-light classNavBar" style="font-weight: bolder;">
         <div class="container">
             <a class="navbar-brand" href="#">
+                {{-- Aqui é o logo do sistema, podesse colocar uma imagem ou texto. --}}
                 {{-- <img src="#" width="200px" height="auto"> --}}
                 <span style="font-size: 40px;">LOGO</span>
             </a>
@@ -160,6 +161,7 @@
                         {{auth()->user()->name}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        {{-- Checa se o usuário logado é o admin --}}
                         @if (Auth()->user()->email === "admin@admin")
                             <a href="{{ route('register') }}" class="dropdown-item">@lang('mensagens.Novo usuário')</a>
                         @endif
@@ -167,7 +169,7 @@
                     </div>
                 </div>
                 @else
-                {{-- <a class="nav-item nav-link" href="{{ route('login') }}">@lang('mensagens.Login')</a> --}}
+                    <a class="nav-item nav-link" href="{{ route('login') }}">@lang('mensagens.Login')</a>
                 @endauth
             </div>
             </div>
@@ -280,7 +282,7 @@
             $(this).addClass('selected');
         });
 
-        //Funcao para abrir/fechar aba do menu
+        //Funcao para abrir/fechar aba do menu quando a tela for menor
 		function mostrarOpcoes(){
 			if(document.getElementById("navbarNavAltMarkup").style.display == 'none'){
 				document.getElementById("navbarNavAltMarkup").style.display = 'block';
@@ -290,6 +292,7 @@
 
         }
         
+        //Funcao para mudança de idioma dos links, redireciona para a url de tradução
         function mudarIdioma() {
             var localizacao = document.getElementById('selecionarIdioma');
             
@@ -326,6 +329,7 @@
             container_video.children[0].play();
         }
 
+        //Funcoes para mudar a qualidade de audio
         function mudarAudioParaHD(button) {
             var audio = document.getElementById($(button).parent().parent().attr('id'));
             var tempo = audio.children[0].currentTime;

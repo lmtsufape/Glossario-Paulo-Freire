@@ -69,6 +69,7 @@
                             @endforeach
                         </div>
                     </div>
+                    {{-- Alerta para mensagens de sucesso --}}
                     @if(session('mensagem'))
                         <div class="col-md-12" style="margin-top: 5px;">
                             <div class="alert alert-success">
@@ -104,7 +105,7 @@
         <div class="col-sm-12" id="lista_menu">
             <ul class="list-group">
                 @foreach ($verbetes as $verbete)
-                <!-- Modal -->
+                <!-- Modal para confirmar a exclusão do verbete -->
                 <div class="modal fade" id="excluirVerbeteModal_{{ $verbete->id }}" tabindex="-1" role="dialog" aria-labelledby="excluirVerbeteModalLabel_{{ $verbete->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -133,6 +134,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
                                 <a href="{{ route('trecho.add', ['id' => $verbete->id]) }}" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/add.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Adicionar trecho')</span></a>
                                 <a href="javascript:editarVerbete('{{$verbete->id}}')" class="dropdown-item" ><img width="22" height="22" src="{{ asset('icones/edit.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Editar veberte')</span></a>
+                                {{-- Checa se o usuário logado é o admin --}}
                                 @if (Auth()->user()->email === "admin@admin")
                                     <a href="" class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#excluirVerbeteModal_{{ $verbete->id }}"><img width="25" height="25" src="{{ asset('icones/excluir.svg') }}" style="margin-right: 10px;"><span>@lang('mensagens.Excluir')</span></a>
                                 @endif
@@ -162,6 +164,7 @@
     </div>
 </div>
 <div class="col-md-7 div_resultado">
+{{-- Checa se a rota atual é 'verbete' --}}
 @if (Route::currentRouteName() === 'verbete')
     @if (count($trechosAudios) != 0)
     <div class="row">
@@ -176,7 +179,7 @@
                 <ul class="list-group">
                     @foreach ($trechosAudios as $trecho)
                         @if($trecho->tipo_recurso == "áudio")
-                        <!-- Modal -->
+                        <!-- Modal para confirmar a exclusão do trecho de áudio -->
                         <div class="modal fade" id="excluirTrechoAudioModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoModalAudioLabel{{$trecho->id}}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -266,6 +269,7 @@
                             </div>
                             <div class="row" style="padding: 0px 15px 15px 15px; float: right;">
                                 @auth
+                                    {{-- Checa se o usuário logado é o admin --}}
                                     @if (Auth()->user()->email === "admin@admin")
                                         <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoAudioModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
                                     @endif
@@ -273,17 +277,6 @@
                                 @endauth 
                             </div>
                           </li>
-                
-                        <!-- <div class="div_mais_resultados">
-                            <div >
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                                <a href="">Ver todos.</a>
-                            </div>
-                        </div> -->
-            
                         @endif
                     @endforeach
                 </ul>
@@ -303,7 +296,7 @@
                 <ul class="list-group">
                     @foreach ($trechosVideos as $trecho)
                         @if($trecho->tipo_recurso == "vídeo")
-                        <!-- Modal -->
+                        <!-- Modal para confirmação da exclusão do trecho de vídeo -->
                         <div class="modal fade" id="excluirTrechoVideoModal_{{$trecho->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirTrechoVideoModalLabel{{$trecho->id}}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -382,24 +375,14 @@
                             </div>
                             <div class="row" style="padding: 0px 15px 15px 15px; float: right;">
                                 @auth
+                                    {{-- Checa se o usuário logado é o admin --}}
                                     @if (Auth()->user()->email === "admin@admin")
                                         <a href="" class="btn" data-toggle="modal" data-target="#excluirTrechoVideoModal_{{$trecho->id}}" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab; margin-right: 10px;"><img src="{{ asset('icones/excluir.svg') }}" alt="Logo" width="auto" height="25" />@lang('mensagens.Excluir')</a>
                                     @endif
                                     <a href="{{ Route('editar', ['id' => $trecho->id]) }}"><button type="button" class="btn" style="border-color:#d5d5d5; border-width:2px; height: 40px; background-color: white; color:#acabab;"><img src="{{ asset('icones/edit.svg') }}" alt="Logo" width="16,74" height="18,34" />@lang('mensagens.Editar')</button></a>
                                 @endauth 
                             </div>
-                        </li>
-                
-                        <!-- <div class="div_mais_resultados">
-                            <div >
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">1</output>
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">2</output>
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">3</output>
-                                <output style="text-align: center;  border: 2px solid #d5d5d5; width: 39px; height: 39px; border-radius: 20px; padding-top: 5px; margin-right: 5px;">4</output>
-                                <a href="">Ver todos.</a>
-                            </div>
-                        </div> -->
-            
+                        </li>            
                         @endif
                     @endforeach
                 </ul>
@@ -407,6 +390,8 @@
     </div>
     @endif
     <script type="text/javascript">
+
+        // Funções para compartilhamento do link do trecho com facebook, whatsapp ou twitter
         function shareFacePopUp(url){
             window.open("https://www.facebook.com/sharer/sharer.php?u=" + url,  "minhaJanelaFB", "height=1000,width=1000");
         }
@@ -419,6 +404,7 @@
             window.open("https://twitter.com/intent/tweet?url=" + url,  "minhaJanelaTw", "height=1000,width=1000");
         }
 
+        //Função que conta a view do vídeo ou áudio
         function contarView(id, url) {
             var midia = document.getElementById('my_midia_' + id).children[0].children[0];
             var confirmacao = document.getElementById('confirmacao' + id);

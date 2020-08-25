@@ -8,14 +8,15 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Http\File;
 
 class TrechoController extends Controller
-{
+{   
+    // Função de retorno para edição do trecho
     public function index($id) {
         $trecho = \App\Trecho::where('id', '=', $id)->first();
         return view('glossario.editar_trecho')->with(['trecho' => $trecho]);
     }
 
+    // Função de atualização do trecho
     public function update(Request $request, $id) {
-        // dd($request->arquivo_sd_audio->getMimeType());
         //recuperando o trecho
         $arquivo = '';
         $trecho = \App\Trecho::find($id);
@@ -30,10 +31,6 @@ class TrechoController extends Controller
             'arquivo_hd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
             'arquivo_sd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
         ]);
-
-        // if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
-        //     return redirect()->back()->withErrors(['error' => "link inválido"]);
-        // }
 
         //substituindo o texto e o titulo do $request no trecho
         $trecho->texto = $request->texto;
@@ -85,6 +82,7 @@ class TrechoController extends Controller
         return redirect()->back()->with('mensagem', 'Trecho salvo com sucesso!');
     }
 
+    // Função que retorna o nome do arquivo salvo
     public function nomeDoArquivo($file, $arquivo) {
         $nome = $file->store('multimidia', 'public');
 
@@ -98,12 +96,13 @@ class TrechoController extends Controller
         return $nome;
     }
 
+    // Função que retorna a view para adicionar um novo trecho
     public function adicionar($id) {
         return view('glossario.adicionar_trecho')->with(['id' => $id]);
     }
 
+    // Função que salva o novo trecho
     public function salvar(Request $request, $id) {
-        // dd($request);
         $validated = $request->validate([
             'texto' => 'required',
             'título' => 'required',
@@ -115,10 +114,6 @@ class TrechoController extends Controller
             'arquivo_hd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
             'arquivo_sd_audio' => 'nullable|file|mimetypes:audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/flac,audio/mpga',
         ]);
-
-        // if (filter_var($request->endereco_video, FILTER_VALIDATE_URL) === FALSE) {
-        //     return redirect()->back()->withErrors(['error' => "link inválido"]);
-        // }
 
         $trecho = new \App\Trecho();
 
@@ -163,6 +158,7 @@ class TrechoController extends Controller
         return redirect( route('verbete', ['id' => $id]) )->with('mensagem', 'Trecho salvo com sucesso!');
     }
 
+    // Função que deleta o trecho e seus respectivos arquivos
     public function deletar($id) {
         $trecho = \App\Trecho::find($id);
 
@@ -179,6 +175,7 @@ class TrechoController extends Controller
         return redirect()->back()->with('mensagem', 'Trecho excluido com sucesso!');
     }
 
+    // Função para download do arquivo SD do trecho
     public function baixarSD($id) {
         $trecho = \App\Trecho::find($id);
 
@@ -189,6 +186,7 @@ class TrechoController extends Controller
         return abort(404);
     }
 
+    // Função para download do arquivo HD do trecho
     public function baixarHD($id) {
         $trecho = \App\Trecho::find($id);
 
@@ -199,6 +197,7 @@ class TrechoController extends Controller
         return abort(404);
     }
 
+    // Função para apenas exclusão do arquivo SD do trecho
     public function excluirSD($id) {
         $trecho = \App\Trecho::find($id);
 
@@ -211,6 +210,7 @@ class TrechoController extends Controller
         return redirect()->back()->with(['mensagem' => 'Arquivo de video excluido com sucesso.']);
     }
 
+    // Função para apenas exclusão do arquivo HD do trecho
     public function excluirHD($id) {
         $trecho = \App\Trecho::find($id);
 
