@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="padding-top: 80px;">
-    <div class="imagem_fundo" style="background-image: url({{ asset('imagens/fundo.png') }}); background-size: 1060px; padding-bottom: 4rem;">
+    <div class="imagem_fundo" style="background-image: url({{ asset('imagens/fundo.png') }}); background-size: 1000px; padding-bottom: 4rem;">
         <div class="card-body menu_glossario">
             <div class="menu_glossario_design">
             <form method="POST" action="{{ route('pesquisa.nova') }}">

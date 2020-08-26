@@ -31,7 +31,7 @@
 </script>
 
 <div style="padding-top: 80px;">
-    <div class="imagem_fundo" style="background-image: url({{ asset('imagens/fundo.png') }}); background-size: 1060px;">
+    <div class="imagem_fundo" style="background-image: url({{ asset('imagens/fundo.png') }}); background-size: 1000px;">
         <div class="row card-body menu_glossario">
             <div class="menu_glossario_design">
                 <div class="row" style="margin: 1rem;">
