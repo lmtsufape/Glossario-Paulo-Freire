@@ -9,6 +9,11 @@ class ListarTrechoController extends Controller
 {
     public function listar($id) {
         $verbete = \App\Verbete::find($id);
+
+        if ($verbete == null) {
+            return abort(404);
+        }
+
         $descricao = $this->tirarAcentos($verbete->descricao);
         $l = str_split($descricao)[0];
         $verbetes = DB::select("SELECT * FROM verbetes as V WHERE unaccent(V.descricao) ILIKE '" . $l . "%' ORDER BY unaccent(V.descricao);");

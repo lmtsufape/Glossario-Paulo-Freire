@@ -11,6 +11,11 @@ class TrechoController extends Controller
 {
     public function index($id) {
         $trecho = \App\Trecho::where('id', '=', $id)->first();
+
+        if ($trecho == null) {
+            return abort(404);
+        }
+
         return view('glossario.editar_trecho')->with(['trecho' => $trecho]);
     }
 
@@ -99,6 +104,12 @@ class TrechoController extends Controller
     }
 
     public function adicionar($id) {
+        $verbete = \App\Verbete::find($id);
+
+        if ($verbete == null) {
+            return abort(404);
+        }
+
         return view('glossario.adicionar_trecho')->with(['id' => $id]);
     }
 
@@ -166,6 +177,10 @@ class TrechoController extends Controller
     public function deletar($id) {
         $trecho = \App\Trecho::find($id);
 
+        if ($trecho == null) {
+            return abort(404);
+        }
+
         if ($trecho->arquivo_hd != '') {
             Storage::delete($trecho->arquivo_hd);
         }
@@ -202,6 +217,10 @@ class TrechoController extends Controller
     public function excluirSD($id) {
         $trecho = \App\Trecho::find($id);
 
+        if ($trecho == null) {
+            return abort(404);
+        }
+
         if (Storage::disk()->exists($trecho->arquivo_sd)) {
             Storage::delete($trecho->arquivo_sd);
         } 
@@ -214,6 +233,10 @@ class TrechoController extends Controller
     public function excluirHD($id) {
         $trecho = \App\Trecho::find($id);
 
+        if ($trecho == null) {
+            return abort(404);
+        }
+        
         if (Storage::disk()->exists($trecho->arquivo_hd)) {
             Storage::delete($trecho->arquivo_hd);
         } 

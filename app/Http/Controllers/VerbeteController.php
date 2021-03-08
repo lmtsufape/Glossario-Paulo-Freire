@@ -26,6 +26,10 @@ class VerbeteController extends Controller
 
     public function deletar($id) {
         $verbete = \App\Verbete::find($id);
+
+        if ($verbete == null) {
+            return abort(404);
+        }
         
         $trechos = \App\Trecho::where('verbete_id', $id)->get();
 
@@ -50,6 +54,10 @@ class VerbeteController extends Controller
         ]);
 
         $verbete = \App\Verbete::find($id);
+
+        if ($verbete == null) {
+            return abort(404);
+        }
 
         $verbete->descricao = $request->descricao;
         $verbete->update();
