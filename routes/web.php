@@ -23,6 +23,14 @@ Route::prefix(parseLocale())->group(function () {
         return view('letras');
     })->name('glossario');
 
+    Auth::routes([
+        'register' => false,
+        'login'    => false,
+        'logout'   => false,
+        'reset'    => false,
+        'verify'   => false,
+    ]);
+
     Route::get('/login', function() {
         return view('auth.login');
     })->name('login');
@@ -32,8 +40,6 @@ Route::prefix(parseLocale())->group(function () {
     Route::get('/letra/{l}', 'ListarVerbeteController@listar')->name('letra');
 
     Route::get('/verbete/{id}', 'ListarTrechoController@listar')->name('verbete');
-
-    Auth::routes();
 
     Route::get('/home', 'HomeController@index')->name('home');
 
