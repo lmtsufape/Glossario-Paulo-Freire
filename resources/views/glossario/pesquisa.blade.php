@@ -109,7 +109,11 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
-                                <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
+                                <form action="{{ route('trecho.del', ['id' => $trecho->id]) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-primary">@lang('mensagens.Sim')</button>
+                                </form>
                             </div>
                             </div>
                         </div>
@@ -221,7 +225,11 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
-                                <a href="{{ route('trecho.del', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
+                                <form action="{{ route('trecho.del', ['id' => $trecho->id]) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-primary">@lang('mensagens.Sim')</button>
+                                </form>
                             </div>
                             </div>
                         </div>

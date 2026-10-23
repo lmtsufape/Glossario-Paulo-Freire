@@ -13,6 +13,7 @@
                 <li class="list-group-item div_container form-group" style="border-radius: 20px; width: 80%; height: auto;">
                 <form action="{{ Route('editar.update', ['id' => $trecho]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row" style="margin-top:10px;">
                         <div class="col-sm-8">
                             <label for="titulo" style="width: 100%; word-wrap: break-word; font-weight: bolder;">@lang('mensagens.Titulo'):</label>
@@ -172,8 +173,12 @@
             @lang('mensagens.Confirmacao')
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
-            <a href="{{ route('delete.arquivoHD', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
+            <form action="{{ route('delete.arquivoHD', ['id' => $trecho->id]) }}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-primary">@lang('mensagens.Sim')</button>
+            </form>
         </div>
     </div>
     </div>
@@ -192,8 +197,12 @@
             @lang('mensagens.Confirmacao')
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
-        <a href="{{ route('delete.arquivoSD', ['id' => $trecho->id]) }}"><button type="button" class="btn btn-primary">@lang('mensagens.Sim')</button></a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('mensagens.Nao')</button>
+            <form action="{{ route('delete.arquivoSD', ['id' => $trecho->id]) }}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-primary">@lang('mensagens.Sim')</button>
+            </form>
         </div>
     </div>
     </div>
